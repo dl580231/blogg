@@ -84,7 +84,6 @@ function bindScoll(){
 		b = $(window).scrollTop();
 		c = $(document).height();
 	    if(((a+b+10)>c)&&!load){
-	    	load = true;//控制只执行一次函数
 	    	loadJudge();//滚动完之后的下拉加载，判断对某块进行刷新
 	    }
 	});
@@ -103,7 +102,8 @@ function loadJudge(){
 			judge = false;
 		}
 	}
-	if(judge){		
+	if(judge){	
+    	load = true;//控制只执行一次函数	
 		$("#loading").css("visibility","visible");
 		setTimeout(function(){
 			initResolved(currentTab);
