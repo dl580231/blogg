@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuc.a4q.dao.FloorDao">
+	<select id="queryFloorList" resultMap="floorMap" parameterType="Floor">
+		select
+		floor_id,post_id,f.user_id,user_name,floor_content,f.create_time,f.last_edit_time
+		from tb_floor f,tb_person_info p
+		<where>
+			<if test="postId != null">and post_id = #{postId}</if>
+			<if test="user !=null and user.userId != null">and f.user_id = #{user.userId}</if>
+			<if test="floorContent != null and floorContent != ''">and floor_content like CONCAT('%',#{floorContent},'%')
+			</if>
+			<if test="createTime != null">and f.create_time= #{createTime}</if>
+			<if test="lastEditTime != null">and f.last_edit_time = #{lastEditTime}</if>
+			and f.user_id = p.user_id
+		</where>
+	</select>
+
+	<resultMap type="Floor" id="floorMap">
+		<id column="floor_id" property="floorId" />
+		<result column="post_id" property="postId"></result>
+		<result column="floor_content" property="floorContent"></result>
+		<result column="create_time" property="createTime"></result>
+		<result column="last_edit_time" property="lastEditTime"></result>
+		<association property="user" javaType="PersonInfo">
+			<result column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+		</association>
+	</resultMap>
+
+	<insert id="insertFloor" parameterType="Floor">
+		insert into
+		tb_floor(post_id,user_id,floor_content,create_time,last_edit_time)
+		values(#{postId},#{user.userId},#{floorContent},#{createTime},#{lastEditTime})
+	</insert>
+
+	<delete id="deleteFloor" parameterType="Floor">
+		delete
+		from tb_floor
+		<where>
+			<!-- 目前这样做是为了误删数据库 -->
+			and floor_id = #{floorId}
+			<if test="postId != null">and post_id = #{postId}</if>
+			<if test="user != null and user.userId != null">and user_id = #{user.userId}</if>
+			<if test="floorContent != null">and floor_content like CONCAT("%",#{floorContent},"%")
+			</if>
+			<if test="createTime != null">and create_time = createTime = #{createTime}</if>
+			<if test="lastEditTime != null">and last_edit_time = #{lastEditTime}</if>
+		</where>
+	</delete>
+	
+	<select id="getFloorCountByPostId" resultType="int" parameterType="int">
+		SELECT COUNT(floor_id)
+		FROM tb_floor
+		WHERE post_id = #{postId}
+	</select>
+</mapper>

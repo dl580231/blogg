@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+				<title>博客系统</title>
+				<link href="css/base.css" rel="stylesheet" type="text/css">
+				<link href="css/common_qa.css" rel="stylesheet" type="text/css">
+				<link href="css/common.css" rel="stylesheet" type="text/css">
+				<link href="css/qa.css?20170726" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="js/et.js"></script>
+				<!-- 切换的js文件 --><!-- 
+				<script type="text/javascript" src="js/other.js"></script> -->
+</head>
+
+<body>
+	<div id="qaTop">
+		<div class="qatop clearfix"><!-- 
+			<h1 class="left mt5">
+				<span>博客网站</span><a href="https://dayi.jd100.com/"></a>
+			</h1> -->
+			<ul class="qatop_nav qatop_sub left">
+				<li class="nav_hover"><a>首页</a></li>
+				<!-- <li><a target="_blank">个人中心</a></li> -->
+			</ul>
+			<ul class="qatop_person qatop_sub right">
+				<li><a id="login" href="../login.html" title="师生答疑网登录">登录</a></li>
+				<li id="register"><a href="../register.html" title="师生答疑网注册">注册</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="container" class="qaCon">
+		<div class="search qafilet">
+			<div class="search_box">
+				<form id="submitForm">
+					<span class="search_input"><input type="text" id="key" name="searchWord" tabindex="1" maxlength="256" size="60"
+						placeholder="请输入搜索内容……" class="hidevalue"></span> 
+						<input type="button" tabindex="2" value="我要搜索" onclick="search()" class="sec_search search_btn qabg"> 
+						<input type="button" tabindex="3" value="我要提问" onclick="ask()" class="sec_ask search_btn qabg">
+				</form>
+			</div>
+			<div class="search_key">
+				热门搜索：<a href="/a4q/stage/postList.html?key=java" target="_blank">Java</a><a href="/a4q/stage/postList.html?key=网络" target="_blank">网络</a>
+			</div>
+		</div>
+
+
+
+
+		<div id="content">
+			<div class="sidebar190 sbar_grade left">
+				<h3 class="f14px fb sbar_til sbar_til190_blue qafilet">问题分类</h3>
+				<div class="sbar_gray">
+					<h4 class="sbar_grade_h4 mart20">
+						<span>选择学科</span>
+					</h4>
+					<div class="sbar_subject_list" id="courseInfo"></div>
+				</div>
+			</div>
+			<div class="main590 left">
+				<div class="main590_wrap">
+					<ul class="tab tabTag_qa clearfix">
+						<li onclick="setTab('qa',0);" class="curTag">已解决问题</li>
+						<li onclick="setTab('qa',1);">待解决问题</li>
+						<li onclick="setTab('qa',2);">文章推荐</li>
+					</ul>
+					<div class="tabCon_qa">
+						<div class="m_qalist latestQa">
+							<div class="mart10">
+									<table summary="所有已解决问题" id="resolved">
+										<tr class="tr_boeder">
+											<th class="textleft">问题</th>
+		   									<th width="12%">提问时间</th>
+		   									<th width="20%">提问者</th> 
+		   								</tr>
+									</table>
+								</div>
+						</div>
+						<div class="m_qalist latestQa hidden">
+							<div class="mart10">
+									<table summary="所有待解决问题" id="unResolved">
+									</table>
+							</div>
+						</div>
+						<div class="m_qalist latestQa hidden">
+							<div class="mart10">
+									<table summary="推荐部分" id="recommend">
+									</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="loading" style="visibility:hidden"></div>
+			</div>
+			<div class="sidebar190 right">
+
+
+				<div class="sbar_charts mart10">
+					<h3 class="fb sbar_til sbar_til190 qafilet">
+						<span>排行榜</span>
+					</h3>
+					<ul class="tag2 tag2_red tabTag_rank clearfix">
+						<li onclick="setTab('rank',1);">博客</li> 
+						<li onclick="setTab('rank',2);" class="curTag">问题</li>
+					</ul>
+					<div class="sbar_gray tabCon_rank">
+						<!-- 排行榜展示 -->
+						<ul id="rank"></ul>
+					</div>
+					<span class="sFillet ht5 qafilet fillet190_b"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript">
+		$("#loading").load("loading.html");
+	</script>
+		<script type="text/javascript" charset="utf-8" src="../resources/js/jquery/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/headPage.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../resources/js/common/common.js"></script>
+</body>
+</html>

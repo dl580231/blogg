@@ -1,0 +1,3 @@
+2018-09-257 21:38:32:032 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostPageList - ==>  Preparing: select * from tb_post limit ?,? 
+2018-09-257 21:38:32:032 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostPageList - ==> Parameters: 0(Integer), 5(Integer)
+2018-09-257 21:38:32:032 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostPageList - <==      Total: 5

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.nuc.a4q.dao.CourseDao">
+ 	<insert id="insertCourse" parameterType="Course">
+ 		insert into
+ 		tb_course(course_name,priority,create_time,last_edit_time)
+ 		values(#{courseName},#{priority},#{createTime},#{lastEditTime})
+ 	</insert>
+ 	
+ 	<update id="updateCourse" parameterType="Course">
+ 		update tb_course
+		<set>
+			<if test="moderator != null and moderator.userId != null">moderator_id=#{moderator.userId},</if>
+			<if test="courseName != null">course_name=#{courseName},</if>
+			<if test="priority != null">priority=#{priority},</if>
+			<if test="createTime != null">create_time=#{createTime},</if>
+			<if test="lastEditTime != null">last_edit_time=#{lastEditTime},</if>
+		</set>
+		where course_id=#{courseId}
+ 	</update>
+ 	
+ 	<delete id="deleteCourse" parameterType="Course">
+ 		delete from tb_course where course_id=#{courseId}
+ 	</delete>
+ 	 	
+ 	<select id="queryCourseList" resultMap="courseMap">
+ 		select
+ 		course_id,p.user_id,p.user_name,course_name,priority,c.create_time,c.last_edit_time
+ 		from 
+ 		tb_course c left join tb_person_info p on c.moderator_id=p.user_id
+ 		<where>
+ 			<if test="courseName != null">and course_name like CONCAT("%",#{courseName},"%")</if>
+ 			<if test="moderator != null and moderator.userId != null">and moderator_id = #{moderator.userId}</if>
+ 			<if test="courseId != null">and course_id = #{courseId}</if>
+ 		</where>
+ 	</select>
+ 	
+ 	<resultMap type="Course" id="courseMap">
+ 		<id column="course_id" property="courseId"/>
+ 		<result column="course_name" property="courseName"/>
+ 		<result column="priority" property="priority"/>
+ 		<result column="create_time" property="createTime"/>
+ 		<result column="last_edit_time" property="lastEditTime"/>
+ 		<association property="moderator" javaType="PersonInfo">
+ 			<id column="user_id" property="userId"/>
+ 			<result column="user_name" property="userName"/>
+ 		</association>
+ 	</resultMap>
+ 	
+ 	<select id="queryCourseListName" resultType="Course">
+ 		select course_id,course_name
+ 		from tb_course
+ 	</select>
+ 	
+ 	<select id="getCourseByCourseName" resultType="int">
+ 		select course_id
+ 		from tb_course
+ 		where course_name = #{courseName}
+ 	</select>
+ </mapper>
+ 

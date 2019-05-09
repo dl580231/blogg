@@ -1,0 +1,43 @@
+﻿
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Login Page</title>
+    <link rel="Stylesheet" type="text/css" href="style/authority/login.css"/>
+    <link rel="Stylesheet" type="text/css" href="style/authority/bootstrap.min.css"/>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body onload='document.f.j_username.focus();'>
+<div class="container">
+    <form class="form-signin" name='f' action="login" method='post' id="submitForm">
+        <h3 class="form-signin-heading">师生答疑系统</h3> 
+        
+            <div class="error">无效的账号密码!</div>
+        
+        
+        <input type="text" name="j_username" placeholder="用户名" class="input-block-level"/>
+        <input type="password" name="j_password" placeholder="密码" class="input-block-level"/>
+        <input name="submit" type="submit" id="login_sub" value=" 登录 " class="btn btn-large btn-primary"/>
+        <br/>
+    </form>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$("#login_sub").click(function(){
+			$("#submitForm").attr("action", "index.html").submit();
+		});
+	});
+	
+	/*回车事件*/
+	function EnterPress(e){ //传入 event 
+		var e = e || window.event; 
+		if(e.keyCode == 13){ 
+			$("#submitForm").attr("action", "index.html").submit();
+		} 
+	} 
+</script>
+</div>
+</body>
+</html>

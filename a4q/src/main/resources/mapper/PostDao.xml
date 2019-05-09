@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuc.a4q.dao.PostDao">
+	<insert id="insertPost" parameterType="Post" useGeneratedKeys="true"
+		keyColumn="post_id" keyProperty="postId">
+		insert into
+		tb_post(course_id,user_id,best_answer_id,post_title,post_content,priority,enable_view,create_time,last_edit_time)
+		values(#{course.courseId},#{deployUser.userId},#{bestAnswerId},#{postTitle},#{postContent},#{priority},#{enableView},#{createTime},#{lastEditTime})
+	</insert>
+
+	<update id="updatePost" parameterType="Post">
+		update tb_post
+		<set>
+			<if test="course!=null">course_id=#{course.courseId},</if>
+			<if test="deployUser!=null">user_id=#{deployUser.userId},</if>
+			<if test="bestAnswerId!=null">best_answer_id=#{bestAnswerId},</if>
+			<if test="postTitle!=null">post_title=#{postTitle},</if>
+			<if test="postContent!=null">post_content=#{postContent},</if>
+			<if test="priority!=null">priority=#{priority},</if>
+			<if test="enableView!=null">enable_view=#{enableView},</if>
+			<if test="createTime!=null">create_time=#{createTime},</if>
+			<if test="lastEditTime!=null">last_edit_time=#{lastEditTime}</if>
+		</set>
+		where post_id=#{postId}
+	</update>
+
+	<delete id="deletePost" parameterType="Post">
+		delete from tb_post
+		<where>
+			<if test="postId != null">post_id = #{postId}</if>
+		</where>
+	</delete>
+
+	<select id="queryPostList" resultMap="postMap">
+		select
+		p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,enable_view,p.create_time,p.last_edit_time
+		from
+		tb_post p,tb_person_info per,tb_course c
+		<where>
+			<if test="postId != null">post_id = #{postId}</if>
+			<if test="deployUser != null and deployUser.userId != null">and p.user_id = #{deployUser.userId}</if>
+			<if test="postContent != null and postContent != ''">and post_content like CONCAT("%",#{postContent},"%")
+			</if>
+			<if test="postTitle != null and postTitle != ''">and post_title like CONCAT("%",#{postTitle},"%")
+			</if>
+			<if test="course != null and course.courseId != null">and p.course_id=#{course.courseId}</if>
+			and p.user_id = per.user_id
+			and p.course_id = c.course_id
+		</where>
+		order by priority ASC
+	</select>
+
+	<resultMap type="Post" id="postMap">
+		<id column="post_id" property="postId" />
+		<result column="post_title" property="postTitle" />
+		<result column="post_content" property="postContent" />
+		<result column="priority" property="priority" />
+		<result column="enable_view" property="enableView" />
+		<result column="create_time" property="createTime" />
+		<result column="last_edit_time" property="lastEditTime" />
+		<result column="best_answer_id" property="bestAnswerId" />
+		<association property="course" javaType="Course">
+			<id column="course_id" property="courseId" />
+			<result column="course_name" property="courseName" />
+		</association>
+		<association property="deployUser" javaType="PersonInfo">
+			<id column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+		</association>
+	</resultMap>
+
+	<select id="queryPostCount" resultType="int">
+		select count(post_id)
+		from tb_post
+		<where>
+			<if test="resolve == 0">best_answer_id is not null</if>
+			<if test="resolve == 1">best_answer_id is null</if>
+		</where>
+	</select>
+
+	<select id="queryPostPageList" resultMap="postMap">
+		select
+		p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,f.floor_id,post_title,post_content,p.priority,enable_view,p.create_time,p.last_edit_time
+		from
+		tb_post p left join tb_floor f on
+		p.best_answer_id=f.floor_id,tb_person_info
+		per,tb_course c
+		<where>
+			<if test="post.postContent != null">and post_content like CONCAT("%",#{post.postContent},"%")
+			</if>
+			<if test="post.postTitle != null">and post_title like CONCAT("%",#{post.postTitle},"%")
+			</if>
+			<if test="post.course != null and post.course.courseId != null">and p.course_id=#{post.course.courseId}</if>
+			<!-- <if test="post.deployUser != null">and per.user_id=#{p.userId}</if> -->
+			and p.user_id = per.user_id
+			and p.course_id = c.course_id
+		</where>
+		limit #{rowStart},#{rowSize}
+	</select>
+
+	<select id="queryMinPriority" resultType="int">
+		SELECT MIN(priority)
+		FROM tb_post
+	</select>
+
+	<select id="queryMaxPriority" resultType="int">
+		SELECT MAX(priority)
+		FROM tb_post
+	</select>
+
+	<select id="getPostCountByCourseId" parameterType="int"
+		resultType="int">
+		select COUNT(post_id)
+		from tb_post
+		where course_id =
+		#{courseId}
+	</select>
+
+	<select id="getResolvedPostTestByPriority" resultMap="postMap">
+		select
+		post_id,post_title,t.create_time,priority,user_name,t.user_id
+		from
+		tb_post t,tb_person_info u
+		where best_answer_id is not null AND
+		t.user_id = u.user_id
+		ORDER BY priority ASC
+		limit #{rowStart},#{rowSize}
+	</select>
+
+	<select id="getUnResolvedPostTestByPriority" resultMap="postMap">
+		select
+		post_id,post_title,t.create_time,priority,user_name,t.user_id
+		from
+		tb_post t,tb_person_info u
+		where best_answer_id is null AND
+		t.user_id =
+		u.user_id
+		ORDER BY priority ASC
+		limit #{rowStart},#{rowSize}
+	</select>
+
+	<select id="getUserRank" resultType="UserRank">
+		SELECT
+		num,p.user_id,user_name from(SELECT COUNT(f.user_id) num, f.user_id
+		FROM tb_floor f,tb_post p WHERE f.floor_id = p.best_answer_id GROUP BY
+		f.user_id ORDER BY num DESC) temp,tb_person_info p WHERE temp.user_id
+		= p.user_id LIMIT 0,10
+	</select>
+
+	<select id="getResolvedByPriority" resultType="Post">
+		select
+		post_id,post_title,t.create_time,priority
+		from
+		tb_post t
+		<where>
+			<if test="courseId != null">and course_id = #{courseId}</if>
+			<!-- <if test="postContent != null and postContent != ''">and post_content 
+				like CONCAT("%",#{postContent},"%")</if> -->
+			<if test="postTitle != null and postTitle != ''">and post_title like CONCAT("%",#{postTitle},"%")</if>
+			and best_answer_id is not null
+		</where>
+		ORDER BY priority ASC
+	</select>
+
+	<select id="getUnResolvedByPriority" resultType="Post">
+		select
+		post_id,post_title,t.create_time,priority
+		from
+		tb_post t
+		<where>
+			AND best_answer_id IS NULL
+			<if test="courseId != null">and course_id = #{courseId}</if>
+			<!-- <if test="postContent != null and postContent != ''">and post_content 
+				like CONCAT("%",#{postContent},"%")</if> -->
+			<if test="postTitle != null and postTitle != ''">and post_title like CONCAT("%",#{postTitle},"%")</if>
+		</where>
+		ORDER BY priority ASC
+	</select>
+
+	<select id="getPostById" resultMap="postMap">
+		select
+		p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time
+		from
+		tb_post p,tb_person_info per,tb_course c
+		where
+		post_id = #{postId}
+		and p.user_id = per.user_id
+		and p.course_id = c.course_id
+	</select>
+</mapper>
+ 

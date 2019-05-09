@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <!-- 1.引入properties文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    
+   	<!-- 2.配置数据库连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="autoCommitOnClose" value="true"/>
+		<property name="checkoutTimeout" value="10000"/>
+		<property name="initialPoolSize" value="3"/>
+		<property name="minPoolSize" value="3"/>
+		<property name="maxPoolSize" value="5"/>
+		<property name="maxIdleTime" value="60000"/>
+		<!-- <property name="acquireIncrement" value=""/> -->
+		<!-- <property name="maxIdleTimeExcessConnections" value=""/> -->
+	</bean>
+	
+	<!-- 3.配置管理数据库连接池的SqlSessionFactory对象 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 注入数据库连接池 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 注入本地mybatis配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<!-- 设置别名，在*Mapper.xml文件的resultType设置不用再输入全限定类名，设置别名之后默认输入类名就可以 -->
+		<property name="typeAliasesPackage" value="com.nuc.a4q.entity"/>
+		<!-- 映射本地的mapper文件 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml" />
+	</bean>
+	
+	<!-- 4.扫描dao接口，根据对应的*Mapper.xml文件自动实现接口，并生成bean由spring管理 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 注入sqlSessionFactory对象 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+		<!-- 设置扫描dao的包位置 -->
+		<property name="basePackage" value="com.nuc.a4q.dao"></property>
+	</bean>
+</beans>

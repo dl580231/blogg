@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuc.a4q.dao.PersonInfoDao">
+	<insert id="insertPersonInfo" parameterType="PersonInfo">
+		insert
+		into
+		tb_person_info(user_name,gender,phone,email,password,user_type,lable,create_time,last_edit_time)
+		values(#{userName},#{gender},#{phone},#{email},#{password},#{userType},#{lable},#{createTime},#{lastEditTime})
+	</insert>
+
+	<select id="queryPersonInfoList" resultType="PersonInfo">
+		select *
+		from tb_person_info
+		<where>
+			<if test="info.phone != null and info.phone != ''">and phone = #{info.phone}</if>
+			<if test="info.email != null and info.email != ''">and email = #{info.email}</if>
+			<if test="info.gender != null and info.gender != ''">and gender = #{info.gender}</if>
+			<if test="info.userName != null and info.userName != ''">and user_name = #{info.userName}</if>
+			<if test="info.userType != null and info.userType != ''">and user_type = #{info.userType}</if>
+		</where>
+		limit #{rowStart},#{rowSize}
+	</select>
+
+	<select id="queryPersonInfoCount" resultType="int">
+		select count(*)
+		from tb_person_info
+		<where>
+			<if test="phone != null and phone != ''">and phone = #{phone}</if>
+			<if test="email != null and email != ''">and email = #{email}</if>
+			<if test="gender != null and gender != ''">and gender = #{gender}</if>
+			<if test="userName != null and userName != ''">and user_name = #{userName}</if>
+			<if test="userType != null and userType != ''">and user_type = #{userType}</if>
+		</where>
+	</select>
+
+	<delete id="deleteUser" parameterType="PersonInfo">
+		delete
+		from tb_person_info
+		<where>
+			<if test="userId != null">and user_id = #{userId}</if>
+		</where>
+	</delete>
+
+	<select id="queryPresonInfo" parameterType="PersonInfo"
+		resultType="PersonInfo">
+		select *
+		from tb_person_info
+		<where>
+			<if test="userId != null">and user_id = #{userId}</if>
+			<if test="phone != null and phone != ''">and phone = #{phone}</if>
+			<if test="email != null and email != ''">and email = #{email}</if>
+		</where>
+	</select>
+
+	<update id="updateUser">
+		update tb_person_info
+		<set>
+			<if test="userName != null and userName != ''">user_name = #{userName},</if>
+			<if test="gender != null">gender = #{gender},</if>
+			<if test="password != null and password != ''">password = #{password},</if>
+			<if test="profileImg != null and profileImg != ''">profile_img = #{profileImg},</if>
+			<if test="userType != null and userType != ''">user_type = #{userType},</if>
+			<if test="phone != null and phone != ''">phone = #{phone},</if>
+			<if test="email != null and email != ''">email = #{email},</if>
+			<if test="lastEditTime != null">last_edit_time = #{lastEditTime},</if>
+			<if test="lable != null and lable !=''">lable = #{lable}</if>
+		</set>
+		where user_id=#{userId}
+	</update>
+</mapper>

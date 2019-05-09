@@ -1,0 +1,6 @@
+2019-05-129 19:27:10:010 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostCount - ==>  Preparing: select count(post_id) from tb_post WHERE best_answer_id is not null 
+2019-05-129 19:27:10:010 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostCount - ==> Parameters: 
+2019-05-129 19:27:10:010 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostCount - <==      Total: 1
+2019-05-129 19:27:26:026 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostCount - ==>  Preparing: select count(post_id) from tb_post WHERE best_answer_id is null 
+2019-05-129 19:27:26:026 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostCount - ==> Parameters: 
+2019-05-129 19:27:26:026 [main] DEBUG com.nuc.a4q.dao.PostDao.queryPostCount - <==      Total: 1

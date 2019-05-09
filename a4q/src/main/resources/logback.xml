@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration的属性：scan:当设置为true是开启，间隔一定时间对配置文件进行扫描是否有改动并同步 scanPeriod：设置自动扫描配置文件的间隔时间，当scan为true时有效，默认值为1分钟，默认单位为毫秒 
+	debug：决定是否打印logback内部日子信息，默认为false -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+	<!-- 配置一些变量 -->
+	<!-- 定义日志级别：trace<debug<info<warn<error -->
+	<property name="log.level" value="debug"></property>
+	<!-- 设置日志的最大历史数量，例如设置为30，当保存的日志数量等于30时，第31份存储的日志将会覆盖第一份日志 -->
+	<property name="log.maxHistory" value="30"></property>
+	<!-- 设置日志存储的文件路径，${catalina.base}代表tomcat的根目录 -->
+	<property name="log.filePath" value="${catalina.base}/logs/webapps"></property>
+	<!-- 设置日志输出格式 -->
+	<property name="log.pattern"
+		value="%d{YYYY-MM-DD HH:mm:ss:sss} [%thread] %-5level %logger{50} - %msg%n"></property>
+
+	<!-- 对输出位置的配置 -->
+	<!-- 输出在控制台的配置 -->
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- 配置输出格式，encoder会将输出转化为字符串，并输出的相应文件 -->
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+	</appender>
+	<!-- 配置debug -->
+	<appender name="debugAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 设置日志文件存储位置 -->
+		<file>${log.filePath}/debug.log</file>
+		<!-- 设置回滚保存日志的策略：例如时间策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 设置命名格式 -->
+			<fileNamePattern>${log.filePath}/debug/debug.%d{yyyy-mm-dd}.log.gz
+			</fileNamePattern>
+			<!-- 设置最大保存历史数 -->
+			<maxHistory>${log.maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+	<!-- 配置info -->
+	<appender name="infoAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 设置日志文件存储位置 -->
+		<file>${log.filePath}/info.log</file>
+		<!-- 设置回滚保存日志的策略：例如时间策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 设置命名格式 -->
+			<fileNamePattern>${log.filePath}/info/info.%d{yyyy-mm-dd}.log.gz
+			</fileNamePattern>
+			<!-- 设置最大保存历史数 -->
+			<maxHistory>${log.maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+	<!-- 配置error -->
+	<appender name="errorAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 设置日志文件存储位置 -->
+		<file>${log.filePath}/error.log</file>
+		<!-- 设置回滚保存日志的策略：例如时间策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 设置命名格式 -->
+			<fileNamePattern>${log.filePath}/error/error.%d{yyyy-mm-dd}.log.gz
+			</fileNamePattern>
+			<!-- 设置最大保存历史数 -->
+			<maxHistory>${log.maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<!-- 配置logger,只允许有一个logger配置生效，这里有两个：一个logger，一个root -->
+	<logger name="com.nuc.a4q" level="${log.level}" additivity="true">
+		<appender-ref ref="debugAppender"></appender-ref>
+		<appender-ref ref="infoAppender"></appender-ref>
+		<appender-ref ref="errorAppender"></appender-ref>
+	</logger>
+	<root level="info">
+		<appender-ref ref="consoleAppender"></appender-ref>
+	</root>
+</configuration>

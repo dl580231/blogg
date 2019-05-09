@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuc.a4q.dao.EvaluateDao">
+	<insert id="insertEvaluate" parameterType="Evaluate">
+		insert
+		into
+		tb_evaluate(post_id,user_id,create_time)
+		values(#{postId},#{userId},#{createTime})
+	</insert>
+
+	<delete id="deleteEvaluate" parameterType="Evaluate">
+		delete
+		from tb_evaluate
+		<where>
+			<if test="postId != null">post_id = #{postId}</if>
+			<if test="userId != null">user_id = #{userId}</if>
+			<if test="createTime != null">create_time = #{createTime}</if>
+		</where>
+	</delete>
+</mapper>
