@@ -44,11 +44,11 @@ public class Post {
 	private String postTitle;
 	@NotBlank(message="发帖内容不能为空",groups= {Insert.class})
 	private String postContent;
-	private Integer priority;
+	private Integer priority = 0;
 	/**
 	 * 0:可见，1：不可见
 	 */
-	private Integer enableView;
+	private Integer enableView = 0;
 	private Date createTime;
 	private Date lastEditTime;
 

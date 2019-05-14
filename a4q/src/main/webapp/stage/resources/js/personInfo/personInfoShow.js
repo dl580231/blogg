@@ -1,5 +1,6 @@
 $(function() {
 	$("#modify").hide();
+	$("#logout").hide();
 	var userId = getQueryString("userId");
 	if (userId) {
 		initPage(userId);
@@ -104,10 +105,29 @@ function loginState(userId){
 				var user = data.data;
 				if(user.userId == userId){
 					$("#modify").show();
+					$("#logout").show();
 					$("#modify").attr("userId",user.userId);
 				}
 			}else{
 				
+			}
+		}
+	});
+}
+
+/*注销操作*/
+function logoutHandle(){
+	var loginStateUrl = "/a4q/personInfoAdmin/logout";
+	$.getJSON(loginStateUrl,function(data){
+		if(data == "unLogin"){
+			alert("未登录");
+		}
+		else{
+			if(data.state == 0){
+				alert("注销成功");
+				window.open("/a4q/stage/headPage/headpage.html","_self");
+			}else{
+				alert(data.stateInfo);
 			}
 		}
 	});

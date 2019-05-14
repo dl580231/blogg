@@ -85,11 +85,11 @@ public class PostService {
 	 * 
 	 * @return
 	 */
-	public HashMap<Object, Object> getResolvedPost(Integer rowStart,Integer rowSize) {
+	public HashMap<Object, Object> getResolvedPost(Integer rowStart,Integer rowSize,Integer courseId) {
 		if(rowStart==null || rowSize==null)
 			throw new LogicException("查询参数错误");
 		Integer count = dao.queryPostCount(0);
-		List<Post> list = dao.getResolvedPostTestByPriority(rowStart,rowSize);
+		List<Post> list = dao.getResolvedPostTestByPriority(rowStart,rowSize,courseId);
 		HashMap<Object, Object> map = new HashMap<Object,Object>();
 		map.put("list", list);
 		map.put("count", count);
@@ -101,11 +101,11 @@ public class PostService {
 	 * 
 	 * @return
 	 */
-	public HashMap<Object, Object> getUnResolvedPost(Integer rowStart,Integer rowSize) {
+	public HashMap<Object, Object> getUnResolvedPost(Integer rowStart,Integer rowSize,Integer courseId) {
 		if(rowStart==null || rowSize==null)
 			throw new LogicException("查询错误");
 		Integer count = dao.queryPostCount(1);
-		List<Post> list = dao.getUnResolvedPostTestByPriority(rowStart,rowSize);
+		List<Post> list = dao.getUnResolvedPostTestByPriority(rowStart,rowSize,courseId);
 		HashMap<Object, Object> map = new HashMap<Object,Object>();
 		map.put("list", list);
 		map.put("count", count);
@@ -139,7 +139,6 @@ public class PostService {
 		Course course = new Course();
 		course.setCourseId(courseId);
 		post.setCourse(course);
-		post.setPriority(0);
 		post.setDeployUser(user);
 		post.setCreateTime(new Date());
 		post.setLastEditTime(new Date());

@@ -83,7 +83,6 @@ public class FloorManagementController {
 
 		Post post = (Post) HttpServletRequestUtils.getSessionAttr(request, "currentPost");
 
-		floor.setUser(user);
 		service.addFloor(floor, user, post);
 		return ResultUtil.success(post.getPostId());
 	}

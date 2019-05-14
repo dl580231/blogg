@@ -5,7 +5,9 @@ rowStartUR = 0;
 load = false;
 countR = 0;
 countUR =0
+courseId = null;
 $(function(){
+	courseId = getQueryString("courseId")
 	initPage();
 	bindScoll();
 });
@@ -30,7 +32,7 @@ function initCourse(){
 				var tempHtml = "";
 				$.map(data.data,function(value,index){
 					tempHtml +='<dl><dt>'+
-								'<a href="/a4q/stage/postList.html?courseId='+value.courseId+'" target="_blank"">'+value.courseName+'</a>'+
+								'<a href="/a4q/stage/headPage/headpage.html?courseId='+value.courseId+'">'+value.courseName+'</a>'+
 								'</dt></dl>'
 				});
 				$("#courseInfo").html(tempHtml);
@@ -46,10 +48,10 @@ function initResolved(handle){
 	var initUrl = "";
 	var ele = '';
 	if(handle==0){
-		initUrl = "/a4q/post/getResolvedPost?rowStart="+rowStartR+"&rowSize="+rowSize;
+		initUrl = "/a4q/post/getResolvedPost?rowStart="+rowStartR+"&rowSize="+rowSize+"&courseId="+courseId;
 		ele = "#resolved"
 	}else if(handle==1){
-		initUrl = "/a4q/post/getUnResolvedPost?rowStart="+rowStartUR+"&rowSize="+rowSize;
+		initUrl = "/a4q/post/getUnResolvedPost?rowStart="+rowStartUR+"&rowSize="+rowSize+"&courseId="+courseId;
 		ele = "#unResolved"
 	}
 	$.ajax({
@@ -162,7 +164,6 @@ function loginState() {
 						"/a4q/stage/personInfoShow.html?userId=" + user.userId);
 				$("#register").hide();
 			} else {
-				alert("未登录");
 				isLogin = false;
 			}
 		}

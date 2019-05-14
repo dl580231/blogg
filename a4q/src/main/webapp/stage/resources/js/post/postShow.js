@@ -1,9 +1,10 @@
+moderatorTag = 0;
+var postId = getQueryString("postId");
 $(function() {
-	var postId = getQueryString("postId");
 	if (isNaN(postId)) {
 		 window.location.href = "/a4q/stage/headPage/headpage.html"; 
-	} else {
-		initPage(postId);
+	} else {//登录状态和版主判断
+		loginState();
 	}
 	
 	//	设置点击事件
@@ -11,16 +12,9 @@ $(function() {
 		replyHandle();
 	});
 });
-
-	
-
-	function initPage(postId){
-		initPost(postId);
-		loginState(postId);//登录状态判断
-	}
 	
 	// 初始化帖子信息
-	function initPost(postId) {
+	function initPost() {
 		var initPostUrl = "/a4q/post/getPostById?postId=" + postId+"&fresh=" + + Math.random();
 		$.ajax({
 			url : initPostUrl,
@@ -42,11 +36,14 @@ $(function() {
 							if(isResolved != null){
 								$("#isResolved").text("已解决");
 								$("#isResolved").css("color","blue");
-								initFloor(postId,isResolved)
+								$("#isResolvedSubmit").html("");
+								initFloor(isResolved)
 							}else{
 								$("#isResolved").text("未解决");
+								$("#bestAnswer").text("");
+								$("#isResolved").css("color","red");
 								$("#isResolvedSubmit").html('<input id="floorBest" placeholder="输入最佳答案所属楼"/><input type="button" onclick="elect()" value="提交">');
-								initFloor(postId,null);
+								initFloor(null);
 							}
 					} else {
 						alert("查询失败");
@@ -56,8 +53,7 @@ $(function() {
 	}
 	
 	// 初始化楼信息
-	function initFloor(postId,isResolved) {
-		/*alert(isResolved);*/
+	function initFloor(isResolved) {
 		var initFloorUrl = null;
 		if(isResolved != null){
 			initFloorUrl = "/a4q/floor/getFloorListWithNum?postId="+postId+"&isResolved="+isResolved+"&fresh="+Math.random();
@@ -81,15 +77,17 @@ $(function() {
 	                			'<div class="content" id="floorContent">'+value.floorContent+'</div></div>';
 				});
 				$("#floorShow").html(tempHtml);
-				$(".moderator-delete").hide();
+				SyntaxHighlighter.highlight();/*代码高亮*/
+				if(moderatorTag == 0)
+					$(".moderator-delete").hide();
 			} else {
 				alert(data.stateInfo);
 			}
 		});
 	}
 	
-	// 登录状态判断
-	function loginState(postId){
+	// 登录,版主状态判断
+	function loginState(){
 		var loginStateUrl = "/a4q/personInfoAdmin/loginState?fresh=" + Math.random();
 		$.ajax({
 			url : loginStateUrl,
@@ -102,10 +100,13 @@ $(function() {
 					$(".loginState").text("个人中心");
 					$(".loginState").attr("href","personInfoShow.html?userId="+user.userId);
 					$(".register").hide();
-					moderatorJudge();
+					$("#editor").css("display","block");
+					$("#reply").css("display","inline");
+					moderatorJudge();/*判断是不是版主*/
 				}else{
 					/*alert("未登录");*/
 					isLogin = false;
+					initPost();
 				}
 			}
 		});
@@ -116,7 +117,7 @@ $(function() {
 	function replyHandle(){
 			var addFloorUrl = "/a4q/floor/addFloor";
 			var formData = new FormData();
-			var floorContent = $(".floorContent").val();
+			var floorContent = ue.getContent();
 			formData.append("floorContent",floorContent);
 			$.ajax({
 				url : addFloorUrl,
@@ -127,13 +128,17 @@ $(function() {
 				type : "POST",
 				data : formData,
 				success : function(data){
-					if(data.state == 0){
+					if(data == "unLogin")
+						alert("回答问题之前请登录");
+					else{
+						if(data.state == 0){
 						alert("回答成功");
-						$(".floorContent").val("");
-						initPage(data.data);
+						ue.setContent('');
+						loginState(data.data);
 					}else{
 						alert(data.stateInfo);
 					}
+				}
 				}
 			});
 		}
@@ -144,10 +149,12 @@ $(function() {
 		$.getJSON(moderatorJudgeUrl,function(data){
 			if(data.state == 0){
 				isModerator = true;
-				$(".moderator-delete").show();
+				moderatorTag = 1;
 			}else{
+				moderatorTag = 0;
 				alert("不是版主");
 			}
+			initPost();
 		});
 	}
 
@@ -159,7 +166,7 @@ $(function() {
 			$.getJSON(removeUrl,function(data){
 				if(data.state == 0){
 					alert("删除成功");
-					initPage(data.data);
+					loginState();
 				}else{
 					alert(data.stateInfo);
 				}
@@ -181,7 +188,7 @@ $(function() {
 					$.getJSON(url,function(data){
 						if(data.state == 0){
 							alert("指定成功");
-							initPage(data.data);
+							loginState(data.data);
 						}else{
 							alert(data.stateInfo);
 						}
@@ -191,4 +198,9 @@ $(function() {
 				}
 			}
 		}
+	}
+	
+	/*处理登录跳转回来*/
+	function loginHandle(){
+		window.location.href="login.html?postId="+postId;
 	}

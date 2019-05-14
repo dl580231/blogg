@@ -1,10 +1,7 @@
 $(function() {
 	//实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-    var ue = UE.getEditor( 'editor');
-    function demo(){
-    	alert(ue.getContent());
-    }
+    var ue = UE.getEditor('editor', {autoHeightEnabled: false});
 	var isLogin = false;
 	var user = null;
 	loginState();
@@ -30,7 +27,7 @@ $(function() {
 		});
 	}
 
-	// 提交表单
+	// 提交表单,发布帖子
 	function submitForm() {
 		if (user == null) {
 			alert("发表问题之前请登录,登录成功后刷新页面");
@@ -38,11 +35,17 @@ $(function() {
 			var deployUrl = "/a4q/post/deployPost";
 			/*var data = $("#submitForm").serialize();*/
 			postContent = ue.getContent()
-			var data = "courseId="+$("#courseInfo").val()+"&postContent="+postContent+"&postTitle="+$("#title").val();
+//			var data = "courseId="+$("#courseInfo").val()+"&postContent='"+postContent+"'&postTitle='"+$("#title").val()+"'";
+			var data = {
+				courseId:$("#courseInfo").val(),
+				postContent:postContent,
+				postTitle:$("#title").val()
+			};
 			$.ajax({
 				url : deployUrl,
 				type : "POST",
-				cache : false,
+				cache : false,/*
+				contentType: "application/json",*/
 				data : data,
 				success : function(data) {
 					if (data.state == 0) {

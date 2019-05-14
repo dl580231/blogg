@@ -152,36 +152,8 @@
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging</artifactId>
-			<version>3.3.0.Final</version>
-		</dependency> -->
-		<!-- aop -->
-		<!-- <dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.6.11</version>
-		</dependency>
- 
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.6.11</version>
-		</dependency>
- 
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>2.1</version>
-		</dependency> -->
 		
-		<!-- ueditor -->
-		<!-- <dependency>
-		    <groupId>com.baidu</groupId>
-		    <artifactId>ueditor</artifactId>
-		    <version>1.1.2</version>
-		</dependency>	 -->
+		<!-- 富文本编辑器 -->
 		<dependency>
             <groupId>ueditor</groupId>
             <artifactId>ueditor</artifactId>
@@ -198,7 +170,21 @@
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 		    <version>20160212</version>
-		</dependency>	
+		</dependency>
+		
+		<!-- shrio依赖包 -->
+		<dependency>  
+	        <groupId>org.apache.shiro</groupId>  
+	        <artifactId>shiro-core</artifactId>  
+	        <version>1.2.2</version>  
+    	</dependency>  
+    	
+    	<!-- jsoup -->
+	    <dependency>
+	     <groupId>org.jsoup</groupId>
+	     <artifactId>jsoup</artifactId>
+	     <version>1.8.3</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>o2o</finalName>

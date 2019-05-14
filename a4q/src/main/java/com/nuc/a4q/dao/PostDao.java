@@ -39,7 +39,7 @@ public interface PostDao {
 	/**
 	 * 获取总量
 	 */
-	public Integer queryPostCount(@Param(value = "resolve")Integer resolve);
+	public Integer queryPostCount(@Param(value = "resolve") Integer resolve);
 
 	/**
 	 * 分页查询
@@ -72,14 +72,16 @@ public interface PostDao {
 	/**
 	 * 通过优先级获得已解决问题的列表
 	 */
-	public List<Post> getResolvedPostTestByPriority(@Param("rowStart") Integer rowStart, @Param("rowSize") Integer rowSize);
+	public List<Post> getResolvedPostTestByPriority(@Param("rowStart") Integer rowStart,
+			@Param("rowSize") Integer rowSize, @Param("courseId") Integer course);
 
 	/**
 	 * 通过优先级获得未解决问题的列表
 	 * 
 	 * @return
 	 */
-	public List<Post> getUnResolvedPostTestByPriority(@Param("rowStart") Integer rowStart, @Param("rowSize") Integer rowSize);
+	public List<Post> getUnResolvedPostTestByPriority(@Param("rowStart") Integer rowStart,
+			@Param("rowSize") Integer rowSize, @Param("courseId") Integer course);
 
 	/**
 	 * 获取用户回答排行榜

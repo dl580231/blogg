@@ -1,5 +1,6 @@
 package com.nuc.a4q.Filter;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,9 +17,12 @@ public class AdminAuthFilter implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		System.out.println("拦截器来劲了拦截器来劲了拦截器来劲了拦截器来劲了拦截器来劲了拦截器来劲了拦截器来劲了拦截器来劲了拦截器来劲了");
-		Object loginAuth = request.getSession().getAttribute("adminUser");
+		Object loginAuth = request.getSession().getAttribute("user");
 		if(loginAuth == null) {
-			response.sendRedirect("/");
+			ServletOutputStream out = response.getOutputStream();
+            out.print("unLogin");//返回给前端页面的未登陆标识
+			out.flush();
+			out.close();
 			return false;
 		}else {
 			return true;

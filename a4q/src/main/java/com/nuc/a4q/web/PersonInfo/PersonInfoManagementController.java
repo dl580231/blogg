@@ -161,4 +161,16 @@ public class PersonInfoManagementController {
 			return ResultUtil.success(user);
 		}
 	}
+	
+	/**
+	 * 注销操作
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public Result logout(HttpServletRequest request) {
+		HttpServletRequestUtils.rmSessionAttr(request, "user");
+		return ResultUtil.success();
+	}
 }

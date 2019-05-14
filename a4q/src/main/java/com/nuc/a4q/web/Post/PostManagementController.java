@@ -111,8 +111,8 @@ public class PostManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "getResolvedPost", method = RequestMethod.GET)
-	public Result getResolvedPost(Integer rowStart,Integer rowSize) {
-		HashMap<Object, Object> map = service.getResolvedPost(rowStart,rowSize);
+	public Result getResolvedPost(Integer rowStart, Integer rowSize, Integer courseId) {
+		HashMap<Object, Object> map = service.getResolvedPost(rowStart, rowSize, courseId);
 		return ResultUtil.success(map);
 	}
 
@@ -123,8 +123,8 @@ public class PostManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "getUnResolvedPost", method = RequestMethod.GET)
-	public Result getUnResolvedPost(Integer rowStart,Integer rowSize) {
-		HashMap<Object, Object> map = service.getUnResolvedPost(rowStart,rowSize);
+	public Result getUnResolvedPost(Integer rowStart, Integer rowSize, Integer courseId) {
+		HashMap<Object, Object> map = service.getUnResolvedPost(rowStart, rowSize, courseId);
 		return ResultUtil.success(map);
 	}
 
@@ -204,6 +204,7 @@ public class PostManagementController {
 
 	/**
 	 * 指定帖子最佳答案
+	 * 
 	 * @param floorId
 	 * @param request
 	 * @return

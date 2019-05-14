@@ -122,8 +122,11 @@
 		post_id,post_title,t.create_time,priority,user_name,t.user_id
 		from
 		tb_post t,tb_person_info u
-		where best_answer_id is not null AND
-		t.user_id = u.user_id
+		<where>
+			<if test="courseId !=null">and course_id = #{courseId}</if>
+			and best_answer_id is not null AND
+			t.user_id = u.user_id
+		</where> 
 		ORDER BY priority ASC
 		limit #{rowStart},#{rowSize}
 	</select>
@@ -133,9 +136,11 @@
 		post_id,post_title,t.create_time,priority,user_name,t.user_id
 		from
 		tb_post t,tb_person_info u
-		where best_answer_id is null AND
-		t.user_id =
-		u.user_id
+		<where>
+			<if test="courseId !=null">and course_id = #{courseId}</if>
+			and best_answer_id is null AND
+			t.user_id = u.user_id
+		</where> 
 		ORDER BY priority ASC
 		limit #{rowStart},#{rowSize}
 	</select>

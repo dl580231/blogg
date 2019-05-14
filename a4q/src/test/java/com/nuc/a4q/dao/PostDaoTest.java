@@ -99,14 +99,14 @@ public class PostDaoTest extends BaseTest {
 	@Test
 	@Ignore
 	public void getResolvedPostTestByPriority() {
-		List<Post> list = postdao.getResolvedPostTestByPriority(0,2);
+		List<Post> list = postdao.getResolvedPostTestByPriority(0,2,3);
 		System.out.println(list);
 	}
 
 	@Test
 	@Ignore
 	public void getUnResolvedPostTestByPriority() {
-		List<Post> list = postdao.getUnResolvedPostTestByPriority(0,2);
+		List<Post> list = postdao.getUnResolvedPostTestByPriority(0,2,3);
 		System.out.println(list);
 	}
 	

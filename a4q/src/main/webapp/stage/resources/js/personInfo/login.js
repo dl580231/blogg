@@ -1,3 +1,4 @@
+var postId = getQueryString("postId");
 $(function() {
 	$("#login").click(function() {
 		login();
@@ -30,7 +31,10 @@ function login() {
 			success : function(data) {
 				if (data.state == 0) {
 					alert("登录成功");
-					window.location.href="/a4q/stage/headPage/headpage.html";
+					if(postId != '')
+						window.open("/a4q/stage/postShow.html?postId="+postId,"_self");
+					else
+						window.open("/a4q/stage/headPage/headpage.html","_self");
 				} else {
 					alert(data.stateInfo);
 				}

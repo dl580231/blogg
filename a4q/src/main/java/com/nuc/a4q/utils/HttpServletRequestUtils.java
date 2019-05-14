@@ -3,8 +3,18 @@ package com.nuc.a4q.utils;
 import javax.servlet.http.HttpServletRequest;
 
 public class HttpServletRequestUtils {
+	/**
+	 * 根据传来值返回存在session中的对应属性
+	 * @param request
+	 * @param key
+	 * @return
+	 */
 	public static Object getSessionAttr(HttpServletRequest request, String key) {
 		return request.getSession().getAttribute(key);
+	}
+	
+	public static void rmSessionAttr(HttpServletRequest request, String key) {
+		request.getSession().removeAttribute(key);
 	}
 
 	public static int getInt(HttpServletRequest request, String key) {
