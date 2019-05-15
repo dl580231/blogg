@@ -1,29 +1,26 @@
+var userId = getQueryString("userId");
 $(function() {
-	$("#modify").hide();
-	$("#logout").hide();
-	var userId = getQueryString("userId");
 	if (userId) {
-		initPage(userId);
+		initPage();
 	} else {
 		/* window.location.href = "/a4q/stage/headPage/headpage.html"; */
 	}
 	
 	$("#modify").click(function(){
-		var userId = $(this).attr("userId");
 		var personInfoUrl = "register.html?userId="+userId;
 		window.open(personInfoUrl);
 	});
 });
 
-function initPage(userId) {
-	initUserInfo(userId);
-	initDeployPost(userId);
-	initReplyPost(userId);
-	loginState(userId);
+function initPage() {
+	initUserInfo();
+	initDeployPost();
+	initReplyPost();
+	loginState(aSuccess,aDefault);
 }
 
 //发布的帖子的展示
-function initDeployPost(userId) {
+function initDeployPost() {
 	var initDeployPostUrl = "/a4q/post/getPostList?userId=" + userId;
 	$.getJSON(initDeployPostUrl, function(data) {
 		if (data.state == 0) {
@@ -35,7 +32,7 @@ function initDeployPost(userId) {
 }
 
 //回答的帖子展示
-function initReplyPost(userId){
+function initReplyPost(){
 	var initDeployPostUrl = "/a4q/floor/getFloorList?userId=" + userId;
 	$.ajax({
 		url : initDeployPostUrl,
@@ -59,7 +56,7 @@ function initReplyPost(userId){
 }
 
 //初始化用户信息
-function initUserInfo(userId){
+function initUserInfo(){
 	var initUserInfoUrl = "/a4q/personInfoAdmin/getUserById?userId="+userId;
 	$.getJSON(initUserInfoUrl,function(data){
 		if(data.state == 0){
@@ -93,26 +90,23 @@ function iterator(data) {
 	return tempHtml;
 }
 
-//登录状态判断
-function loginState(userId){
-	var loginStateUrl = "/a4q/personInfoAdmin/loginState?fresh=" + Math.random();
-	$.ajax({
-		url : loginStateUrl,
-		type : "GET",
-		asyn : false,
-		success : function(data){
-			if(data.state == 0){
-				var user = data.data;
-				if(user.userId == userId){
-					$("#modify").show();
-					$("#logout").show();
-					$("#modify").attr("userId",user.userId);
-				}
-			}else{
-				
-			}
-		}
-	});
+/*判断登录状态成功之后调用的函数*/
+function aSuccess(data){
+	var user = data.data;
+	if(user.userId == userId){
+		$("#modify").show();
+		$("#logout").show();
+		$("#modify").attr("userId",user.userId);
+	}else{
+		$("#modify").hide();
+		$("#logout").hide();
+	}
+}
+
+/*判断登录状态失败之后调用的函数*/
+function aDefault(data){
+	$("#modify").hide();
+	$("#logout").hide();
 }
 
 /*注销操作*/

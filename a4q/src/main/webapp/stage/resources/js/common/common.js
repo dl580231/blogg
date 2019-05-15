@@ -41,23 +41,21 @@ function formatD(str) {
 	return year + "-" + month + "-" + date;
 }
 
-//登录状态判断
-/*function loginState(){
-	var loginStateUrl = "/a4q/personInfoAdmin/loginState";
+//登录,版主状态判断
+function loginState(aSuccess,aDefault){
+	var loginStateUrl = "/a4q/personInfoAdmin/loginState?fresh=" + Math.random();
 	$.ajax({
 		url : loginStateUrl,
 		type : "GET",
 		asyn : false,
 		success : function(data){
 			if(data.state == 0){
-				isLogin = true;
+				aSuccess(data);
 			}else{
-				alert(data.stateInfo);
+				aDefault(data);
 			}
 		}
 	});
-	return isLogin;
-}*/
-
+}
 
 

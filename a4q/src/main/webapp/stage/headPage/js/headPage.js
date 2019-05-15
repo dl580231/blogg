@@ -6,18 +6,34 @@ load = false;
 countR = 0;
 countUR =0
 courseId = null;
+position = -1;
 $(function(){
-	courseId = getQueryString("courseId")
+	courseId = getQueryString("courseId");
+	position = getQueryString("position");
 	initPage();
 	bindScoll();
 });
+
+//改变选中科目背景
+function focus(){
+	if(courseId == '')
+		return;
+	else{
+		var course = $("#courseInfo").children();
+		course.each(function(index){
+			if(index == position){
+				$(this).find("a").css("color","red");
+			}
+		});
+	}
+}
 
 function initPage(){
 	initCourse();
 	initResolved(0);
 	initResolved(1);
 	initRank();
-	loginState();
+	loginState(aSuccess,aDefault);
 }
 
 //初始化课程信息展示
@@ -31,11 +47,12 @@ function initCourse(){
 			if (data.state == 0) {
 				var tempHtml = "";
 				$.map(data.data,function(value,index){
-					tempHtml +='<dl><dt>'+
-								'<a href="/a4q/stage/headPage/headpage.html?courseId='+value.courseId+'">'+value.courseName+'</a>'+
-								'</dt></dl>'
+						tempHtml +='<dl><dt>'+
+						'<a href="/a4q/stage/headPage/headpage.html?courseId='+value.courseId+'&position='+index+'">'+value.courseName+'</a>'+
+						'</dt></dl>'
 				});
 				$("#courseInfo").html(tempHtml);
+				focus();
 			} else {
 				alert(data.stateInfo);
 			}
@@ -148,26 +165,19 @@ function ask(){
 	window.open("/a4q/stage/a4q.html");
 }
 
-//登录状态判断
-function loginState() {
-	var loginStateUrl = "/a4q/personInfoAdmin/loginState";
-	$.ajax({
-		url : loginStateUrl,
-		type : "GET",
-		asyn : false,
-		success : function(data) {
-			if (data.state == 0) {
-				user = data.data;
-				isLogin = true;
-				$("#login").text("个人中心");
-				$("#login").attr("href",
-						"/a4q/stage/personInfoShow.html?userId=" + user.userId);
-				$("#register").hide();
-			} else {
-				isLogin = false;
-			}
-		}
-	});
+/*判断登录状态成功之后调用的函数*/
+function aSuccess(data){
+	user = data.data;
+	isLogin = true;
+	$("#login").text("个人中心");
+	$("#login").attr("href",
+			"/a4q/stage/personInfoShow.html?userId=" + user.userId);
+	$("#register").hide();
+}
+
+/*判断登录状态失败之后调用的函数*/
+function aDefault(data){
+	isLogin = false;
 }
 
 //遍历内容

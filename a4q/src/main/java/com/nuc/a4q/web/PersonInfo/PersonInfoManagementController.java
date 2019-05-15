@@ -144,6 +144,21 @@ public class PersonInfoManagementController {
 		service.updateUser(personInfo);
 		return ResultUtil.success();
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "updateUserHeadPage", method = RequestMethod.POST)
+	public Result updateUserHeadPage(@Validated(value = Update.class) PersonInfo personInfo, BindingResult bindingResult,HttpServletRequest request) {
+		if (bindingResult.hasErrors()) {
+			return ResultUtil.error(ResultEnum.FORM_AUTH_ERROR.getState(),
+					bindingResult.getFieldError().getDefaultMessage());
+		}
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		if(user==null||(personInfo.getUserId()!=user.getUserId())) {
+			return ResultUtil.error("操作异常");
+		}
+		service.updateUser(personInfo);
+		return ResultUtil.success();
+	}
 
 	/**
 	 * 登录状态验证

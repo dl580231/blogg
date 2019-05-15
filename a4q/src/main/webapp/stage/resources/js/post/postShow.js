@@ -4,7 +4,7 @@ $(function() {
 	if (isNaN(postId)) {
 		 window.location.href = "/a4q/stage/headPage/headpage.html"; 
 	} else {//登录状态和版主判断
-		loginState();
+		loginState(aSuccess,aDefault);
 	}
 	
 	//	设置点击事件
@@ -80,38 +80,32 @@ $(function() {
 				SyntaxHighlighter.highlight();/*代码高亮*/
 				if(moderatorTag == 0)
 					$(".moderator-delete").hide();
+				else if(moderatorTag == 1)
+					$(".moderator-delete").show();
 			} else {
 				alert(data.stateInfo);
 			}
 		});
 	}
 	
-	// 登录,版主状态判断
-	function loginState(){
-		var loginStateUrl = "/a4q/personInfoAdmin/loginState?fresh=" + Math.random();
-		$.ajax({
-			url : loginStateUrl,
-			type : "GET",
-			asyn : false,
-			success : function(data){
-				if(data.state == 0){
-					user = data.data;
-					isLogin = true;
-					$(".loginState").text("个人中心");
-					$(".loginState").attr("href","personInfoShow.html?userId="+user.userId);
-					$(".register").hide();
-					$("#editor").css("display","block");
-					$("#reply").css("display","inline");
-					moderatorJudge();/*判断是不是版主*/
-				}else{
-					/*alert("未登录");*/
-					isLogin = false;
-					initPost();
-				}
-			}
-		});
+	/*判断登录状态成功之后调用的函数*/
+	function aSuccess(data){
+		user = data.data;
+		isLogin = true;
+		$(".loginState").text("个人中心");
+		$(".loginState").attr("href","personInfoShow.html?userId="+user.userId);
+		$(".register").hide();
+		$("#editor").css("display","block");
+		$("#reply").css("display","inline");
+		moderatorJudge();/*判断是不是版主*/
 	}
-
+	
+	/*判断登录状态失败之后调用的函数*/
+	function aDefault(data){
+		/*alert("未登录");*/
+		isLogin = false;
+		initPost();
+	}
 	
 	//回答操作
 	function replyHandle(){
@@ -134,7 +128,7 @@ $(function() {
 						if(data.state == 0){
 						alert("回答成功");
 						ue.setContent('');
-						loginState(data.data);
+						loginState(aSuccess,aDefault);
 					}else{
 						alert(data.stateInfo);
 					}
@@ -148,7 +142,6 @@ $(function() {
 		var moderatorJudgeUrl = '/a4q/course/moderatorJudge?fresh='+Math.random();
 		$.getJSON(moderatorJudgeUrl,function(data){
 			if(data.state == 0){
-				isModerator = true;
 				moderatorTag = 1;
 			}else{
 				moderatorTag = 0;
@@ -188,7 +181,7 @@ $(function() {
 					$.getJSON(url,function(data){
 						if(data.state == 0){
 							alert("指定成功");
-							loginState(data.data);
+							loginState(aSuccess,aDefault);
 						}else{
 							alert(data.stateInfo);
 						}

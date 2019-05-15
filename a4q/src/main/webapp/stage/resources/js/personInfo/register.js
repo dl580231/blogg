@@ -1,13 +1,13 @@
+var userId = getQueryString("userId");
 $(function() {
-	var userId = getQueryString("userId");
 	if (userId) {
 		$("#vc").hide();
 		$(".title").text("用户信息修改");
-		initUserInfo(userId);
+		initUserInfo();
 	}
 	$("#submit").click(function() {
 		if (userId) {
-			update(userId);
+			update();
 		} else {
 			register();
 		}
@@ -34,7 +34,7 @@ function register() {
 }
 
 // initUserInfo
-function initUserInfo(userId) {
+function initUserInfo() {
 	initUrl = "/a4q/personInfoAdmin/getUserById?userId=" + userId;
 	$.ajax({
 		url : initUrl,
@@ -60,10 +60,10 @@ function initUserInfo(userId) {
 }
 
 // 更新用户信息
-function update(userId) {
+function update() {
 	var result = confirm("是否提交修改");
 	if (result) {
-		var updateUrl = '/a4q/personInfoAdmin/updateUser/?userId=' + userId;
+		var updateUrl = '/a4q/personInfoAdmin/updateUserHeadPage/?userId='+userId;
 		var data = $("#submitForm").serialize();
 		$.ajax({
 			url : updateUrl,
@@ -71,11 +71,16 @@ function update(userId) {
 			data : data,
 			cache : false,
 			success : function(data) {
-				if (data.state == 0) {
-					alert("修改成功");
-					initUserInfo(userId);
-				} else {
-					alert(data.stateInfo);
+				if(data == "unLogin"){
+					alert("修改个人信息请登录");
+				}
+				else{
+					if (data.state == 0) {
+						alert("修改成功");
+						initUserInfo(userId);
+					} else {
+						alert(data.stateInfo);
+					}
 				}
 			}
 		});
