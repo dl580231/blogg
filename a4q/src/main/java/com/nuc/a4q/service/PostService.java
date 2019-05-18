@@ -1,5 +1,7 @@
 package com.nuc.a4q.service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +29,7 @@ public class PostService {
 	 * @throws Exception
 	 */
 	public void deletePost(Post post) {
-
+		
 	}
 
 	/**
@@ -35,6 +37,8 @@ public class PostService {
 	 */
 	public List<Post> queryPostList(Post post) {
 		List<Post> list = dao.queryPostList(post);
+		Collections.sort(list, Comparator.comparing(Post::getCreateTime));
+		Collections.reverse(list);
 		return list;
 	}
 
@@ -119,6 +123,8 @@ public class PostService {
 	 */
 	public List<UserRank> getUserRank() {
 		List<UserRank> userList = dao.getUserRank();
+		Collections.sort(userList, Comparator.comparing(UserRank::getNum));
+		Collections.reverse(userList);
 		return userList;
 	}
 
@@ -173,5 +179,61 @@ public class PostService {
 		} else {
 			throw new LogicException("用户无操作权限");
 		}
+	}
+	
+	/**
+	 * 阅读量+1
+	 * @param postId
+	 * @return
+	 */
+	public Integer readCountAdd(Integer postId) {
+		return dao.readCountAdd(postId);
+	}
+	
+	/**
+	 * 通过id
+	 * @param postId
+	 * @return
+	 */
+	public Integer getReadCountById(Integer postId) {
+		if(postId==null)
+			throw new LogicException("查询失败");
+		return dao.getReadCountById(postId);
+	}
+	
+	/**
+	 * 获得阅读量排行
+	 * @return
+	 */
+	public List<Post> getPostRankByReadCount(){
+		List<Post> list = dao.getPostRankByReadCount();
+		Collections.sort(list, Comparator.comparing(Post::getReadCount));
+		Collections.reverse(list);
+		return list;
+	}
+	
+	public List<Post> getAnswerPost(Integer userId){
+		if(userId == null)
+			throw new LogicException("查询用户为空");
+		List<Post> list = dao.getAnswerPost(userId);
+		Collections.sort(list, Comparator.comparing(Post::getCreateTime));
+		Collections.reverse(list);
+		return list;
+	}
+	
+	/**
+	 * 逻辑删除帖子
+	 * @param postId
+	 */
+	public void logicRmpost(Integer postId,PersonInfo user) {
+		if(postId == null)
+			throw new LogicException("查询为空");
+		Post post = dao.getPostById(postId);
+		if(user!=null && post!=null) {
+			if(user.getUserId()!=null&&user.getUserId().equals(post.getDeployUser().getUserId()))
+				dao.logicRmpost(postId);
+		}
+		else
+			throw new LogicException("无权操作");
 	}
 }

@@ -1,5 +1,7 @@
 package com.nuc.a4q.dao;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -71,11 +73,13 @@ public class PostDaoTest extends BaseTest {
 	@Ignore
 	public void queryPostListTest() {
 		Post post = new Post();
+		post.setPostId(1);
 		List<Post> list = postdao.queryPostList(post);
 		System.out.println(list);
 	}
 
 	@Test
+	@Ignore
 	public void queryPostCountTest() {
 		System.out.println(postdao.queryPostCount(1));
 	}
@@ -113,8 +117,12 @@ public class PostDaoTest extends BaseTest {
 	@Test
 	@Ignore
 	public void getUserRankTest() {
-		List<UserRank> list = postdao.getUserRank();
-		System.out.println(list);
+		List<UserRank> lists = postdao.getUserRank();
+		Collections.sort(lists, Comparator.comparing(UserRank::getNum));
+		Collections.reverse(lists);
+		for(UserRank list : lists) {
+			System.out.println(list);
+		}
 	}
 	
 	@Test
@@ -136,5 +144,29 @@ public class PostDaoTest extends BaseTest {
 	public void getPostById() {
 		Post post = postdao.getPostById(1);
 		System.out.println(post);
+	}
+	
+	@Test
+	@Ignore
+	public void readCountAdd() {
+		System.out.println(postdao.readCountAdd(1));
+	}
+	
+	@Test
+	@Ignore
+	public void getReadCountById() {
+		System.out.println(postdao.getReadCountById(1));
+	}
+	
+	@Test
+	@Ignore
+	public void getPostRankByReadCount() {
+		System.out.println(postdao.getPostRankByReadCount());
+	}
+	
+	@Test
+//	@Ignore
+	public void logicRmpost() {
+		System.out.println(postdao.logicRmpost(1));
 	}
 }

@@ -49,6 +49,7 @@ public class Post {
 	 * 0:可见，1：不可见
 	 */
 	private Integer enableView = 0;
+	private Integer readCount;
 	private Date createTime;
 	private Date lastEditTime;
 
@@ -132,11 +133,19 @@ public class Post {
 		this.bestAnswerId = bestAnswerId;
 	}
 
+	public Integer getReadCount() {
+		return readCount;
+	}
+
+	public void setReadCount(Integer readCount) {
+		this.readCount = readCount;
+	}
+
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", course=" + course + ", deployUser=" + deployUser + ", bestAnswerId="
 				+ bestAnswerId + ", postTitle=" + postTitle + ", postContent=" + postContent + ", priority=" + priority
-				+ ", enableView=" + enableView + ", createTime=" + createTime + ", lastEditTime=" + lastEditTime + "]";
+				+ ", enableView=" + enableView + ", readCount=" + readCount + ", createTime=" + createTime
+				+ ", lastEditTime=" + lastEditTime + "]";
 	}
-
 }

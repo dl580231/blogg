@@ -41,7 +41,8 @@ public class FloorService {
 			int num = 0;
 			for (int i = 0; i < list.size(); i++) {
 				Floor bestAnswer = list.get(i);
-				if (bestAnswer.getFloorId() == isResolved) {
+				Integer temp = bestAnswer.getFloorId();
+				if (temp.equals(isResolved)) {
 					num = i + 1;
 					break;
 				}

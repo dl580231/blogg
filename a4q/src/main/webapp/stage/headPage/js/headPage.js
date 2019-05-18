@@ -1,5 +1,5 @@
 currentTab = 0;
-rowSize = 5;
+rowSize = 20;
 rowStartR = 0;
 rowStartUR = 0;
 load = false;
@@ -33,7 +33,20 @@ function initPage(){
 	initResolved(0);
 	initResolved(1);
 	initRank();
+	initPostRank();
 	loginState(aSuccess,aDefault);
+}
+
+function initPostRank(){
+	var url = "/a4q/post/getPostRankByReadCount";
+	$.getJSON(url,function(data){
+		tempHtml = '';
+		$.map(data.data,function(value,index){
+			tempHtml += '<li class="s_c_list l_1">'+
+			   		   '<span margin="left"><a target="_blank" href="../postShow.html?postId='+value.postId+'">'+value.postTitle+'</a></span></li>';					
+		});
+		$("#postRank").html(tempHtml);
+	});
 }
 
 //初始化课程信息展示
@@ -142,7 +155,7 @@ function initRank(){
 				var tempHtml = '';
 				$.map(data.data,function(value,index){
 					tempHtml += '<li class="s_c_list l_1">'+
-					   		   '<span><a href="../../stage/personInfoShow.html?userId='+value.userId+'">'+value.userName+'</a></span>'+
+					   		   '<span><a target="_blank" href="../personInfo/personInfoHead.html?userId='+value.userId+'">'+value.userName+'</a></span>'+
 					   		   '<em>'+value.num+'</em></li>';					
 				});
 				$("#rank").html(tempHtml);
@@ -171,7 +184,7 @@ function aSuccess(data){
 	isLogin = true;
 	$("#login").text("个人中心");
 	$("#login").attr("href",
-			"/a4q/stage/personInfoShow.html?userId=" + user.userId);
+			"/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
 	$("#register").hide();
 }
 

@@ -1,10 +1,12 @@
 moderatorTag = 0;
+isLogin = false;
 var postId = getQueryString("postId");
 $(function() {
 	if (isNaN(postId)) {
 		 window.location.href = "/a4q/stage/headPage/headpage.html"; 
 	} else {//登录状态和版主判断
 		loginState(aSuccess,aDefault);
+		initReadCount();
 	}
 	
 	//	设置点击事件
@@ -13,6 +15,16 @@ $(function() {
 	});
 });
 	
+	function initReadCount(){
+		var url = "/a4q/post/getReadCountById?postId="+postId;
+		$.getJSON(url, function(data) {
+			if(data.state==0)
+				$("#readCount").text(data.data);
+			else
+				alert(data.stateInfo);
+		});
+	}
+
 	// 初始化帖子信息
 	function initPost() {
 		var initPostUrl = "/a4q/post/getPostById?postId=" + postId+"&fresh=" + + Math.random();
@@ -26,7 +38,7 @@ $(function() {
 							var post = data.data;
 							$("#courseNameShow").text(post.course.courseName);
 							$("#courseNameShow").attr("href","postList.html?courseId="+post.course.courseId);
-							$("#postTitle").html('<h style="font-size: 32px; font-weight: bold; border-bottom: 2px solid rgb(100, 100, 100); ">​'+post.postTitle+'</h1>');
+							$("#postTitle").html('<h style="font-size: 22px; font-weight: bold; border-bottom: 2px solid rgb(100, 100, 100); ">​'+post.postTitle+'</h1>');
 							$("#postContent").html(post.postContent);
 							$("#userName").text(post.deployUser.userName);
 							$("#userName").attr("href","personInfoShow.html?userId="+post.deployUser.userId);
@@ -42,6 +54,7 @@ $(function() {
 								$("#isResolved").text("未解决");
 								$("#bestAnswer").text("");
 								$("#isResolved").css("color","red");
+								
 								$("#isResolvedSubmit").html('<input id="floorBest" placeholder="输入最佳答案所属楼"/><input type="button" onclick="elect()" value="提交">');
 								initFloor(null);
 							}
@@ -72,8 +85,8 @@ $(function() {
 					index = index + 1;
 					tempHtml += '<div class="answer-item atl-item" floorid="1">'+
 	                			'<div class="atl-head-reply moderator-delete"><a onclick="remove('+value.floorId+')">版主删除权限</a></div>'+
-	                			'<div class="user">'+
-	                			'<a href="personInfoShow.html?userId='+value.user.userId+'" target="_blank">'+value.user.userName+'</a>&nbsp;'+format(value.createTime)+'&nbsp;<span floorId="'+value.floorId+'" id="f'+index+'">'+index+'楼</span></div>'+
+	                			'<div class="user" style="font-size:15px;">'+
+	                			'<a href="personInfoShow.html?userId='+value.user.userId+'" target="_blank">'+value.user.userName+'</a>&nbsp;'+format(value.createTime)+'&nbsp;<span floorId="'+value.floorId+'" id="f'+index+'">'+index+'楼</span></div><hr align="left" style="width:200px">'+
 	                			'<div class="content" id="floorContent">'+value.floorContent+'</div></div>';
 				});
 				$("#floorShow").html(tempHtml);
@@ -145,7 +158,7 @@ $(function() {
 				moderatorTag = 1;
 			}else{
 				moderatorTag = 0;
-				alert("不是版主");
+//				alert("不是版主");
 			}
 			initPost();
 		});
@@ -159,7 +172,7 @@ $(function() {
 			$.getJSON(removeUrl,function(data){
 				if(data.state == 0){
 					alert("删除成功");
-					loginState();
+					loginState(aSuccess,aDefault);
 				}else{
 					alert(data.stateInfo);
 				}
@@ -169,27 +182,31 @@ $(function() {
 
 	//提交最佳答案
 	function elect(){
-		var result = confirm("确认提交?");
-		if(result){
-			var num = $("#floorBest").val();
-			if(isNaN(num)){
-				alert("请输入楼对应的数字");
-			}else{
-				var floorId = $("#f"+num).attr("floorId");
-				if(floorId){
-					var url = "/a4q/post/electBestAnswer?floorId="+floorId;
-					$.getJSON(url,function(data){
-						if(data.state == 0){
-							alert("指定成功");
-							loginState(aSuccess,aDefault);
-						}else{
-							alert(data.stateInfo);
-						}
-					});
+		if(isLogin){
+			var result = confirm("确认提交?");
+			if(result){
+				var num = $("#floorBest").val();
+				if(isNaN(num)){
+					alert("请输入楼对应的数字");
 				}else{
-					alert("请输入正确楼数")
+					var floorId = $("#f"+num).attr("floorId");
+					if(floorId){
+						var url = "/a4q/post/electBestAnswer?floorId="+floorId;
+						$.getJSON(url,function(data){
+							if(data.state == 0){
+								alert("指定成功");
+								loginState(aSuccess,aDefault);
+							}else{
+								alert(data.stateInfo);
+							}
+						});
+					}else{
+						alert("请输入正确楼数")
+					}
 				}
 			}
+		}else{
+			alert("未登录");
 		}
 	}
 	

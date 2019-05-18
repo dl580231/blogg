@@ -217,4 +217,45 @@ public class PostManagementController {
 		service.electBestAnswer(floorId, user, post);
 		return ResultUtil.success(post.getPostId());
 	}
+	
+	/**
+	 * 根据postId获得对应阅读量
+	 * @param floorId
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "getReadCountById", method = RequestMethod.GET)
+	public Result getReadCountById(Integer postId) {
+		Integer readCount = service.getReadCountById(postId);
+		return ResultUtil.success(readCount);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getPostRankByReadCount", method = RequestMethod.GET)
+	public Result getPostRankByReadCount() {
+		List<Post> list = service.getPostRankByReadCount();
+		return ResultUtil.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getAnswerPost", method = RequestMethod.GET)
+	public Result getAnswerPost(Integer userId) {
+		List<Post> list = service.getAnswerPost(userId);
+		return ResultUtil.success(list);
+	}
+	
+	/**
+	 * 逻辑删除
+	 * @param postId
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "logicRmPost", method = RequestMethod.GET)
+	public Result logicRmPost(HttpServletRequest request,Integer postId) {
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		service.logicRmpost(postId,user);
+		return ResultUtil.success();
+	}
 }

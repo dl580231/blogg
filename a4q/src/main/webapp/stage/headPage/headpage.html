@@ -78,6 +78,11 @@
 						<div class="m_qalist latestQa hidden">
 							<div class="mart10">
 									<table summary="所有待解决问题" id="unResolved">
+										<tr class="tr_boeder">
+											<th class="textleft">问题</th>
+		   									<th width="12%">提问时间</th>
+		   									<th width="20%">提问者</th> 
+		   								</tr>
 									</table>
 							</div>
 						</div>
@@ -108,6 +113,22 @@
 					</div>
 					<span class="sFillet ht5 qafilet fillet190_b"></span>
 				</div>
+				
+				<!-- 热门文章展示开始 -->
+				<div class="sbar_charts mart10">
+					<h3 class="fb sbar_til sbar_til190 qafilet">
+						<span>热门</span>
+					</h3>
+					<ul class="tag2 tag2_red tabTag_rank clearfix">
+						<li onclick="setTab('rank',1);">博客</li> 
+						<li onclick="setTab('rank',2);" class="curTag">帖子</li>
+					</ul>
+					<div class="sbar_gray tabCon_rank">
+						<ul id="postRank"></ul>
+					</div>
+					<span class="sFillet ht5 qafilet fillet190_b"></span>
+				</div>
+				<!-- 热门文章展示结束 -->
 			</div>
 		</div>
 	</div>
@@ -117,7 +138,7 @@
 		$("#loading").load("loading.html");
 	</script>
 		<script type="text/javascript" charset="utf-8" src="../resources/js/jquery/jquery-1.7.1.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/headPage.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../resources/js/common/common.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/headPage.js"></script>
 </body>
 </html>

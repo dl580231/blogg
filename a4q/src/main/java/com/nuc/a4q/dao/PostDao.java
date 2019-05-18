@@ -101,5 +101,43 @@ public interface PostDao {
 	public List<Post> getUnResolvedByPriority(@Param("courseId") Integer courseId,
 			@Param("postContent") String postContent, @Param("postTitle") String postTitle);
 
+	/**
+	 * 通过postId获得post
+	 * @param postId
+	 * @return
+	 */
 	public Post getPostById(Integer postId);
+	
+	/**
+	 * 阅读量+1
+	 * @param postId
+	 * @return
+	 */
+	public Integer readCountAdd(Integer postId);
+	
+	/**
+	 * 获得阅读量
+	 * @return
+	 */
+	public Integer getReadCountById(Integer postId);
+	
+	/**
+	 * 根据阅读量获得文章排名
+	 * @return
+	 */
+	public List<Post> getPostRankByReadCount();
+	
+	/**
+	 * 获得回答过帖子的列表
+	 * @param userId
+	 * @return
+	 */
+	public List<Post> getAnswerPost(Integer userId);
+	
+	/**
+	 * 逻辑删除帖子
+	 * @param postId
+	 * @return
+	 */
+	public Integer logicRmpost(Integer postId);
 }

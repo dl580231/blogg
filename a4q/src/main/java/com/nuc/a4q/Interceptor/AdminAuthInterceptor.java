@@ -1,4 +1,4 @@
-package com.nuc.a4q.Filter;
+package com.nuc.a4q.Interceptor;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-public class AdminAuthFilter implements HandlerInterceptor{
+public class AdminAuthInterceptor implements HandlerInterceptor{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
