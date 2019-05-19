@@ -106,7 +106,7 @@ $(function() {
 		user = data.data;
 		isLogin = true;
 		$(".loginState").text("个人中心");
-		$(".loginState").attr("href","personInfoShow.html?userId="+user.userId);
+		$(".loginState").attr("href","personInfo/personInfoHead.html?userId="+user.userId);
 		$(".register").hide();
 		$("#editor").css("display","block");
 		$("#reply").css("display","inline");
@@ -208,9 +208,4 @@ $(function() {
 		}else{
 			alert("未登录");
 		}
-	}
-	
-	/*处理登录跳转回来*/
-	function loginHandle(){
-		window.location.href="login.html?postId="+postId;
 	}

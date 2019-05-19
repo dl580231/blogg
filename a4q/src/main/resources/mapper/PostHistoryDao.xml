@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuc.a4q.dao.PostHistoryDao">
+	<insert id="insertHistory" parameterType="PostHistory">
+		insert 
+		into tb_post_history(post_id,user_id,create_time,last_edit_time)
+		values(#{postId},#{userId},#{createTime},#{lastEditTime})
+	</insert>
+	
+	<select id="getPostHistory" parameterType="PostHistory" resultType="PostHistory">
+		select *
+		from tb_post_history
+		<where>
+			<if test="postId != null">and post_id = #{postId}</if>
+			<if test="userId != null">and user_id = #{userId}</if>
+		</where>
+	</select>
+	
+	<update id="updatePostHistory" parameterType="PostHistory">
+		update tb_post_history
+		set last_edit_time = #{lastEditTime}
+		where history_id = #{historyId}
+	</update>
+</mapper>
