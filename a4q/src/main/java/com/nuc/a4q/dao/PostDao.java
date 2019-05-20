@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Post;
 import com.nuc.a4q.entity.UserRank;
 
@@ -140,4 +141,12 @@ public interface PostDao {
 	 * @return
 	 */
 	public Integer logicRmpost(Integer postId);
+	
+	/**
+	 * 基于人口统计学的推荐，
+	 * 基于用户属性获得相似用户
+	 * @param user
+	 * @return
+	 */
+	public List<Integer> getUserIdInHistory(PersonInfo user);
 }

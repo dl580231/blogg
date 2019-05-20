@@ -165,8 +165,18 @@ public class PostDaoTest extends BaseTest {
 	}
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void logicRmpost() {
 		System.out.println(postdao.logicRmpost(1));
+	}
+	
+	@Test
+	@Ignore
+	public void getUserIdInHistoryTest() {
+		PersonInfo user = new PersonInfo();
+		user.setUserType("老师");
+		user.setGender("女");
+		List<Integer> list = postdao.getUserIdInHistory(user);
+		System.out.println(list);
 	}
 }

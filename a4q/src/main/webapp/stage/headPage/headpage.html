@@ -61,7 +61,7 @@
 					<ul class="tab tabTag_qa clearfix">
 						<li onclick="setTab('qa',0);" class="curTag">已解决问题</li>
 						<li onclick="setTab('qa',1);">待解决问题</li>
-						<li onclick="setTab('qa',2);">文章推荐</li>
+						<li id="recommend" style="display:none" onclick="setTab('qa',2);">文章推荐</li>
 					</ul>
 					<div class="tabCon_qa">
 						<div class="m_qalist latestQa">
@@ -88,7 +88,12 @@
 						</div>
 						<div class="m_qalist latestQa hidden">
 							<div class="mart10">
-									<table summary="推荐部分" id="recommend">
+									<table summary="推荐部分" id="recommendContent">
+										<tr class="tr_boeder">
+												<th class="textleft">问题</th>
+			   									<th width="12%">提问时间</th>
+			   									<th width="20%">提问者</th> 
+			   							</tr>
 									</table>
 							</div>
 						</div>

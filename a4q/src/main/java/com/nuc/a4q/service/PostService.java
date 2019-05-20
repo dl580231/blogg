@@ -1,27 +1,40 @@
 package com.nuc.a4q.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.mahout.cf.taste.common.TasteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.nuc.a4q.dao.PersonInfoDao;
 import com.nuc.a4q.dao.PostDao;
+import com.nuc.a4q.dao.PostHistoryDao;
 import com.nuc.a4q.entity.Course;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Post;
+import com.nuc.a4q.entity.PostHistory;
 import com.nuc.a4q.entity.UserRank;
 import com.nuc.a4q.exception.LogicException;
+import com.nuc.a4q.recommend.ItemCF;
 
 @Service
 public class PostService {
 	@Autowired
 	private PostDao dao;
-
+	@Autowired
+	private ItemCF cf;
+	@Autowired
+	private PersonInfoDao userDao;
+	@Autowired
+	private PostHistoryDao historyDao;
+	
 	/**
 	 * 删除帖子
 	 * 
@@ -235,5 +248,44 @@ public class PostService {
 		}
 		else
 			throw new LogicException("无权操作");
+	}
+	
+	/**
+	 * 获取针对用户的推荐帖子
+	 * @param userId
+	 * @return
+	 * @throws TasteException
+	 */
+	public List<Post> getRecommendPost(Integer userId) throws TasteException{
+		PostHistory history = new PostHistory();
+		history.setUserId(userId);
+		List<PostHistory> historyDaoList = historyDao.getPostHistory(history);
+		List<Integer> postIdList = new ArrayList<Integer>();
+		if(historyDaoList.size() == 0) {
+			/*------基于人口统计学的推荐算法解决冷启动问题开始-----*/
+			PersonInfo requestUser = new PersonInfo();
+			requestUser.setUserId(userId);
+			PersonInfo user = userDao.queryPresonInfo(requestUser);
+			requestUser.setUserId(null);
+			requestUser.setGender(user.getGender());
+			requestUser.setUserType(user.getUserType());
+			List<Integer> userIdlist = dao.getUserIdInHistory(requestUser);
+			for(Integer userIdP : userIdlist) {
+				postIdList = cf.getRecommengBasedItemCF(userIdP);
+				if(postIdList.size()>0) {
+					break;
+				}
+			}
+			if(postIdList.size() == 0)
+				return null;
+			/*------基于人口统计学的推荐算法解决冷启动问题结束-----*/
+		}else {
+			postIdList = cf.getRecommengBasedItemCF(userId);
+		}
+		LinkedList<Post> postList = new LinkedList<Post>();
+		for(Integer postId : postIdList) {
+			postList.add(dao.getPostById(postId));
+		}
+		return postList;
 	}
 }

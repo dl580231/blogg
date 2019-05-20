@@ -186,11 +186,31 @@ function aSuccess(data){
 	$("#login").attr("href",
 			"/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
 	$("#register").hide();
+	$("#recommend").show();
+	initRecommedPost();
+}
+
+/*推荐帖子*/
+function initRecommedPost(){
+	var url = "/a4q/post/getRecommendPost";
+	$.getJSON(url,function(data){
+		if(data == 'unLogin'){
+			alert("未登录")
+		}else{
+			if(data.state == 0){
+				var temp = iterator(data);
+				$("#recommendContent").append(temp);
+			}else{
+				alert(data.stateInfo);
+			}
+		}
+	});
 }
 
 /*判断登录状态失败之后调用的函数*/
 function aDefault(data){
 	isLogin = false;
+	$("#recommend").hide();
 }
 
 //遍历内容

@@ -1,3 +1,18 @@
-2019-05-138 21:09:04:004 [main] DEBUG com.nuc.a4q.dao.PostHistoryDao.updatePostHistory - ==>  Preparing: update tb_post_history set last_edit_time = ? where history_id = ? 
-2019-05-138 21:09:04:004 [main] DEBUG com.nuc.a4q.dao.PostHistoryDao.updatePostHistory - ==> Parameters: 2019-05-18 21:09:03.638(Timestamp), 1(Integer)
-2019-05-138 21:09:04:004 [main] DEBUG com.nuc.a4q.dao.PostHistoryDao.updatePostHistory - <==    Updates: 1
+2019-05-140 19:26:34:034 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==>  Preparing: select p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time from tb_post p,tb_person_info per,tb_course c where post_id = ? and p.user_id = per.user_id and p.course_id = c.course_id 
+2019-05-140 19:26:34:034 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==> Parameters: 1(Integer)
+2019-05-140 19:26:34:034 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - <==      Total: 1
+2019-05-140 19:26:35:035 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==>  Preparing: select p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time from tb_post p,tb_person_info per,tb_course c where post_id = ? and p.user_id = per.user_id and p.course_id = c.course_id 
+2019-05-140 19:26:35:035 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==> Parameters: 18(Integer)
+2019-05-140 19:26:35:035 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - <==      Total: 1
+2019-05-140 19:26:35:035 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==>  Preparing: select p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time from tb_post p,tb_person_info per,tb_course c where post_id = ? and p.user_id = per.user_id and p.course_id = c.course_id 
+2019-05-140 19:26:35:035 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==> Parameters: 26(Integer)
+2019-05-140 19:26:35:035 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - <==      Total: 1
+2019-05-140 19:26:36:036 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==>  Preparing: select p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time from tb_post p,tb_person_info per,tb_course c where post_id = ? and p.user_id = per.user_id and p.course_id = c.course_id 
+2019-05-140 19:26:36:036 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==> Parameters: 36(Integer)
+2019-05-140 19:26:36:036 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - <==      Total: 1
+2019-05-140 19:26:36:036 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==>  Preparing: select p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time from tb_post p,tb_person_info per,tb_course c where post_id = ? and p.user_id = per.user_id and p.course_id = c.course_id 
+2019-05-140 19:26:36:036 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==> Parameters: 100(Integer)
+2019-05-140 19:26:37:037 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - <==      Total: 1
+2019-05-140 19:26:37:037 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==>  Preparing: select p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time from tb_post p,tb_person_info per,tb_course c where post_id = ? and p.user_id = per.user_id and p.course_id = c.course_id 
+2019-05-140 19:26:37:037 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - ==> Parameters: 46(Integer)
+2019-05-140 19:26:37:037 [main] DEBUG com.nuc.a4q.dao.PostDao.getPostById - <==      Total: 1

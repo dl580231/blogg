@@ -230,4 +230,14 @@
 		set enable_view = 0
 		where post_id = #{postId}
 	</delete>
+	
+	<select id="getUserIdInHistory" parameterType="PersonInfo" resultType="int">
+		select user_id
+		from tb_person_info
+		where user_id in
+			  (select user_id
+			  from tb_post_history)
+			  and user_type = #{userType}
+			  and gender = #{gender}
+	</select>
 </mapper>

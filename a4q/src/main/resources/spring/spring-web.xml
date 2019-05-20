@@ -43,6 +43,7 @@
         	<mvc:mapping path="/floor/addFloor" />
         	<mvc:mapping path="/personInfoAdmin/logout" />
         	<mvc:mapping path="/personInfoAdmin/updateUserHeadPage" />
+        	<mvc:mapping path="/post/getRecommendPost" />
         	<!-- <mvc:exclude-mapping path="/index.html"/>不再进行拦截 -->
 			<bean class="com.nuc.a4q.Interceptor.AdminAuthInterceptor"/>  
     	</mvc:interceptor>

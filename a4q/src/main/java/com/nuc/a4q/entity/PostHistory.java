@@ -6,6 +6,7 @@ public class PostHistory {
 	private Integer historyId;
 	private Integer postId;
 	private Integer userId;
+	private Integer preference;
 	private Date createTime;
 	private Date lastEditTime;
 	
@@ -39,10 +40,15 @@ public class PostHistory {
 	public void setLastEditTime(Date lastEditTime) {
 		this.lastEditTime = lastEditTime;
 	}
-	
+	public Integer getPreference() {
+		return preference;
+	}
+	public void setPreference(Integer preference) {
+		this.preference = preference;
+	}
 	@Override
 	public String toString() {
-		return "PostHistory [historyId=" + historyId + ", postId=" + postId + ", userId=" + userId + ", createTime="
-				+ createTime + ", lastEditTime=" + lastEditTime + "]";
+		return "PostHistory [historyId=" + historyId + ", postId=" + postId + ", userId=" + userId + ", preference="
+				+ preference + ", createTime=" + createTime + ", lastEditTime=" + lastEditTime + "]";
 	}
 }

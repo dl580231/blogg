@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.mahout.cf.taste.common.TasteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -257,5 +258,15 @@ public class PostManagementController {
 		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
 		service.logicRmpost(postId,user);
 		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getRecommendPost", method = RequestMethod.GET)
+	public Result getRecommendPost(HttpServletRequest request,Integer userId) throws TasteException {
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		List<Post> list = service.getRecommendPost(user.getUserId());
+		HashMap<Object, Object> map = new HashMap<Object,Object>();
+		map.put("list", list);
+		return ResultUtil.success(map);
 	}
 }

@@ -173,11 +173,11 @@
 		</dependency>
 		
 		<!-- shrio依赖包 -->
-		<dependency>  
+		<!-- <dependency>  
 	        <groupId>org.apache.shiro</groupId>  
 	        <artifactId>shiro-core</artifactId>  
 	        <version>1.2.2</version>  
-    	</dependency>  
+    	</dependency>   -->
     	
     	<!-- jsoup -->
 	    <dependency>
@@ -185,6 +185,43 @@
 	     <artifactId>jsoup</artifactId>
 	     <version>1.8.3</version>
 		</dependency>
+		
+		<!-- mahout开始 -->
+        <dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-core</artifactId>
+		    <version>0.9</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-integration</artifactId>
+		    <version>0.9</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-math</artifactId>
+		    <version>0.9</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-examples</artifactId>
+		    <version>0.9</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>13.0-rc1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+		<dependency>
+	    	<groupId>org.apache.commons</groupId>
+	    	<artifactId>commons-math3</artifactId>
+	    	<version>3.2</version>
+		</dependency>
+		<!-- mahout结束 -->
 	</dependencies>
 	<build>
 		<finalName>o2o</finalName>

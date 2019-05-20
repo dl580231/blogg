@@ -1,4 +1,4 @@
-package com.nuc.a4q.recommand;
+package com.nuc.a4q.recommend;
 
 import java.util.ArrayList;
 import java.util.Arrays;
