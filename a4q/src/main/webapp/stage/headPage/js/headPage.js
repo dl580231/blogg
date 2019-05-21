@@ -7,6 +7,7 @@ countR = 0;
 countUR =0
 courseId = null;
 position = -1;
+isLogin = false;
 $(function(){
 	courseId = getQueryString("courseId");
 	position = getQueryString("position");
@@ -112,13 +113,35 @@ function initResolved(handle){
 //为窗口绑定滑动事件
 function bindScoll(){
 	$(window).bind("scroll",function () {
+		positionHandle();
 		a = $(window).height();
-		b = $(window).scrollTop();
+		b = $(document).scrollTop();
 		c = $(document).height();
 	    if(((a+b+10)>c)&&!load){
 	    	loadJudge();//滚动完之后的下拉加载，判断对某块进行刷新
 	    }
 	});
+}
+
+//处理三列模式两边的position
+function positionHandle(){
+	var x = $("#pLeft").offset().top;
+	var y = $(document).scrollTop();
+	if(y > 130){
+		$("#pLeft").css("position","fixed");
+		$("#pLeft").css("top","0");
+	}else{
+		$("#pLeft").attr("style","");
+	}
+	if(y > 400){
+		$("#pRight").css("position","fixed");
+		$("#pRight").css("top","-10px");
+		$("#pRight").css("left","995px");
+		$("#pRight01").hide();
+	}else{
+		$("#pRight").attr("style","");
+		$("#pRight01").show();
+	}
 }
 
 //判断导航栏进行加载
@@ -133,6 +156,8 @@ function loadJudge(){
 		if(rowStartUR>countUR||rowStartUR==countUR){
 			judge = false;
 		}
+	}else if(currentTab==2){
+		judge = false;
 	}
 	if(judge){	
     	load = true;//控制只执行一次函数	
@@ -175,7 +200,11 @@ function search(){
 
 //提出问题
 function ask(){
-	window.open("/a4q/stage/a4q.html");
+	if(isLogin){
+		window.open("a4q.html");
+	}else{
+		alert("发布之前请登录");
+	}
 }
 
 /*判断登录状态成功之后调用的函数*/
@@ -219,7 +248,7 @@ function iterator(data){
 	$.map(data.data.list,function(value,index){
 	tempHtml += '<tr><td class="qaTitle"><span><a href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.postTitle+'</a></span></td>'+
 			'<td>'+formatD(value.createTime)+'</td>'+
-			'<td class="qa_askname"><a href="../../stage/personInfoShow.html?userId='+value.deployUser.userId+'" target="_blank">'+value.deployUser.userName+'</a></td></tr>';
+			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.deployUser.userId+'" target="_blank">'+value.deployUser.userName+'</a></td></tr>';
 	});
 	return tempHtml;
 }

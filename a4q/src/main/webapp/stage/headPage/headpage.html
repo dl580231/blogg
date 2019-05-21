@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div id="qaTop">
+	<div id="qaTop" style="position:static;margin-bottom:10px;">
 		<div class="qatop clearfix"><!-- 
 			<h1 class="left mt5">
 				<span>博客网站</span><a href="https://dayi.jd100.com/"></a>
@@ -28,7 +28,7 @@
 			</ul>
 		</div>
 	</div>
-	<div id="container" class="qaCon">
+	<div id="container">
 		<div class="search qafilet">
 			<div class="search_box">
 				<form id="submitForm">
@@ -47,7 +47,7 @@
 
 
 		<div id="content">
-			<div class="sidebar190 sbar_grade left">
+			<div class="sidebar190 sbar_grade left" id="pLeft">
 				<h3 class="f14px fb sbar_til sbar_til190_blue qafilet">问题分类</h3>
 				<div class="sbar_gray">
 					<h4 class="sbar_grade_h4 mart20">
@@ -56,6 +56,7 @@
 					<div class="sbar_subject_list" id="courseInfo"></div>
 				</div>
 			</div>
+			<div style="width:800px;float:right">
 			<div class="main590 left">
 				<div class="main590_wrap">
 					<ul class="tab tabTag_qa clearfix">
@@ -101,10 +102,10 @@
 				</div>
 				<div id="loading" style="visibility:hidden"></div>
 			</div>
-			<div class="sidebar190 right">
+			<div class="sidebar190 right" id="pRight">
 
 
-				<div class="sbar_charts mart10">
+				<div class="sbar_charts mart10" id="pRight01">
 					<h3 class="fb sbar_til sbar_til190 qafilet">
 						<span>排行榜</span>
 					</h3>
@@ -134,6 +135,7 @@
 					<span class="sFillet ht5 qafilet fillet190_b"></span>
 				</div>
 				<!-- 热门文章展示结束 -->
+			</div>
 			</div>
 		</div>
 	</div>

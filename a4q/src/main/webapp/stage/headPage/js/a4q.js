@@ -50,7 +50,7 @@ $(function() {
 				success : function(data) {
 					if (data.state == 0) {
 						alert("发表成功"+data.data);
-						window.location.href=("postShow.html?postId="+data.data);
+						window.location.href=("../postShow.html?postId="+data.data);
 					} else {
 						alert(data.stateInfo);
 					}
@@ -70,10 +70,10 @@ $(function() {
 				if (data.state == 0) {
 					user = data.data;
 					isLogin = true;
-					$(".loginState").text("个人中心");
-					$(".loginState").attr("href",
-							"personInfoShow.html?userId=" + user.userId);
-					$(".register").hide();
+					$("#login").text("个人中心");
+					$("#login").attr("href",
+							"/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
+					$("#register").hide();
 				} else {
 					alert("提问之前需要登陆");
 					isLogin = false;

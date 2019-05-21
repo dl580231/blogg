@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+				<title>博客系统</title>
+				<link href="css/base.css" rel="stylesheet" type="text/css">
+				<link href="css/common_qa.css" rel="stylesheet" type="text/css">
+				<link href="css/common.css" rel="stylesheet" type="text/css">
+				<link href="css/qa.css?20170726" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="js/et.js"></script>
+				<!-- 切换的js文件 --><!-- 
+				<script type="text/javascript" src="js/other.js"></script> -->
+</head>
+
+<body>
+	<div id="qaTop">
+		<div class="qatop clearfix"><!-- 
+			<h1 class="left mt5">
+				<span>博客网站</span><a href="https://dayi.jd100.com/"></a>
+			</h1> -->
+			<ul class="qatop_nav qatop_sub left">
+				<li class="nav_hover"><a href="/a4q/stage/headPage/headpage.html">首页</a></li>
+				<!-- <li><a target="_blank">个人中心</a></li> -->
+			</ul>
+			<ul class="qatop_person qatop_sub right">
+				<li><a id="login" href="../login.html" title="师生答疑网登录">登录</a></li>
+				<li id="register"><a href="../register.html" title="师生答疑网注册">注册</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="container" class="qaCon">
+		<div class="search qafilet">
+			<div class="search_box">
+				<form id="submitForm">
+					<span class="search_input"><input type="text" id="key" name="searchWord" tabindex="1" maxlength="256" size="60"
+						placeholder="请输入搜索内容……" class="hidevalue"></span> 
+						<input type="button" tabindex="2" value="我要搜索" onclick="search()" class="sec_search search_btn qabg"> 
+						<input type="button" tabindex="3" value="我要提问" onclick="ask()" class="sec_ask search_btn qabg">
+				</form>
+			</div>
+			<div class="search_key">
+				热门搜索：<a href="/a4q/stage/postList.html?key=java" target="_blank">Java</a><a href="/a4q/stage/postList.html?key=网络" target="_blank">网络</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

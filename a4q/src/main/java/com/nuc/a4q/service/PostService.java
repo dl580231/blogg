@@ -243,11 +243,12 @@ public class PostService {
 			throw new LogicException("查询为空");
 		Post post = dao.getPostById(postId);
 		if(user!=null && post!=null) {
-			if(user.getUserId()!=null&&user.getUserId().equals(post.getDeployUser().getUserId()))
+			if(user.getUserId()!=null&&user.getUserId().equals(post.getDeployUser().getUserId())) {
 				dao.logicRmpost(postId);
+				return;
+			}
 		}
-		else
-			throw new LogicException("无权操作");
+		throw new LogicException("无权操作");
 	}
 	
 	/**

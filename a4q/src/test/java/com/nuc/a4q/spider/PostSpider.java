@@ -30,7 +30,7 @@ public class PostSpider extends BaseTest {
 	
 	@Test
 	public void courseJava() throws IOException {
-		Document doc01 =Jsoup.connect("https://bbs.bccn.net/forum-218-5.html")
+		Document doc01 =Jsoup.connect("https://bbs.bccn.net/forum-259-2.html")
                 .userAgent("I’mjsoup") //设置User-Agent
                 .cookie("auth", "token") //设置cookie
                 .timeout(3000) //设置连接超时时间
@@ -53,7 +53,7 @@ public class PostSpider extends BaseTest {
 					post.setPostTitle(postTitle);
 					PersonInfo user = new PersonInfo();
 					user.setUserId(randomUserUseId());
-					postId = service.deployPost(post,6, user);
+					postId = service.deployPost(post,17, user);
 					/*----------对帖子操作结束-----------*/
 				}else {
 					/*----------对楼信息操作开始-----------*/
