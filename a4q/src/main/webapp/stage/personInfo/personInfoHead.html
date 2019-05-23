@@ -9,6 +9,21 @@
   <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
   
+  <style type="text/css">
+  	.redpoint{
+		 height:16px;
+  		 width:16px;
+  		 border-radius:8px;
+  		 display:inline-block;
+	  	 text-align:center;
+	  	 font-size:0.1em;
+	  	 color:#fff;
+	  	 background:red;
+	  	 position: relative;
+  		 top: -8px;
+  		 right: 8px;
+	}
+  </style>
 </head>
 <body style="width:990px;margin:0 auto;padding:0;">
 	<div class="sui-navbar navbar-inverse">
@@ -18,6 +33,11 @@
 	      	<li class="active"><a onclick="setTab(0)">个人信息</a></li>
 	        <li><a href="#" id="deployPost" onclick="setTab(1)">个人发帖</a></li>
 	        <li><a href="#" id="replyPost" onclick="setTab(2)">个人回帖</a></li>
+	        <li style="display:none" id="message"><a style="display:inline-block" href="#" id="replyPost" onclick="setTab(3)">消息中心<span class="redpoint">
+	  				2
+				</span>	</a>
+	        </li>
+	        
 	      </ul>
 	    </div>
 	  </div>
@@ -31,9 +51,6 @@
 		
 	</div>
 	
-		<!-- <script type="text/javascript">
-			$("#content").load("");
-		</script> -->
 	<script type="text/javascript" src="../resources/js/jquery/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="../resources/js/common/common.js"></script>
 	<script type="text/javascript" src="js/content.js"></script>

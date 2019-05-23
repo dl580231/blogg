@@ -76,7 +76,7 @@ public class PersonInfoManagementController {
 		// 2.调用service层
 		PersonInfo user = service.loginAuth(personInfo);
 		request.getSession().setAttribute("user", user);
-		// 3.返回结果
+		// 4.返回结果
 		return ResultUtil.success();
 	}
 
@@ -173,6 +173,8 @@ public class PersonInfoManagementController {
 		if (user == null) {
 			return ResultUtil.error("请登录");
 		} else {
+			Integer notice = service.judgeNotice(user);
+			user.setNotice(notice);
 			return ResultUtil.success(user);
 		}
 	}

@@ -1,6 +1,7 @@
 var userId = getQueryString("userId");
 $(function(){
-	initreplyPost();
+	if(userId != '')
+		initreplyPost();
 });
 
 /*初始化个人回复帖子*/

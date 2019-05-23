@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nuc.a4q.dao.BlogHistoryDao" >
+  <resultMap id="BaseResultMap" type="com.nuc.a4q.entity.BlogHistory" >
+    <id column="history_id" property="historyId" jdbcType="INTEGER" />
+    <result column="blog_id" property="blogId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="preference" property="preference" jdbcType="REAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_edit_time" property="lastEditTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    history_id, blog_id, user_id, preference, create_time, last_edit_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_blog_history
+    where history_id = #{historyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_blog_history
+    where history_id = #{historyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nuc.a4q.entity.BlogHistory" >
+    insert into tb_blog_history (history_id, blog_id, user_id, 
+      preference, create_time, last_edit_time
+      )
+    values (#{historyId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{preference,jdbcType=REAL}, #{createTime,jdbcType=TIMESTAMP}, #{lastEditTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nuc.a4q.entity.BlogHistory" >
+    insert into tb_blog_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="historyId != null" >
+        history_id,
+      </if>
+      <if test="blogId != null" >
+        blog_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="preference != null" >
+        preference,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastEditTime != null" >
+        last_edit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="historyId != null" >
+        #{historyId,jdbcType=INTEGER},
+      </if>
+      <if test="blogId != null" >
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="preference != null" >
+        #{preference,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditTime != null" >
+        #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nuc.a4q.entity.BlogHistory" >
+    update tb_blog_history
+    <set >
+      <if test="blogId != null" >
+        blog_id = #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="preference != null" >
+        preference = #{preference,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditTime != null" >
+        last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where history_id = #{historyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nuc.a4q.entity.BlogHistory" >
+    update tb_blog_history
+    set blog_id = #{blogId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      preference = #{preference,jdbcType=REAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP}
+    where history_id = #{historyId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getBlogHistory" parameterType="BlogHistory" resultType="BlogHistory">
+	select *
+	from tb_blog_history
+	<where>
+		<if test="blogId != null">and blog_id = #{blogId}</if>
+		<if test="userId != null">and user_id = #{userId}</if>
+	</where>
+</select>
+</mapper>

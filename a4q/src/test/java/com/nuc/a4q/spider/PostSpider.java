@@ -61,8 +61,6 @@ public class PostSpider extends BaseTest {
 					String floorContent = ele02.html();
 					PersonInfo user = new PersonInfo();
 					user.setUserId(randomUserUseId());
-					Post post2 = new Post();
-					post2.setPostId(postId);
 					Floor floor = new Floor();
 					floor.setFloorContent(floorContent);
 					floorService.addFloor(floor, user, post);

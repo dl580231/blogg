@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nuc.a4q.dao.BlogEvaluateDao" >
+
+  <resultMap id="BaseResultMap" type="com.nuc.a4q.entity.BlogEvaluate" >
+    <id column="evaluate_id" property="evaluateId" jdbcType="INTEGER" />
+    <result column="blog_id" property="blogId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_edit_time" property="lastEditTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    evaluate_id, blog_id, user_id, evaluate_content, create_time, last_edit_time
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_blog_evaluate
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_blog_evaluate
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.nuc.a4q.entity.BlogEvaluate" >
+    insert into tb_blog_evaluate (evaluate_id, blog_id, user_id, 
+      evaluate_content, create_time, last_edit_time
+      )
+    values (#{evaluateId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{evaluateContent,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastEditTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.nuc.a4q.entity.BlogEvaluate" >
+    insert into tb_blog_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="evaluateId != null" >
+        evaluate_id,
+      </if>
+      <if test="blogId != null" >
+        blog_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastEditTime != null" >
+        last_edit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="evaluateId != null" >
+        #{evaluateId,jdbcType=INTEGER},
+      </if>
+      <if test="blogId != null" >
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateContent != null" >
+        #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditTime != null" >
+        #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.nuc.a4q.entity.BlogEvaluate" >
+    update tb_blog_evaluate
+    <set >
+      <if test="blogId != null" >
+        blog_id = #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditTime != null" >
+        last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.nuc.a4q.entity.BlogEvaluate" >
+    update tb_blog_evaluate
+    set blog_id = #{blogId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP}
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getEvaluateList" resultMap="BlogEvaluateDtoMap" parameterType="BlogEvaluate">
+		select
+		evaluate_id,e.user_id,user_name,evaluate_content,e.look_over,e.look_over_delete,e.create_time,e.last_edit_time
+		from tb_blog_evaluate e,tb_person_info p
+		<where>
+			<if test="evaluateId != null">and evaluate_id = #{evaluateId}</if>
+			and e.user_id = p.user_id
+		</where>
+	</select>
+  
+  <resultMap type="com.nuc.a4q.dto.BlogEvaluateDto" id="BlogEvaluateDtoMap">
+		<id column="evaluate_id" property="evaluateId" />
+		<result column="evaluate_content" property="evaluateContent"></result>
+		<result column="look_over" property="lookOver"></result>
+		<result column="look_over_delete" property="lookOverDelete"></result>
+		<result column="create_time" property="createTime"></result>
+		<result column="last_edit_time" property="lastEditTime"></result>
+		<association property="user" javaType="PersonInfo">
+			<result column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+		</association>
+	</resultMap>
+  
+</mapper>

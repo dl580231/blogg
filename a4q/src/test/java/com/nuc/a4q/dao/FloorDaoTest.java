@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.nuc.a4q.BaseTest;
 import com.nuc.a4q.entity.Floor;
+import com.nuc.a4q.entity.FloorNotice;
 import com.nuc.a4q.entity.PersonInfo;
 
 public class FloorDaoTest extends BaseTest {
@@ -23,6 +24,7 @@ public class FloorDaoTest extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void insertFloor() {
 		Floor floor = new Floor();
 		PersonInfo personInfo = new PersonInfo();
@@ -43,5 +45,24 @@ public class FloorDaoTest extends BaseTest {
 		floor.setFloorId(11);
 		Integer result = dao.deleteFloor(floor);
 		System.out.println(result);
+	}
+	
+	@Test
+	@Ignore
+	public void lookOverDelete() {
+		dao.lookOverDelete(8);
+	}
+	
+	@Test
+	@Ignore
+	public void getFloorList() {
+		List<FloorNotice> list = dao.getFloorList(1);
+		System.out.println(list);
+	}
+	
+	@Test
+	public void getDeployUser() {
+		Integer deployUser = dao.getDeployUser(8);
+		System.out.println(deployUser);
 	}
 }

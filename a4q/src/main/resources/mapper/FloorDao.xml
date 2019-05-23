@@ -4,7 +4,7 @@
 <mapper namespace="com.nuc.a4q.dao.FloorDao">
 	<select id="queryFloorList" resultMap="floorMap" parameterType="Floor">
 		select
-		floor_id,post_id,f.user_id,user_name,floor_content,f.create_time,f.last_edit_time
+		floor_id,post_id,f.user_id,user_name,floor_content,f.look_over,f.look_over_delete,f.create_time,f.last_edit_time
 		from tb_floor f,tb_person_info p
 		<where>
 			<if test="postId != null">and post_id = #{postId}</if>
@@ -21,6 +21,8 @@
 		<id column="floor_id" property="floorId" />
 		<result column="post_id" property="postId"></result>
 		<result column="floor_content" property="floorContent"></result>
+		<result column="look_over" property="lookOver"></result>
+		<result column="look_over_delete" property="lookOverDelete"></result>
 		<result column="create_time" property="createTime"></result>
 		<result column="last_edit_time" property="lastEditTime"></result>
 		<association property="user" javaType="PersonInfo">
@@ -54,5 +56,55 @@
 		SELECT COUNT(floor_id)
 		FROM tb_floor
 		WHERE post_id = #{postId}
+	</select>
+	
+	<update id="lookOverDelete" parameterType="int">
+		update tb_floor
+		set look_over_delete = 1
+		where floor_id = #{floorId}
+	</update>
+	
+	<update id="lookOver" parameterType="int">
+		update tb_floor
+		set look_over = 1
+		where floor_id = #{floorId}
+	</update>
+	
+	<select id="getFloorList" parameterType="int" resultMap="FloorNoticeMap">
+		select f.floor_id,f.post_id,f.user_id,u.user_name,p.post_title,f.look_over,f.create_time
+		from tb_post p,tb_floor f,tb_person_info u
+		where p.user_id = #{userId}
+			  and p.post_id = f.post_id
+			  and f.user_id = u.user_id
+			  and f.look_over_delete = 0
+	</select>
+	
+	<resultMap type="FloorNotice" id="FloorNoticeMap">
+		<id column="floor_id" property="floorId" />
+		<result column="look_over" property="lookOver"></result>
+		<result column="create_time" property="createTime"></result>
+		<association property="user" javaType="PersonInfo">
+			<result column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+		</association>
+		<association property="post" javaType="Post">
+			<result column="post_id" property="postId" />
+			<result column="post_title" property="postTitle" />
+		</association>
+	</resultMap>
+	
+	<select id="getDeployUser" parameterType="int" resultType="int">
+		select p.user_id
+		from tb_floor f,tb_post p
+		where f.floor_id = #{floorId}
+			  and f.post_id = p.post_id
+	</select>
+	
+	<select id="lookOverDeleteAll" parameterType="int" resultType="int">
+		update tb_post p,tb_floor f
+		set f.look_over_delete = 1
+		where p.user_id = #{userId}
+			  and p.post_id = f.post_id
+			  and f.look_over_delete = 0
 	</select>
 </mapper>

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nuc.a4q.entity.Floor;
+import com.nuc.a4q.entity.FloorNotice;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Post;
 import com.nuc.a4q.entity.Result;
+import com.nuc.a4q.exception.LogicException;
 import com.nuc.a4q.group.Delete;
 import com.nuc.a4q.group.Insert;
 import com.nuc.a4q.service.FloorService;
@@ -85,5 +87,46 @@ public class FloorManagementController {
 
 		service.addFloor(floor, user, post);
 		return ResultUtil.success(post.getPostId());
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getNoticeFloor", method = RequestMethod.GET)
+	public Result getNoticeFloor(HttpServletRequest request) {
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		if(user == null) {
+			throw new LogicException("未登录");
+		}
+		List<FloorNotice> list = service.getNoticeFloor(user);
+		return ResultUtil.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "lookOver", method = RequestMethod.GET)
+	public Result lookOver(HttpServletRequest request,Integer floorId) {
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		if(user == null) {
+			throw new LogicException("未登录");
+		}
+		service.lookOver(floorId, user);
+		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "lookOverDelete", method = RequestMethod.GET)
+	public Result lookOverDelete(HttpServletRequest request,Integer floorId) {
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		if(user == null) {
+			throw new LogicException("未登录");
+		}
+		service.lookOverDelete(floorId, user);
+		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "lookOverDeleteAll", method = RequestMethod.GET)
+	public Result lookOverDeleteAll(HttpServletRequest request) {
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		service.lookOverDeleteAll(user);
+		return ResultUtil.success();
 	}
 }

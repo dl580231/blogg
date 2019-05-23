@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.nuc.a4q.entity.Blog;
 import com.nuc.a4q.entity.Course;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Post;
@@ -143,14 +144,21 @@ public class CourseManagementController {
 	@RequestMapping(value = "moderatorJudge", method = RequestMethod.GET)
 	public Result moderatorJudge(HttpServletRequest request, Integer courseId) {
 		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
-		if (user == null) {
-			return ResultUtil.error("用户状态未登陆");
-		}
 		Post post = (Post) HttpServletRequestUtils.getSessionAttr(request, "currentPost");
-		if(post == null) {
-			return ResultUtil.error("未查询到post信息");
-		}
 		Boolean result = service.moderatorJudge(user, post.getCourse().getCourseId());
+		if (result) {
+			return ResultUtil.success();
+		} else {
+			return ResultUtil.error("不是版主");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "moderatorJudgeBlog", method = RequestMethod.GET)
+	public Result moderatorJudgeBlog(HttpServletRequest request, Integer courseId) {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		Blog blog = (Blog) HttpServletRequestUtils.getSessionAttr(request, "blog");
+		Boolean result = service.moderatorJudge(user, blog.getCourseId());
 		if (result) {
 			return ResultUtil.success();
 		} else {

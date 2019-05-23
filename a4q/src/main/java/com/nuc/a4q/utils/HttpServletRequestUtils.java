@@ -2,6 +2,9 @@ package com.nuc.a4q.utils;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.nuc.a4q.entity.PersonInfo;
+import com.nuc.a4q.exception.LogicException;
+
 public class HttpServletRequestUtils {
 	/**
 	 * 根据传来值返回存在session中的对应属性
@@ -10,7 +13,11 @@ public class HttpServletRequestUtils {
 	 * @return
 	 */
 	public static Object getSessionAttr(HttpServletRequest request, String key) {
-		return request.getSession().getAttribute(key);
+		Object data = request.getSession().getAttribute(key);
+		if(data == null) {
+			throw new LogicException(key+"为空");
+		}
+		return data;
 	}
 	
 	public static void rmSessionAttr(HttpServletRequest request, String key) {
@@ -62,5 +69,19 @@ public class HttpServletRequestUtils {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	/**
+	 * 判断登录用户和操作用户是否为同一个人
+	 * @param request
+	 * @param userId
+	 * @return
+	 */
+	public static Boolean judgeUser(HttpServletRequest request, Integer userId) {
+		PersonInfo user = (PersonInfo) getSessionAttr(request, "user");
+		if(user.getUserId().equals(userId)) {
+			return true;
+		}
+		return false;
 	}
 }

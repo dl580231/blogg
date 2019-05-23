@@ -1,6 +1,7 @@
 var userId = getQueryString("userId");
 $(function(){
-	initDeployPost();
+	if(userId != '')
+		initDeployPost();
 });
 
 /*初始化个人发布帖子*/
@@ -21,15 +22,15 @@ function initDeployPost(){
 
 function rmPost(postId){
 	var url = "/a4q/post/logicRmPost?postId="+postId;
-	$.getJSON(url,function(data){
-		var result = confirm("是否删除");
-		if(result){
-			if(data.state==0){
-				alert("删除成功");
-				initDeployPost();
-			}else{
-				alert(data.stateInfo);
-			}
-		}
-	});
+	var result = confirm("是否删除");
+	if(result){
+		$.getJSON(url,function(data){
+				if(data.state==0){
+					alert("删除成功");
+					initDeployPost();
+				}else{
+					alert(data.stateInfo);
+				}
+		});
+	}
 }

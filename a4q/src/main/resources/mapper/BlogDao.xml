@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nuc.a4q.dao.BlogDao" >
+
+  <resultMap id="BaseResultMap" type="com.nuc.a4q.entity.Blog" >
+    <id column="blog_id" property="blogId" jdbcType="INTEGER" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="blog_title" property="blogTitle" jdbcType="VARCHAR" />
+    <result column="blog_content" property="blogContent" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="enable_view" property="enableView" jdbcType="INTEGER" />
+    <result column="read_count" property="readCount" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_edit_time" property="lastEditTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    blog_id, course_id, user_id, blog_title, blog_content, priority, enable_view, read_count, 
+    create_time, last_edit_time
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="Blog" useGeneratedKeys="true"
+		keyColumn="blog_id" keyProperty="blogId">
+    insert into 
+    tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time)
+    values (#{courseId},#{userId},#{blogTitle},#{blogContent},#{createTime},#{lastEditTime})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="Blog">
+    insert into tb_blog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="blogId != null" >
+        blog_id,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="blogTitle != null" >
+        blog_title,
+      </if>
+      <if test="blogContent != null" >
+        blog_content,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="enableView != null" >
+        enable_view,
+      </if>
+      <if test="readCount != null" >
+        read_count,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastEditTime != null" >
+        last_edit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="blogId != null" >
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="blogTitle != null" >
+        #{blogTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="blogContent != null" >
+        #{blogContent,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="enableView != null" >
+        #{enableView,jdbcType=INTEGER},
+      </if>
+      <if test="readCount != null" >
+        #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditTime != null" >
+        #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.nuc.a4q.entity.Blog" >
+    update tb_blog
+    <set >
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="blogTitle != null" >
+        blog_title = #{blogTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="blogContent != null" >
+        blog_content = #{blogContent,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="enableView != null" >
+        enable_view = #{enableView,jdbcType=INTEGER},
+      </if>
+      <if test="readCount != null" >
+        read_count = #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditTime != null" >
+        last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.nuc.a4q.entity.Blog" >
+    update tb_blog
+    set course_id = #{courseId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      blog_title = #{blogTitle,jdbcType=VARCHAR},
+      blog_content = #{blogContent,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=INTEGER},
+      enable_view = #{enableView,jdbcType=INTEGER},
+      read_count = #{readCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="readCountAdd" parameterType="int">
+		update tb_blog 
+		set read_count=read_count+1 
+		where blog_id = #{blogId}
+	</update>
+  
+</mapper>

@@ -50,6 +50,7 @@
     	<mvc:interceptor>  
         	<!-- 进行拦截：/**表示拦截所有controller -->
         	<mvc:mapping path="/post/getPostById" />
+        	<mvc:mapping path="/blog/getBlogById" />
         	<!-- <mvc:exclude-mapping path="/index.html"/>不再进行拦截 -->
 			<bean class="com.nuc.a4q.Interceptor.ReadCountHandle"/>  
     	</mvc:interceptor>   

@@ -55,6 +55,18 @@ public class PersonInfo {
 	private String lable;// 用户标签
 	private Date createTime;
 	private Date lastEditTime;
+	/**
+	 * 判断用户是否存在通知
+	 */
+	private Integer notice;
+
+	public Integer getNotice() {
+		return notice;
+	}
+
+	public void setNotice(Integer notice) {
+		this.notice = notice;
+	}
 
 	public Integer getUserId() {
 		return userId;

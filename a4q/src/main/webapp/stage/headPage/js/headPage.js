@@ -211,9 +211,12 @@ function ask(){
 function aSuccess(data){
 	user = data.data;
 	isLogin = true;
-	$("#login").text("个人中心");
-	$("#login").attr("href",
-			"/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
+	if(user.notice == 1)
+		$("#login").html("个人中心<span class='redpoint'>");
+	else
+		$("#login").html("个人中心");
+	$("#login").attr("href","/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
+	$("#login").attr("target","_blank");
 	$("#register").hide();
 	$("#recommend").show();
 	initRecommedPost();

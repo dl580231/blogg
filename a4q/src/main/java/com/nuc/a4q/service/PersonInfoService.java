@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nuc.a4q.dao.FloorDao;
 import com.nuc.a4q.dao.PersonInfoDao;
+import com.nuc.a4q.entity.Floor;
 import com.nuc.a4q.entity.PageDivide;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.enums.ResultEnum;
@@ -18,7 +20,8 @@ import com.nuc.a4q.utils.PageUtil;
 public class PersonInfoService {
 	@Autowired
 	private PersonInfoDao dao;
-
+	@Autowired
+	private FloorDao floorDao;
 	/**
 	 * 用户信息注册
 	 * 
@@ -126,5 +129,16 @@ public class PersonInfoService {
 	public void updateUser(PersonInfo personInfo) {
 		personInfo.setLastEditTime(new Date());
 		dao.updateUser(personInfo);
+	}
+	
+	public Integer judgeNotice(PersonInfo user) {
+		Floor floor = new Floor();
+		floor.setUser(user);
+		floor.setLookOver(0);
+		List<Floor> list = floorDao.queryFloorList(floor);
+		if(list.size() > 0) {
+			return 1;
+		}
+		return 0;
 	}
 }

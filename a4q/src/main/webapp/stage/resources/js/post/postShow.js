@@ -1,4 +1,3 @@
-moderatorTag = 0;
 isLogin = false;
 var postId = getQueryString("postId");
 $(function() {
@@ -26,7 +25,7 @@ $(function() {
 	}
 
 	// 初始化帖子信息
-	function initPost() {
+	function initPost(moderatorTag) {
 		var initPostUrl = "/a4q/post/getPostById?postId=" + postId+"&fresh=" + + Math.random();
 		$.ajax({
 			url : initPostUrl,
@@ -49,14 +48,14 @@ $(function() {
 								$("#isResolved").text("已解决");
 								$("#isResolved").css("color","blue");
 								$("#isResolvedSubmit").html("");
-								initFloor(isResolved)
+								initFloor(isResolved,moderatorTag)
 							}else{
 								$("#isResolved").text("未解决");
 								$("#bestAnswer").text("");
 								$("#isResolved").css("color","red");
 								
 								$("#isResolvedSubmit").html('<input id="floorBest" placeholder="输入最佳答案所属楼"/><input type="button" onclick="elect()" value="提交">');
-								initFloor(null);
+								initFloor(null,moderatorTag);
 							}
 					} else {
 						alert("查询失败");
@@ -66,7 +65,7 @@ $(function() {
 	}
 	
 	// 初始化楼信息
-	function initFloor(isResolved) {
+	function initFloor(isResolved,moderatorTag) {
 		var initFloorUrl = null;
 		if(isResolved != null){
 			initFloorUrl = "/a4q/floor/getFloorListWithNum?postId="+postId+"&isResolved="+isResolved+"&fresh="+Math.random();
@@ -93,7 +92,7 @@ $(function() {
 				SyntaxHighlighter.highlight();/*代码高亮*/
 				if(moderatorTag == 0)
 					$(".moderator-delete").hide();
-				else if(moderatorTag == 1)
+				else
 					$(".moderator-delete").show();
 			} else {
 				alert(data.stateInfo);
@@ -117,7 +116,7 @@ $(function() {
 	function aDefault(data){
 		/*alert("未登录");*/
 		isLogin = false;
-		initPost();
+		initPost(0);
 	}
 	
 	//回答操作
@@ -154,13 +153,14 @@ $(function() {
 	function moderatorJudge(){
 		var moderatorJudgeUrl = '/a4q/course/moderatorJudge?fresh='+Math.random();
 		$.getJSON(moderatorJudgeUrl,function(data){
+			var moderatorTag = 0;
 			if(data.state == 0){
 				moderatorTag = 1;
 			}else{
 				moderatorTag = 0;
 //				alert("不是版主");
 			}
-			initPost();
+			initPost(moderatorTag);
 		});
 	}
 

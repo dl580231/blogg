@@ -30,6 +30,8 @@ public class Floor {
 	@NotNull(message="帖子ID为空",groups= {})
 	private Integer postId;
 	private PersonInfo user;
+	private Integer lookOver;
+	private Integer lookOverDelete;
 	private Date createTime;
 	private Date lastEditTime;
 	@NotBlank(message="回答内容不能为空",groups= {Insert.class})
@@ -41,6 +43,22 @@ public class Floor {
 
 	public void setFloorId(Integer floorId) {
 		this.floorId = floorId;
+	}
+
+	public Integer getLookOver() {
+		return lookOver;
+	}
+
+	public void setLookOver(Integer lookOver) {
+		this.lookOver = lookOver;
+	}
+
+	public Integer getLookOverDelete() {
+		return lookOverDelete;
+	}
+
+	public void setLookOverDelete(Integer lookOverDelete) {
+		this.lookOverDelete = lookOverDelete;
 	}
 
 	public Integer getPostId() {
@@ -85,8 +103,11 @@ public class Floor {
 
 	@Override
 	public String toString() {
-		return "Floor [floorId=" + floorId + ", postId=" + postId + ", user=" + user + ", createTime=" + createTime
-				+ ", lastEditTime=" + lastEditTime + ", floorContent=" + floorContent + "]";
+		return "Floor [floorId=" + floorId + ", postId=" + postId + ", user=" + user + ", lookOver=" + lookOver
+				+ ", lookOverDelete=" + lookOverDelete + ", createTime=" + createTime + ", lastEditTime=" + lastEditTime
+				+ ", floorContent=" + floorContent + "]";
 	}
+
+	
 
 }

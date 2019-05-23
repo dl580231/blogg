@@ -20,7 +20,7 @@ public class PostDaoTest extends BaseTest {
 	private PostDao postdao;
 
 	@Test
-	@Ignore
+//	@Ignore
 	public void insertPostTest() {
 		Post post = new Post();
 		Course course = new Course();;
