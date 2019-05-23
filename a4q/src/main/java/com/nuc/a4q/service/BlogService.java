@@ -1,6 +1,9 @@
 package com.nuc.a4q.service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,8 +50,35 @@ public class BlogService {
 		blogDto.setUser(user);
 		return blogDto;
 	}
+	
+	public List<Blog> getBlogList(Blog blog) {
+		if(blog == null)
+			throw new LogicException("查询数据为空");
+		List<Blog> list = blogDao.getBlogList(blog);
+		Collections.sort(list, Comparator.comparing(Blog::getCreateTime));
+		Collections.reverse(list);
+		return list;
+	}
+	
+	
 
 	public void readCountAdd(Integer blogId) {
 		blogDao.readCountAdd(blogId);
+	}
+
+	public void logicRm(Integer blogId,PersonInfo user) {
+		if(blogId == null)
+			throw new LogicException("查询为空");
+		Blog blog = blogDao.selectByPrimaryKey(blogId);
+		if(blog!=null) {
+			if(user.getUserId()!=null&&user.getUserId().equals(blog.getUserId())) {
+				Blog blogUpdate = new Blog();
+				blogUpdate.setBlogId(blogId);
+				blogUpdate.setEnableView(0);
+				blogDao.updateByPrimaryKeySelective(blogUpdate);
+				return;
+			}
+		}
+		throw new LogicException("无权操作");
 	}
 }

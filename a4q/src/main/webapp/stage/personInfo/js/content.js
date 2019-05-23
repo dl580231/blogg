@@ -36,14 +36,18 @@ function setTab(sort){
 	}else if(sort==1){
 		$("#postContent").css("display","block");
 		$("#userContent").css("display","none");
-		$("#postContent").load("deployPost.html?userId="+userId+"&fresh=" + + Math.random());
+		$("#postContent").load("deployPost.html?userId="+userId+"&fresh="+Math.random());
 	}else if(sort==2){
 		$("#postContent").css("display","block");
 		$("#userContent").css("display","none");
-		$("#postContent").load("replyPost.html?userId="+userId+"&fresh=" + + Math.random());
+		$("#postContent").load("replyPost.html?userId="+userId+"&fresh="+Math.random());
+	}else if(sort==4){
+		$("#postContent").css("display","block");
+		$("#userContent").css("display","none");
+		$("#postContent").load("postMssageCenter.html?fresh="+Math.random());
 	}else if(sort==3){
 		$("#postContent").css("display","block");
 		$("#userContent").css("display","none");
-		$("#postContent").load("messageCenter.html?userId="+userId+"&fresh=" + + Math.random());
+		$("#postContent").load("blogData.html?userId="+userId+"&fresh=" + + Math.random());
 	}
 }

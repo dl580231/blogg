@@ -1,5 +1,7 @@
 package com.nuc.a4q.dao;
 
+import java.util.List;
+
 import com.nuc.a4q.entity.Blog;
 
 public interface BlogDao {
@@ -16,4 +18,7 @@ public interface BlogDao {
     int updateByPrimaryKey(Blog record);
 
     public Integer readCountAdd(Integer blogId);
+    
+    public List<Blog> getBlogList(Blog blog);
+
 }

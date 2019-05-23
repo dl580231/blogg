@@ -13,6 +13,7 @@ import com.nuc.a4q.dto.BlogEvaluateDto;
 import com.nuc.a4q.entity.Blog;
 import com.nuc.a4q.entity.BlogEvaluate;
 import com.nuc.a4q.entity.PersonInfo;
+import com.nuc.a4q.exception.LogicException;
 
 @Service
 public class BlogEvaluateService {
@@ -32,5 +33,43 @@ public class BlogEvaluateService {
 		List<BlogEvaluateDto> list = dao.getEvaluateList(evaluate);
 		Collections.sort(list, Comparator.comparing(BlogEvaluateDto::getCreateTime));
 		return list;
+	}
+
+	public List<BlogEvaluateDto> getNoticeEvaluate(PersonInfo user) {
+		List<BlogEvaluateDto> list = dao.getEvaluateNotice(user.getUserId());
+		Collections.sort(list, Comparator.comparing(BlogEvaluateDto::getCreateTime));
+		Collections.reverse(list);
+		return list;
+	}
+
+	public void lookOver(Integer evaluateId, PersonInfo user) {
+		if(evaluateId == null)
+			throw new LogicException("操作异常");
+		if(user.getUserId() == dao.getDeployUser(evaluateId)) {
+			BlogEvaluate evaluate = new BlogEvaluate();
+			evaluate.setEvaluateId(evaluateId);
+			evaluate.setLookOver(1);
+			dao.updateByPrimaryKeySelective(evaluate);
+		}
+		else
+			throw new LogicException("操作异常");
+	}
+	
+	public void lookOverDelete(Integer evaluateId,PersonInfo user) {
+		if(evaluateId == null)
+			throw new LogicException("操作异常");
+		if(user.getUserId() == dao.getDeployUser(evaluateId)) {
+			BlogEvaluate evaluate = new BlogEvaluate();
+			evaluate.setEvaluateId(evaluateId);
+			evaluate.setLookOverDelete(1);
+			dao.updateByPrimaryKeySelective(evaluate);
+		} else
+			throw new LogicException("操作异常");
+	}
+	
+	public void lookOverDeleteAll(PersonInfo user) {
+		if(user == null)
+			throw new LogicException("未登录");
+		dao.lookOverDeleteAll(user.getUserId());
 	}
 }

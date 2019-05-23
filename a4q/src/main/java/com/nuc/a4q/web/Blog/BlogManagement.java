@@ -1,5 +1,7 @@
 package com.nuc.a4q.web.Blog;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +45,20 @@ public class BlogManagement {
 		BlogDto data = service.getBlogById(blogId);
 		request.getSession().setAttribute("blog",data.getBlog());
 		return ResultUtil.success(data);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="getBlogList",method=RequestMethod.GET)
+	public Result getBlogList(Blog blog) {
+		List<Blog> list = service.getBlogList(blog);
+		return ResultUtil.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="logicRm",method=RequestMethod.GET)
+	public Result logicRm(HttpServletRequest request,Integer blogId) {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		service.logicRm(blogId,user);
+		return ResultUtil.success();
 	}
 }

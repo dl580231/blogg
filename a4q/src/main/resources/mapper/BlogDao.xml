@@ -159,6 +159,14 @@
 		update tb_blog 
 		set read_count=read_count+1 
 		where blog_id = #{blogId}
-	</update>
+  </update>
   
+  <select id="getBlogList" parameterType="Blog" resultType="Blog">
+  		select *
+  		from tb_blog
+  		<where>
+  			<if test="userId != null">and user_id = #{userId}</if>
+  			and enable_view = 1;
+  		</where>
+  </select>
 </mapper>

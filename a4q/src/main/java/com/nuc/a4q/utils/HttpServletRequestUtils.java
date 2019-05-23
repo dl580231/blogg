@@ -15,6 +15,8 @@ public class HttpServletRequestUtils {
 	public static Object getSessionAttr(HttpServletRequest request, String key) {
 		Object data = request.getSession().getAttribute(key);
 		if(data == null) {
+			if(key.equals("user"))
+				throw new LogicException("未登录");
 			throw new LogicException(key+"为空");
 		}
 		return data;

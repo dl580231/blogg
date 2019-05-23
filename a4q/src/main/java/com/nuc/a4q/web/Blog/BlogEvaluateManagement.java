@@ -49,4 +49,35 @@ public class BlogEvaluateManagement {
 		return ResultUtil.success(list);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="getNoticeEvaluate",method=RequestMethod.GET)
+	public Result getNoticeEvaluate(HttpServletRequest request) {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request,"user");
+		List<BlogEvaluateDto> list = service.getNoticeEvaluate(user);
+		return ResultUtil.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "lookOver", method = RequestMethod.GET)
+	public Result lookOver(HttpServletRequest request,Integer evaluateId) {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request,"user");
+		service.lookOver(evaluateId, user);
+		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "lookOverDelete", method = RequestMethod.GET)
+	public Result lookOverDelete(HttpServletRequest request,Integer evaluateId) {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		service.lookOverDelete(evaluateId, user);
+		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "lookOverDeleteAll", method = RequestMethod.GET)
+	public Result lookOverDeleteAll(HttpServletRequest request) {
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		service.lookOverDeleteAll(user);
+		return ResultUtil.success();
+	}
 }

@@ -23,5 +23,16 @@ public interface BlogEvaluateDao {
      * @param evaluate
      * @return
      */
-    List<BlogEvaluateDto> getEvaluateList(BlogEvaluate evaluate); 
+    List<BlogEvaluateDto> getEvaluateList(BlogEvaluate evaluate);
+
+    /**
+     * 获得博客的通知
+     * @param userId
+     * @return
+     */
+	public List<BlogEvaluateDto> getEvaluateNotice(Integer userId); 
+	
+	public Integer getDeployUser(Integer evaluateId);
+
+	public Integer lookOverDeleteAll(Integer userId);
 }

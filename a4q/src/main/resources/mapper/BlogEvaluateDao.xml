@@ -11,6 +11,23 @@
     <result column="last_edit_time" property="lastEditTime" jdbcType="TIMESTAMP" />
   </resultMap>
   
+  <resultMap type="com.nuc.a4q.dto.BlogEvaluateDto" id="BlogEvaluateDtoMap">
+		<id column="evaluate_id" property="evaluateId" />
+		<result column="evaluate_content" property="evaluateContent"></result>
+		<result column="look_over" property="lookOver"></result>
+		<result column="look_over_delete" property="lookOverDelete"></result>
+		<result column="create_time" property="createTime"></result>
+		<result column="last_edit_time" property="lastEditTime"></result>
+		<association property="user" javaType="PersonInfo">
+			<result column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+		</association>
+		<association property="blog" javaType="Blog">
+			<result column="blog_id" property="blogId" />
+			<result column="blog_title" property="blogTitle" />
+		</association>
+	</resultMap>
+  
   <sql id="Base_Column_List" >
     evaluate_id, blog_id, user_id, evaluate_content, create_time, last_edit_time
   </sql>
@@ -86,6 +103,12 @@
       <if test="blogId != null" >
         blog_id = #{blogId,jdbcType=INTEGER},
       </if>
+      <if test="lookOver != null" >
+        look_over = #{lookOver,jdbcType=INTEGER},
+      </if>
+      <if test="lookOverDelete != null" >
+        look_over_delete = #{lookOverDelete,jdbcType=INTEGER},
+      </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
@@ -119,17 +142,27 @@
 		where blog_id = #{blogId} and e.user_id = p.user_id
 	</select>
   
-  <resultMap type="com.nuc.a4q.dto.BlogEvaluateDto" id="BlogEvaluateDtoMap">
-		<id column="evaluate_id" property="evaluateId" />
-		<result column="evaluate_content" property="evaluateContent"></result>
-		<result column="look_over" property="lookOver"></result>
-		<result column="look_over_delete" property="lookOverDelete"></result>
-		<result column="create_time" property="createTime"></result>
-		<result column="last_edit_time" property="lastEditTime"></result>
-		<association property="user" javaType="PersonInfo">
-			<result column="user_id" property="userId" />
-			<result column="user_name" property="userName" />
-		</association>
-	</resultMap>
-  
+  	<select id="getEvaluateNotice" parameterType="int" resultMap="BlogEvaluateDtoMap">
+		select e.evaluate_id,e.blog_id,e.user_id,u.user_name,b.blog_title,e.look_over,e.create_time
+		from tb_blog b,tb_blog_evaluate e,tb_person_info u
+		where b.user_id = #{userId}
+			  and b.blog_id = e.blog_id
+			  and e.user_id = u.user_id
+			  and e.look_over_delete = 0
+	</select>
+	
+	<select id="getDeployUser" parameterType="int" resultType="int">
+		select b.user_id
+		from tb_blog_evaluate e,tb_blog b
+		where e.evaluate_id = #{evaluateId} 
+			  and e.blog_id = b.blog_id
+	</select>
+	
+	<select id="lookOverDeleteAll" parameterType="int" resultType="int">
+		update tb_blog b,tb_blog_evaluate e
+		set e.look_over_delete = 1
+		where b.user_id = #{userId}
+			  and b.blog_id = e.blog_id
+			  and e.look_over_delete = 0
+	</select>
 </mapper>

@@ -7,24 +7,32 @@
   <link href="css/message.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
-
  	<div id="nav" class="nav" style="float:left">
 			<ul>
-				<li><a id="userInfo" target="myFrame" href="">博客通知</a></li>
-				<li><a href="#">论坛通知</a></li>
+				<li><a id="nav_0" style="background-color:red;" onclick="setTabM(0)" href="#">博客通知</a></li>
+				<li><a id="nav_1" onclick="setTabM(1)" href="#">论坛通知</a></li>
 			</ul>
 	</div>
 	
 	
 	<div id="content" style="width:880px;float:left;margin-left:10px;">
-		<div><div style="float:left">未读消息：<b id="notRead"></b></div><a style="float:right" onclick="clearNoticeAll()">清空所有消息</a></div>
+		<div id="topPost"><div style="float:left">未读消息：<b id="notReadPost"></b></div><a style="float:right" onclick="clearNoticeAll()">清空所有消息</a></div>
 		<table class="sui-table table-bordered">
-			<tbody id="messageContent">
-				<tr>
+			<tbody id="postMessageContent">
+				<!-- <tr>
 					<td width="50%"><div style="margin-bottom:5px;"><span class="redpoint"></span><span class="tagTalk">论坛</span>用户<a>efwen</a>回复了你的帖子</div><div class="typographic"><a>this is a demo</a></div></td>
 			      	<td width="30%" class="center"><ul class="unstyled"><li id="creatTime">通知时间：</li></ul></td>
 			      	<td width="20%" class="center"><ul class="unstyled"><li><a onclick="rmPost('+value.postId+')">删除</a></li></ul></td>
-			    </tr>
+			    </tr> -->
+			
+		  	</tbody>
+		  	<div id="topBlog"><div style="float:left">未读消息：<b id="notReadBlog"></b></div><a style="float:right" onclick="clearNoticeAllBlog()">清空所有消息</a></div>
+		  	<tbody id="blogMessageContent">
+				<!-- <tr>
+					<td width="50%"><div style="margin-bottom:5px;"><span class="redpoint"></span><span class="tagTalk">论坛</span>用户<a>efwen</a>回复了你的帖子</div><div class="typographic"><a>this is a demo</a></div></td>
+			      	<td width="30%" class="center"><ul class="unstyled"><li id="creatTime">通知时间：</li></ul></td>
+			      	<td width="20%" class="center"><ul class="unstyled"><li><a onclick="rmPost('+value.postId+')">删除</a></li></ul></td>
+			    </tr> -->
 			
 		  	</tbody>
 		</table>
@@ -32,4 +40,4 @@
 	
 	<script type="text/javascript" src="../resources/js/jquery/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="../resources/js/common/common.js"></script>
-	<script type="text/javascript" src="js/messageCenter.js"></script>
+	<script type="text/javascript" src="js/postMessageCenter.js"></script>

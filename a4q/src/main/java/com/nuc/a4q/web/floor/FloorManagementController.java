@@ -17,7 +17,6 @@ import com.nuc.a4q.entity.FloorNotice;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Post;
 import com.nuc.a4q.entity.Result;
-import com.nuc.a4q.exception.LogicException;
 import com.nuc.a4q.group.Delete;
 import com.nuc.a4q.group.Insert;
 import com.nuc.a4q.service.FloorService;
@@ -92,10 +91,7 @@ public class FloorManagementController {
 	@ResponseBody
 	@RequestMapping(value = "getNoticeFloor", method = RequestMethod.GET)
 	public Result getNoticeFloor(HttpServletRequest request) {
-		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
-		if(user == null) {
-			throw new LogicException("未登录");
-		}
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request,"user");
 		List<FloorNotice> list = service.getNoticeFloor(user);
 		return ResultUtil.success(list);
 	}
@@ -103,10 +99,7 @@ public class FloorManagementController {
 	@ResponseBody
 	@RequestMapping(value = "lookOver", method = RequestMethod.GET)
 	public Result lookOver(HttpServletRequest request,Integer floorId) {
-		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
-		if(user == null) {
-			throw new LogicException("未登录");
-		}
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request,"user");
 		service.lookOver(floorId, user);
 		return ResultUtil.success();
 	}
@@ -114,10 +107,7 @@ public class FloorManagementController {
 	@ResponseBody
 	@RequestMapping(value = "lookOverDelete", method = RequestMethod.GET)
 	public Result lookOverDelete(HttpServletRequest request,Integer floorId) {
-		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
-		if(user == null) {
-			throw new LogicException("未登录");
-		}
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
 		service.lookOverDelete(floorId, user);
 		return ResultUtil.success();
 	}

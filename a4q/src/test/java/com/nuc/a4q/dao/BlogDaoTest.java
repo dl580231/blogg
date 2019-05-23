@@ -1,6 +1,7 @@
 package com.nuc.a4q.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -24,5 +25,13 @@ public class BlogDaoTest extends BaseTest {
 		blog.setLastEditTime(new Date());
 		blog.setCourseId(3);
 		System.out.println(blog.getBlogId());
+	}
+	
+	@Test
+	public void getBlogList() {
+		Blog blog = new Blog();
+		blog.setUserId(1);
+		List<Blog> list = dao.getBlogList(blog);
+		System.out.println(list.size());
 	}
 }
