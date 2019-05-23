@@ -27,7 +27,7 @@ public class BlogEvaluateService {
 		dao.insertSelective(evaluate);
 	}
 
-	public List<BlogEvaluateDto> getEvaluateList(Blog blog, BlogEvaluate evaluate) {
+	public List<BlogEvaluateDto> getEvaluateList(Blog blog,BlogEvaluate evaluate) {
 		evaluate.setBlogId(blog.getBlogId());
 		List<BlogEvaluateDto> list = dao.getEvaluateList(evaluate);
 		Collections.sort(list, Comparator.comparing(BlogEvaluateDto::getCreateTime));

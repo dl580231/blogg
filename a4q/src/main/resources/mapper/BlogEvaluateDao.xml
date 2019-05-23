@@ -116,10 +116,7 @@
 		select
 		evaluate_id,e.user_id,user_name,evaluate_content,e.look_over,e.look_over_delete,e.create_time,e.last_edit_time
 		from tb_blog_evaluate e,tb_person_info p
-		<where>
-			<if test="evaluateId != null">and evaluate_id = #{evaluateId}</if>
-			and e.user_id = p.user_id
-		</where>
+		where blog_id = #{blogId} and e.user_id = p.user_id
 	</select>
   
   <resultMap type="com.nuc.a4q.dto.BlogEvaluateDto" id="BlogEvaluateDtoMap">

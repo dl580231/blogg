@@ -31,7 +31,7 @@ public class BlogSpider extends BaseTest {
 	@Test
 //	@Ignore
 	public void blogJava() throws IOException {
-		String url = "https://blog.bccn.net/%E9%9D%99%E5%A4%9C%E6%80%9D/categories/19256";
+		String url = "https://blog.bccn.net/%E9%9D%99%E5%A4%9C%E6%80%9D/categories/19264?page=3";
 		Document doc01 =Jsoup.connect(url)
                 .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36") //设置User-Agent
                 .cookie("auth", "token") //设置cookie
@@ -47,7 +47,7 @@ public class BlogSpider extends BaseTest {
 			String blogContent = ele02.html().replaceAll("brush:", "");
 			blog.setBlogContent(blogContent);
 			blog.setBlogTitle(blogTitle);
-			blog.setCourseId(6);
+			blog.setCourseId(4);
 			PersonInfo user = new PersonInfo();
 			user.setUserId(randomUserUseId());
 			blogService.addBlog(blog,user);
@@ -56,7 +56,7 @@ public class BlogSpider extends BaseTest {
 			/*----------对楼信息操作开始-----------*/
 			Elements evaluates = doc02.select(".comment_content");
 			for(Element evaluate:evaluates) {
-				String evaluateContent = evaluate.html();
+				String evaluateContent = evaluate.html().replaceAll("script", "");
 				user = new PersonInfo();
 				user.setUserId(randomUserUseId());
 				BlogEvaluate eval = new BlogEvaluate();

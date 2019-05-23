@@ -111,4 +111,13 @@ public class Blog {
     public void setLastEditTime(Date lastEditTime) {
         this.lastEditTime = lastEditTime;
     }
+
+	@Override
+	public String toString() {
+		return "Blog [blogId=" + blogId + ", courseId=" + courseId + ", userId=" + userId + ", blogTitle=" + blogTitle
+				+ ", blogContent=" + blogContent + ", priority=" + priority + ", enableView=" + enableView
+				+ ", readCount=" + readCount + ", createTime=" + createTime + ", lastEditTime=" + lastEditTime + "]";
+	}
+    
+    
 }

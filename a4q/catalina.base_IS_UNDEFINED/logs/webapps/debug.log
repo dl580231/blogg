@@ -1,584 +1,202 @@
-2019-05-143 22:29:14:014 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:14:014 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 26(Integer), 今天刚发现outline这个css属性，结合border可实现双边框效果(String), <p> </p>
-<div class="image"> 
- <span style="display:none;">QQ20180325-0@2x.png (上传于2018-03-25 01:00:37)</span>
- <br> 
- <img src="/attachments/1085" title="QQ20180325-0@2x.png (上传于2018-03-25 01:00:37)" alt="QQ20180325-0@2x.png"> 
-</div> 
-<p></p> 
-<p> 只需要给div加入下面的css属性： </p> 
-<p> 关键属性：<strong><span style="color:#E53333;">background</span></strong>、<strong><span style="color:#E53333;">border</span></strong>、<strong><span style="color:#E53333;">outline</span></strong> </p> 
-<p> <br> </p> 
-<pre class="brush: css;">    position: absolute;
-    top: 20px;
-    left: 50px;
-    width: 200px;
-    height: 200px;
-    background: green;
-    z-index: 1000;
-    border: 5px solid #fff;
-    outline: 5px solid green;</pre> 以前我都是用两个div，大框套小框。真是out了 
-<p> <br> </p>(String), 2019-05-23 22:29:14.598(Timestamp), 2019-05-23 22:29:14.598(Timestamp)
-2019-05-143 22:29:14:014 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:15:015 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
-2019-05-143 22:29:15:015 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 2(Integer), 15(Integer), 这次记下来了，下次可能又忘了，又得用老的笨方法“大框套小框”(String), 2019-05-23 22:29:14.751(Timestamp), 2019-05-23 22:29:14.751(Timestamp)
-2019-05-143 22:29:15:015 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
-2019-05-143 22:29:17:017 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:17:017 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 3(Integer), ECMAScript6（es6）实现并集(union)、交集(intersection)、差集(difference)(String), <h2> 并集(union) </h2> 
-<pre class="brush: js;">let a = new Set([1,2,3]);
-let b = new Set([4,3,2]);
-let union = new Set([...a, ...b]);          // {1,2,3,4}</pre> 
-<br> 
-<h2> 交集(intersection) </h2> 
-<pre class="brush: js;">let a = new Set([1,2,3]);
-let b = new Set([4,3,2]);
-let intersection = new Set([...a].filter(x =&gt; b.has(x)));       // {2,3}</pre> 
-<br> 
-<h2> 差集(difference) </h2> 
-<pre class="brush: js;">let a = new Set([1,2,3]);
-let b = new Set([4,3,2]);
-let difference = new Set([...a].filter(x =&gt; !b.has(x)));        // {1}</pre> 
-<br> 
-<p> 参考：http://2ality.com/2015/01/es6-set-operations.html </p> 
-<p> <br> </p> 
-<p> <br> </p>(String), 2019-05-23 22:29:17.266(Timestamp), 2019-05-23 22:29:17.266(Timestamp)
-2019-05-143 22:29:17:017 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:17:017 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
-2019-05-143 22:29:17:017 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 3(Integer), 3(Integer), <script>
-		            document.write(decodeURIComponent(window.atob("JUU1JThBJUEwJUU2JUIyJUI5")));
-	            </script>(String), 2019-05-23 22:29:17.381(Timestamp), 2019-05-23 22:29:17.381(Timestamp)
-2019-05-143 22:29:17:017 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
-2019-05-143 22:29:18:018 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:18:018 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 19(Integer), 语法高亮插件prism.js不错，下一个项目就用它了(String), 做个记号....................(String), 2019-05-23 22:29:18.808(Timestamp), 2019-05-23 22:29:18.808(Timestamp)
-2019-05-143 22:29:18:018 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:19:019 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:19:019 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 4(Integer), javascript读取网页图片(验证码)然后发送到服务器(String), <p> 挺简单的 </p> 
-<p> </p>
-<pre class="brush: js;">var img_url = $input_verifycode.next('img').attr('src');
-var r = new XMLHttpRequest();
-r.open("GET", img_url);
-r.responseType = "blob";
-r.onload = function(e){
-	var data = new FormData();
-	data.append('image_data', this.response);
-	$.ajax({
-		url: 'http://localhost:8088/upload.php',
-		data: data,
-		cache: false,
-		contentType: false,
-		processData: false,
-		type: 'POST',
-		success: function(data){
-		//alert('上传成功');
-		}
-	});
-};
-r.send();</pre> 
-<p></p>(String), 2019-05-23 22:29:19.837(Timestamp), 2019-05-23 22:29:19.837(Timestamp)
-2019-05-143 22:29:19:019 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:20:020 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:20:020 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 26(Integer), 收集一个语法高亮插件prismjs(String), http://prismjs.com/(String), 2019-05-23 22:29:20.805(Timestamp), 2019-05-23 22:29:20.805(Timestamp)
-2019-05-143 22:29:20:020 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:21:021 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:21:021 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 4(Integer), jquery实现滚动新闻播报，超简短(String), <p> 太短了，我都佩服我自己了。原理就是不停的把第一条放到最后，然后向前滚动一条。 </p> 
-<p> </p>
-<pre class="brush: xml;">&lt;style&gt;
-	.container{position:relative; height:30px; width:200px; overflow:hidden; border:1px solid #333;}
-	.news{position:absolute; top:0; margin:0;}
-	.news li{line-height:30px;}
-&lt;/style&gt;
-&lt;div class="container"&gt;
-	&lt;ul class="news"&gt;
-		&lt;li&gt;&lt;a href="###"&gt;第一条新闻&lt;/a&gt;&lt;/li&gt;
-		&lt;li&gt;&lt;a href="###"&gt;第二条新闻&lt;/a&gt;&lt;/li&gt;
-		&lt;li&gt;&lt;a href="###"&gt;第三条新闻&lt;/a&gt;&lt;/li&gt;
-	&lt;/ul&gt;
-&lt;/div&gt;
-&lt;script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-	$(document).ready(function () {
-		var $news = $(".news");
-		var $li_height = $news.find("li").height();
-		setInterval(function () {
-			$news.animate({top: -$li_height}, 500, function () {
-				$news.css({top: 0});
-				$news.append($news.find("li:first-child"));
-			});
-		}, 1000);
-	});
-&lt;/script&gt;</pre> 上面是最简单的实现，便于需要的朋友一眼就能看懂原理，下面是加了鼠标悬停效果和把逻辑代码放进闭包的 
-<p></p> 
-<p> </p>
-<pre class="brush: xml;">&lt;style&gt;
-	.container{position:relative; height:30px; width:200px; overflow:hidden; border:1px solid #333;}
-	.news{position:absolute; top:0; margin:0;}
-	.news li{line-height:30px;}
-&lt;/style&gt;
-&lt;div class="container"&gt;
-	&lt;ul class="news"&gt;
-		&lt;li&gt;&lt;a href="###"&gt;第一条新闻&lt;/a&gt;&lt;/li&gt;
-		&lt;li&gt;&lt;a href="###"&gt;第二条新闻&lt;/a&gt;&lt;/li&gt;
-		&lt;li&gt;&lt;a href="###"&gt;第三条新闻&lt;/a&gt;&lt;/li&gt;
-	&lt;/ul&gt;
-&lt;/div&gt;
-&lt;script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-	$(document).ready(function () {
-		(function () {
-			var $news = $(".news");
-			var $li_height = $news.find("li").height();
-			var $pause = false;
-			setInterval(function () {
-				if (!$pause) {
-					$news.animate({top: -$li_height}, 500, function () {
-						$news.css({top: 0});
-						$news.append($news.find("li:first-child"));
-					});
-				}
-			}, 1000);
-			$news.hover(function () {
-				$pause = true;
-			}, function () {
-				$pause = false;
-			});
-		})();
-	});
-&lt;/script&gt;</pre> 
-<p></p>(String), 2019-05-23 22:29:21.7(Timestamp), 2019-05-23 22:29:21.7(Timestamp)
-2019-05-143 22:29:21:021 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:23:023 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:23:023 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 9(Integer), jquery的幻灯片插件RoyalSlider(String), <p> 可以支持手机触屏滑动幻灯片，使用简单，定制性强。 </p> 
-<p> <a href="http://dimsemenov.com/plugins/royal-slider/" target="_blank" rel="nofollow">http://dimsemenov.com/plugins/royal-slider/</a> </p>(String), 2019-05-23 22:29:23.225(Timestamp), 2019-05-23 22:29:23.225(Timestamp)
-2019-05-143 22:29:23:023 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:24:024 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:24:024 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 14(Integer), jquery的图像剪裁插件Jcrop(String), 很好用&nbsp;
-<a href="http://jcrop.org/" target="_blank" rel="nofollow">http://jcrop.org/</a>(String), 2019-05-23 22:29:24.327(Timestamp), 2019-05-23 22:29:24.327(Timestamp)
-2019-05-143 22:29:24:024 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:25:025 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:25:025 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 3(Integer), jquery无缝隙连续滚动代码【走马灯效果】(String), <p> 通常我们在做网页布局的时候，客户为要求在某个地方实现图片滚动或文字滚动的展示，这就是所谓的跑马灯效果，在以前蓝叶用html标签marquee来做跑马灯效果，marquee不是很完美，如果一个层的宽度或高度过长，那么中间会用空隙显得很不美观；现在蓝叶用jquery无缝隙连续滚动代码来实现跑马灯效果，这段jquery无缝隙连续滚动代码可以自由设置，向左、向右、向上、向下的滚动效果，如果你需要就把以下代码复制到你需要的地方，稍微进行修改即可使用了，这是一段jquery代码，需要jquery库的支持才行。 </p> 
-<p> <br> </p> 
-<p> </p>
-<pre class="brush: js;">//以下代码复制到JS文件中调用
-$.fn.imgscroll = function(o){
-	var defaults = {
-		speed: 40,
-		amount: 0,
-		width: 1,
-		dir: "left"
-	};
-	o = $.extend(defaults, o);
-	
-	return this.each(function(){
-		var _li = $("li", this);
-		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
-		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
-		_li.css({position: "relative", overflow: "hidden"}); //li
-		if(o.dir == "left") _li.css({float: "left"});
-		
-		//初始大小
-		var _li_size = 0;
-		for(var i=0; i&lt;_li.size(); i++)
-			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
-		
-		//循环所需要的元素
-		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
-		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
-		_li = $("li", this);
- 
-		//滚动
-		var _li_scroll = 0;
-		function goto(){
-			_li_scroll += o.width;
-			if(_li_scroll &gt; _li_size)
-			{
-				_li_scroll = 0;
-				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
-				_li_scroll += o.width;
-			}
-				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
-		}
-		
-		//开始
-		var move = setInterval(function(){ goto(); }, o.speed);
-		_li.parent().hover(function(){
-			clearInterval(move);
-		},function(){
-			clearInterval(move);
-			move = setInterval(function(){ goto(); }, o.speed);
-		});
-	});
-};
- 
-$(document).ready(function(){
-//这里设置DIV层的样式名
-	$("#gdtw").imgscroll({
-		speed: 40,    //图片滚动速度
-		amount: 0,    //图片滚动过渡时间
-		width: 1,     //图片滚动步数
-		dir: "left"   // "left" 或 "up" 向左或向上滚动
-	});
-	
-});</pre> 
-<p></p> 
-<p> 转自：<a href="http://lanyes.org/web/537.html" target="_blank" rel="nofollow">http://lanyes.org/web/537.html</a> </p> 
-<p> <br> </p>(String), 2019-05-23 22:29:25.4(Timestamp), 2019-05-23 22:29:25.4(Timestamp)
-2019-05-143 22:29:25:025 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:26:026 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:26:026 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 19(Integer), 在移动端(比如手机)使用jquery获得触摸事件(String), <p> 不要用click，click是手指离开屏幕时才触发，显得反应不灵敏，用touchstart。示例代码如下： </p> 
-<p> </p>
-<pre class="brush: js;">$('div.dom').on('touchstart', function (evt) {
-	//
-});</pre> 
-<p></p>(String), 2019-05-23 22:29:26.387(Timestamp), 2019-05-23 22:29:26.387(Timestamp)
-2019-05-143 22:29:26:026 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:27:027 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:27:027 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 16(Integer), Jquery动态构建form(String), <pre class="brush: js;">jQuery(function ($) {
-	$.extend({
-		form: function (url, data, method) {
-			if (method == null) method = 'POST';
-			if (data == null) data = {};
-
-			var form = $('&lt;form&gt;').attr({
-				method: method,
-				action: url
-			}).css({
-				display: 'none'
-			});
-
-			var addData = function (name, data) {
-				if ($.isArray(data)) {
-					for (var i = 0; i &lt; data.length; i++) {
-						var value = data[i];
-						addData(name + '[]', value);
-					}
-				} else if (typeof data === 'object') {
-					for (var key in data) {
-						if (data.hasOwnProperty(key)) {
-							addData(name + '[' + key + ']', data[key]);
-						}
-					}
-				} else if (data != null) {
-					form.append($('&lt;input&gt;').attr({
-						type: 'hidden',
-						name: String(name),
-						value: String(data)
-					}));
-				}
-			};
-
-			for (var key in data) {
-				if (data.hasOwnProperty(key)) {
-					addData(key, data[key]);
-				}
-			}
-
-			return form.appendTo('body');
-		}
-	});
-});</pre> 
-<p> 调用方式： </p> 
-<p> </p>
-<pre><span style="font-style:italic;">$</span>.<span style="color:#7a7a43;">form</span>(<span style="color:#008000;font-weight:bold;">'xxxurl'</span>, <span style="color:#458383;">$json</span>, <span style="color:#008000;font-weight:bold;">'POST'</span>).<span style="color:#7a7a43;">submit</span>();</pre> 
-<p></p>(String), 2019-05-23 22:29:27.41(Timestamp), 2019-05-23 22:29:27.41(Timestamp)
-2019-05-143 22:29:27:027 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:28:028 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:28:028 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 20(Integer), 几行js代码实现前端支持rails的data-remote="true"(String), <p> rails的<span class="webkit-html-attribute-name" style="color:#222222;font-family:Menlo, monospace;font-size:11px;line-height:normal;">data-remote</span><span style="color:#222222;font-family:Menlo, monospace;font-size:11px;line-height:normal;background-color:#FFFFFF;">="</span><span class="webkit-html-attribute-value" style="color:#222222;font-family:Menlo, monospace;font-size:11px;line-height:normal;">true</span><span style="color:#222222;font-family:Menlo, monospace;font-size:11px;line-height:normal;background-color:#FFFFFF;">"很方便，链接加上这个属性点击链接即可在前端运行链接所指向的服务端返回的js代码。前端只需要下面几行代码</span> </p> 
-<p> <span style="color:#222222;font-family:Menlo, monospace;font-size:11px;line-height:normal;background-color:#FFFFFF;"><br> </span> </p> 
-<p> <span style="color:#222222;font-family:Menlo, monospace;font-size:11px;line-height:normal;background-color:#FFFFFF;"> </span> </p> 
-<pre class="brush: js;">	$(document).ready(function () {
-		$("a[data-remote=true]").click(function(e){
-			e.preventDefault();
-			$.getScript($(this).attr('href'));
-		});
-	});</pre> 
-<br> 
-<p> <br> </p>(String), 2019-05-23 22:29:28.775(Timestamp), 2019-05-23 22:29:28.775(Timestamp)
-2019-05-143 22:29:28:028 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:29:029 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:30:030 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 20(Integer), 用jquery实现post请求（非ajax）(String), <p> <br> </p> 
-<pre class="brush: js;">jQuery(function ($) {
-	$.extend({
-		form: function (url, data, method) {
-			if (method == null) method = 'POST';
-			if (data == null) data = {};
-
-			var form = $('&lt;form&gt;').attr({
-				method: method,
-				action: url
-			}).css({
-				display: 'none'
-			});
-
-			var addData = function (name, data) {
-				if ($.isArray(data)) {
-					for (var i = 0; i &lt; data.length; i++) {
-						var value = data[i];
-						addData(name + '[]', value);
-					}
-				} else if (typeof data === 'object') {
-					for (var key in data) {
-						if (data.hasOwnProperty(key)) {
-							addData(name + '[' + key + ']', data[key]);
-						}
-					}
-				} else if (data != null) {
-					form.append($('&lt;input&gt;').attr({
-						type: 'hidden',
-						name: String(name),
-						value: String(data)
-					}));
-				}
-			};
-
-			for (var key in data) {
-				if (data.hasOwnProperty(key)) {
-					addData(key, data[key]);
-				}
-			}
-
-			return form.appendTo('body');
-		}
-	});
-});</pre> 
-<p> <br> </p> 
-<p> 使用示例： </p> 
-<p> <br> </p> 
-<pre class="brush: xml;">$.form('/index')
-
-&lt;form action="/index" method="POST"&gt;&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/new', { title: 'Hello World', body: 'Foo Bar' })
-
-&lt;form action="/index" method="POST"&gt;
-    &lt;input type="hidden" name="title" value="Hello World" /&gt;
-    &lt;input type="hidden" name="body" value="Foo Bar" /&gt;
-&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/info', { userIds: [1, 2, 3, 4] }, 'GET')
-
-&lt;form action="/info" method="GET"&gt;
-    &lt;input type="hidden" name="userIds[]" value="1" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="2" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="3" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="4" /&gt;
-&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/profile', { sender: { first: 'John', last: 'Smith', postIds: null },
-                     receiver: { first: 'Foo', last: 'Bar', postIds: [1, 2] })
-
-&lt;form action="/profile" method="POST"&gt;
-    &lt;input type="hidden" name="sender[first]" value="John"&gt;
-    &lt;input type="hidden" name="sender[last]" value="Smith"&gt;
-    &lt;input type="hidden" name="receiver[first]" value="John"&gt;
-    &lt;input type="hidden" name="receiver[last]" value="Smith"&gt;
-    &lt;input type="hidden" name="receiver[postIds][]" value="1"&gt;
-    &lt;input type="hidden" name="receiver[postIds][]" value="2"&gt;
-&lt;/form&gt;</pre> 
-<span style="color:#222222;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:15px;line-height:19.5px;background-color:#FFFFFF;">With jQuery's&nbsp;</span>.submit()
-<span style="color:#222222;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:15px;line-height:19.5px;background-color:#FFFFFF;">&nbsp;method you can create and submit a form with a simple expression:</span> 
-<p> <br> </p> 
-<p> <br> </p> 
-<pre class="brush: xml;">$.form('http://stackoverflow.com/search', { q: '[ajax]' }, 'GET').submit();</pre> 
-<p> <br> </p>(String), 2019-05-23 22:29:29.947(Timestamp), 2019-05-23 22:29:29.947(Timestamp)
-2019-05-143 22:29:30:030 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:30:030 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
-2019-05-143 22:29:30:030 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 14(Integer), 4(Integer), (String), 2019-05-23 22:29:30.154(Timestamp), 2019-05-23 22:29:30.154(Timestamp)
-2019-05-143 22:29:30:030 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
-2019-05-143 22:29:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 18(Integer), 用jquery实现post请求（非ajax）(String), <p> <br> </p> 
-<pre class="brush: js;">jQuery(function ($) {
-	$.extend({
-		form: function (url, data, method) {
-			if (method == null) method = 'POST';
-			if (data == null) data = {};
-
-			var form = $('&lt;form&gt;').attr({
-				method: method,
-				action: url
-			}).css({
-				display: 'none'
-			});
-
-			var addData = function (name, data) {
-				if ($.isArray(data)) {
-					for (var i = 0; i &lt; data.length; i++) {
-						var value = data[i];
-						addData(name + '[]', value);
-					}
-				} else if (typeof data === 'object') {
-					for (var key in data) {
-						if (data.hasOwnProperty(key)) {
-							addData(name + '[' + key + ']', data[key]);
-						}
-					}
-				} else if (data != null) {
-					form.append($('&lt;input&gt;').attr({
-						type: 'hidden',
-						name: String(name),
-						value: String(data)
-					}));
-				}
-			};
-
-			for (var key in data) {
-				if (data.hasOwnProperty(key)) {
-					addData(key, data[key]);
-				}
-			}
-
-			return form.appendTo('body');
-		}
-	});
-});</pre> 
-<p> <br> </p> 
-<p> 使用示例： </p> 
-<pre class="brush: xml;">$.form('/index')
-
-&lt;form action="/index" method="POST"&gt;&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/new', { title: 'Hello World', body: 'Foo Bar' })
-
-&lt;form action="/index" method="POST"&gt;
-    &lt;input type="hidden" name="title" value="Hello World" /&gt;
-    &lt;input type="hidden" name="body" value="Foo Bar" /&gt;
-&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/info', { userIds: [1, 2, 3, 4] }, 'GET')
-
-&lt;form action="/info" method="GET"&gt;
-    &lt;input type="hidden" name="userIds[]" value="1" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="2" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="3" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="4" /&gt;
-&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/profile', { sender: { first: 'John', last: 'Smith', postIds: null },
-                     receiver: { first: 'Foo', last: 'Bar', postIds: [1, 2] })
-
-&lt;form action="/profile" method="POST"&gt;
-    &lt;input type="hidden" name="sender[first]" value="John"&gt;
-    &lt;input type="hidden" name="sender[last]" value="Smith"&gt;
-    &lt;input type="hidden" name="receiver[first]" value="John"&gt;
-    &lt;input type="hidden" name="receiver[last]" value="Smith"&gt;
-    &lt;input type="hidden" name="receiver[postIds][]" value="1"&gt;
-    &lt;input type="hidden" name="receiver[postIds][]" value="2"&gt;
-&lt;/form&gt;</pre> 
-<p> <span style="color:#222222;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:15px;line-height:19.5px;background-color:#FFFFFF;"><br> </span> </p> 
-<p> <span style="color:#222222;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:15px;line-height:19.5px;background-color:#FFFFFF;">With jQuery's&nbsp;</span>.submit()<span style="color:#222222;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:15px;line-height:19.5px;background-color:#FFFFFF;">&nbsp;method you can create and submit a form with a simple expression:</span> </p> 
-<pre class="brush: xml;">$.form('http://stackoverflow.com/search', { q: '[ajax]' }, 'GET').submit();</pre> 
-<p> <br> </p> 
-<p> 转自：<a href="http://stackoverflow.com/questions/4583703/jquery-post-request-not-ajax?answertab=votes#tab-top" target="_blank" rel="nofollow">http://stackoverflow.com/questions/4583703/jquery-post-request-not-ajax?answertab=votes#tab-top</a> </p>(String), 2019-05-23 22:29:31.154(Timestamp), 2019-05-23 22:29:31.154(Timestamp)
-2019-05-143 22:29:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:32:032 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:32:032 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 19(Integer), 用jquery实现post请求（非ajax）(String), <p> <br> </p> 
-<pre class="brush: js;">jQuery(function ($) {
-	$.extend({
-		form: function (url, data, method) {
-			if (method == null) method = 'POST';
-			if (data == null) data = {};
-
-			var form = $('&lt;form&gt;').attr({
-				method: method,
-				action: url
-			}).css({
-				display: 'none'
-			});
-
-			var addData = function (name, data) {
-				if ($.isArray(data)) {
-					for (var i = 0; i &lt; data.length; i++) {
-						var value = data[i];
-						addData(name + '[]', value);
-					}
-				} else if (typeof data === 'object') {
-					for (var key in data) {
-						if (data.hasOwnProperty(key)) {
-							addData(name + '[' + key + ']', data[key]);
-						}
-					}
-				} else if (data != null) {
-					form.append($('&lt;input&gt;').attr({
-						type: 'hidden',
-						name: String(name),
-						value: String(data)
-					}));
-				}
-			};
-
-			for (var key in data) {
-				if (data.hasOwnProperty(key)) {
-					addData(key, data[key]);
-				}
-			}
-
-			return form.appendTo('body');
-		}
-	});
-});</pre> 
-<p> <br> </p> 
-<p> 使用示例： </p> 
-<p> <br> </p> 
-<pre class="brush: xml;">$.form('/index')
-
-&lt;form action="/index" method="POST"&gt;&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/new', { title: 'Hello World', body: 'Foo Bar' })
-
-&lt;form action="/index" method="POST"&gt;
-    &lt;input type="hidden" name="title" value="Hello World" /&gt;
-    &lt;input type="hidden" name="body" value="Foo Bar" /&gt;
-&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/info', { userIds: [1, 2, 3, 4] }, 'GET')
-
-&lt;form action="/info" method="GET"&gt;
-    &lt;input type="hidden" name="userIds[]" value="1" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="2" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="3" /&gt;
-    &lt;input type="hidden" name="userIds[]" value="4" /&gt;
-&lt;/form&gt;</pre> 
-<pre class="brush: xml;">$.form('/profile', { sender: { first: 'John', last: 'Smith', postIds: null },
-                     receiver: { first: 'Foo', last: 'Bar', postIds: [1, 2] })
-
-&lt;form action="/profile" method="POST"&gt;
-    &lt;input type="hidden" name="sender[first]" value="John"&gt;
-    &lt;input type="hidden" name="sender[last]" value="Smith"&gt;
-    &lt;input type="hidden" name="receiver[first]" value="John"&gt;
-    &lt;input type="hidden" name="receiver[last]" value="Smith"&gt;
-    &lt;input type="hidden" name="receiver[postIds][]" value="1"&gt;
-    &lt;input type="hidden" name="receiver[postIds][]" value="2"&gt;
-&lt;/form&gt;</pre> 
-<span style="color:#222222;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:15px;line-height:19.5px;background-color:#FFFFFF;">With jQuery's&nbsp;</span>.submit()
-<span style="color:#222222;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:15px;line-height:19.5px;background-color:#FFFFFF;">&nbsp;method you can create and submit a form with a simple expression:</span> 
-<p> <br> </p> 
-<p> <br> </p> 
-<pre class="brush: xml;">$.form('http://stackoverflow.com/search', { q: '[ajax]' }, 'GET').submit();</pre> 
-<p> <br> </p>(String), 2019-05-23 22:29:32.35(Timestamp), 2019-05-23 22:29:32.35(Timestamp)
-2019-05-143 22:29:32:032 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:33:033 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:34:034 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 16(Integer), 一个好用的日期控件layDate(String), http://sentsin.com/layui/laydate/(String), 2019-05-23 22:29:33.962(Timestamp), 2019-05-23 22:29:33.962(Timestamp)
-2019-05-143 22:29:34:034 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:34:034 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:35:035 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 18(Integer), 竖向居中最简单的方法(三行CSS3代码)(String), <p> 你无需知道父元素有多高。 </p> 
-<p> </p>
-<pre class="brush: css;">.element {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}</pre> 转自 http://www.webhek.com/translatey-vertical-align/ 
-<p></p>(String), 2019-05-23 22:29:34.957(Timestamp), 2019-05-23 22:29:34.957(Timestamp)
-2019-05-143 22:29:35:035 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:36:036 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:36:036 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 18(Integer), sass的clearfix设置(String), <pre class="brush: css;">.clearfix:after
-	clear: both
-	content: "."
-	display: block
-	height: 0
-	visibility: hidden</pre>(String), 2019-05-23 22:29:36.025(Timestamp), 2019-05-23 22:29:36.025(Timestamp)
-2019-05-143 22:29:36:036 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
-2019-05-143 22:29:36:036 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
-2019-05-143 22:29:36:036 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 6(Integer), 4(Integer), 在chrome下实现jquery跨域访问iframe的方法(String), 给chrome启动加个参数 
-<strong><span style="color:#E53333;">--disable-web-security</span></strong> 
-<p> <strong>方法1</strong> </p> 
-<ul> 
- <li> 在命令行运行 "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security </li> 
-</ul> 
-<p> <strong>方法2</strong> </p> 
-<ul> 
- <li> 在桌面复制一个chrome的快捷方式，重命名为“Chrome跨域”，右键“属性”，在“目标”后面加上&nbsp;--disable-web-security，即目标改为上面的<span style="color:#E53333;">"C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security</span>，以后点击上面的“Chrome跨域”启动浏览器，就可以跨域访问了 </li> 
-</ul> 
-<p> <br> </p> 
-<p> 注意：启动chrome的时候一定要关闭开着的所有chrome程序，然后再启动才能生效 </p>(String), 2019-05-23 22:29:36.824(Timestamp), 2019-05-23 22:29:36.824(Timestamp)
-2019-05-143 22:29:36:036 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
+2019-05-144 00:19:30:030 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
+2019-05-144 00:19:30:030 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 4(Integer), 1(Integer), php读取 mssql数据datatime时间字段的问题(String), SELECT&nbsp;&nbsp; convert(char,你的日期字段,120)&nbsp;&nbsp; as&nbsp;&nbsp; date2&nbsp;&nbsp; FROM&nbsp;&nbsp; table&nbsp;&nbsp; 
+<br>&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; mssql默认以系统时间格式输出，你可以调整系统的时间格式来解决&nbsp;&nbsp; 
+<br>&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 当然是在程序里解决比较灵活，convert(char,date,N)输出的各中样式&nbsp;&nbsp; 
+<br>&nbsp; N&nbsp;&nbsp; 日期样式&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 0&nbsp;&nbsp; 04&nbsp;&nbsp; 2&nbsp;&nbsp; 2005&nbsp;&nbsp; 9:06AM&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 1&nbsp;&nbsp; 04/02/05&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 2&nbsp;&nbsp; 05.04.02&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 3&nbsp;&nbsp; 02/04/05&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 4&nbsp;&nbsp; 02.04.05&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 5&nbsp;&nbsp; 02-04-05&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 6&nbsp;&nbsp; 02&nbsp;&nbsp; 04&nbsp;&nbsp; 05&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 7&nbsp;&nbsp; 04&nbsp;&nbsp; 02,&nbsp;&nbsp; 05&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 8&nbsp;&nbsp; 09:06:18&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 9&nbsp;&nbsp; 04&nbsp;&nbsp; 2&nbsp;&nbsp; 2005&nbsp;&nbsp; 9:06:18:857AM&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 10&nbsp;&nbsp; 04-02-05&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 11&nbsp;&nbsp; 05/04/02&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 12&nbsp;&nbsp; 050402&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 13&nbsp;&nbsp; 02&nbsp;&nbsp; 04&nbsp;&nbsp; 2005&nbsp;&nbsp; 09:06:18:857&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 14&nbsp;&nbsp; 09:06:18:857&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 20&nbsp;&nbsp; 2005-04-02&nbsp;&nbsp; 09:06:18&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 21&nbsp;&nbsp; 2005-04-02&nbsp;&nbsp; 09:06:18.857&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 22&nbsp;&nbsp; 04/02/05&nbsp;&nbsp; 9:06:18&nbsp;&nbsp; AM&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 23&nbsp;&nbsp; 2005-04-02&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 24&nbsp;&nbsp; 09:06:18&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 25&nbsp;&nbsp; 2005-04-02&nbsp;&nbsp; 09:06:18.857&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 100&nbsp;&nbsp; 04&nbsp;&nbsp; 2&nbsp;&nbsp; 2005&nbsp;&nbsp; 9:06AM&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 101&nbsp;&nbsp; 04/02/2005&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 102&nbsp;&nbsp; 2005.04.02&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 103&nbsp;&nbsp; 02/04/2005&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 104&nbsp;&nbsp; 02.04.2005&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 105&nbsp;&nbsp; 02-04-2005&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 106&nbsp;&nbsp; 02&nbsp;&nbsp; 04&nbsp;&nbsp; 2005&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 107&nbsp;&nbsp; 04&nbsp;&nbsp; 02,&nbsp;&nbsp; 2005&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 108&nbsp;&nbsp; 09:06:18&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 109&nbsp;&nbsp; 04&nbsp;&nbsp; 2&nbsp;&nbsp; 2005&nbsp;&nbsp; 9:06:18:857AM&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 110&nbsp;&nbsp; 04-02-2005&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 111&nbsp;&nbsp; 2005/04/02&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 112&nbsp;&nbsp; 20050402&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 113&nbsp;&nbsp; 02&nbsp;&nbsp; 04&nbsp;&nbsp; 2005&nbsp;&nbsp; 09:06:18:857&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 114&nbsp;&nbsp; 09:06:18:857&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 120&nbsp;&nbsp; 2005-04-02&nbsp;&nbsp; 09:06:18&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 121&nbsp;&nbsp; 2005-04-02&nbsp;&nbsp; 09:06:18.857&nbsp;&nbsp;&nbsp;&nbsp; 
+<br>&nbsp; 126&nbsp;&nbsp; 2005-04-02T09:06:18.857(String), 2019-05-24 00:19:30.395(Timestamp), 2019-05-24 00:19:30.395(Timestamp)
+2019-05-144 00:19:30:030 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
+2019-05-144 00:19:30:030 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
+2019-05-144 00:19:30:030 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 101(Integer), 16(Integer), 你好&amp;nbsp;&amp;nbsp;路过看看(String), 2019-05-24 00:19:30.916(Timestamp), 2019-05-24 00:19:30.916(Timestamp)
+2019-05-144 00:19:30:030 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 4(Integer), 9(Integer), 正则表达式修饰符(String), 手册是没有,这些都是修饰符
+<br>i ：如果在修饰符中加上"i"，则正则将会取消大小写敏感性，即"a"和"A" 是一样的。 
+<br>m：默认的正则开始"^"和结束"$"只是对于正则字符串如果在修饰符中加上"m"，那么开始和结束将会指字符串的每一行：每一行的开头就是"^"，结尾就是"$"。 
+<br>s：如果在修饰符中加入"s"，那么默认的"."代表除了换行符以外的任何字符将会变成任意字符，也就是包括换行符！ 
+<br>x：如果加上该修饰符，表达式中的空白字符将会被忽略，除非它已经被转义。 
+<br>e：本修饰符仅仅对于replacement有用，代表在replacement中作为PHP代码。 
+<br>A：如果使用这个修饰符，那么表达式必须是匹配的字符串中的开头部分。比如说"/a/A"匹配"abcd"。 
+<br>E：与"m"相反，如果使用这个修饰符，那么"$"将匹配绝对字符串的结尾，而不是换行符前面，默认就打开了这个模式。 
+<br>U：和问号的作用差不多，用于设置"贪婪模式"。
+<br>
+<br>-------------------------------------------------------------------------------------------------
+<br>
+<br>
+<br>模式修正符
+<br>模式修正符 -- 解说正则表达式模式中使用的修正符
+<br>说明
+<br>下面列出了当前在 PCRE 中可能使用的修正符。括号中是这些修正符的内部 PCRE 名。修正符中的空格和换行被忽略，其它字符会导致错误。 
+<br>
+<br>
+<br>
+<br>i (PCRE_CASELESS)
+<br>如果设定此修正符，模式中的字符将同时匹配大小写字母。 
+<br>
+<br>m（PCRE_MULTILINE）
+<br>默认情况下，PCRE 将目标字符串作为单一的一“行”字符所组成的（甚至其中包含有换行符也是如此）。“行起始”元字符（^）仅仅匹配字符串的起始，“行结束”元字符（$）仅仅匹配字符串的结束，或者最后一个字符是换行符时其前面（除非设定了 D 修正符）。这和 Perl 是一样的。 
+<br>
+<br>当设定了此修正符，“行起始”和“行结束”除了匹配整个字符串开头和结束外，还分别匹配其中的换行符的之后和之前。这和 Perl 的 /m 修正符是等效的。如果目标字符串中没有“\n”字符或者模式中没有 ^ 或 $，则设定此修正符没有任何效果。 
+<br>
+<br>s（PCRE_DOTALL）
+<br>如果设定了此修正符，模式中的圆点元字符（.）匹配所有的字符，包括换行符。没有此设定的话，则不包括换行符。这和 Perl 的 /s 修正符是等效的。排除字符类例如 [^a] 总是匹配换行符的，无论是否设定了此修正符。 
+<br>
+<br>x（PCRE_EXTENDED）
+<br>如果设定了此修正符，模式中的空白字符除了被转义的或在字符类中的以外完全被忽略，在未转义的字符类之外的 # 以及下一个换行符之间的所有字符，包括两头，也都被忽略。这和 Perl 的 /x 修正符是等效的，使得可以在复杂的模式中加入注释。然而注意，这仅适用于数据字符。空白字符可能永远不会出现于模式中的特殊字符序列，例如引入条件子模式的序列 (?( 中间。 
+<br>
+<br>e
+<br>如果设定了此修正符，preg_replace() 在替换字符串中对逆向引用作正常的替换，将其作为 PHP 代码求值，并用其结果来替换所搜索的字符串。 
+<br>
+<br>只有 preg_replace() 使用此修正符，其它 PCRE 函数将忽略之。 
+<br>
+<br>注: 本修正符在 PHP3 中不可用。 
+<br>
+<br>
+<br>A（PCRE_ANCHORED）
+<br>如果设定了此修正符，模式被强制为“anchored”，即强制仅从目标字符串的开头开始匹配。此效果也可以通过适当的模式本身来实现（在 Perl 中实现的唯一方法）。 
+<br>
+<br>D（PCRE_DOLLAR_ENDONLY）
+<br>如果设定了此修正符，模式中的美元元字符仅匹配目标字符串的结尾。没有此选项时，如果最后一个字符是换行符的话，美元符号也会匹配此字符之前（但不会匹配任何其它换行符之前）。如果设定了 m 修正符则忽略此选项。Perl 中没有与其等价的修正符。 
+<br>
+<br>S
+<br>当一个模式将被使用若干次时，为加速匹配起见值得先对其进行分析。如果设定了此修正符则会进行额外的分析。目前，分析一个模式仅对没有单一固定起始字符的 non-anchored 模式有用。 
+<br>
+<br>U（PCRE_UNGREEDY）
+<br>本修正符反转了匹配数量的值使其不是默认的重复，而变成在后面跟上“?”才变得重复。这和 Perl 不兼容。也可以通过在模式之中设定 (?U) 修正符或者在数量符之后跟一个问号（如 .*?）来启用此选项。 
+<br>
+<br>X（PCRE_EXTRA）
+<br>此修正符启用了一个 PCRE 中与 Perl 不兼容的额外功能。模式中的任何反斜线后面跟上一个没有特殊意义的字母导致一个错误，从而保留此组合以备将来扩充。默认情况下，和 Perl 一样，一个反斜线后面跟一个没有特殊意义的字母被当成该字母本身。当前没有其它特性受此修正符控制。 
+<br>
+<br>u（PCRE_UTF8）
+<br>此修正符启用了一个 PCRE 中与 Perl 不兼容的额外功能。模式字符串被当成 UTF-8。本修正符在 Unix 下自 PHP 4.1.0 起可用，在 win32 下自 PHP 4.2.3 起可用。自 PHP 4.3.5 起开始检查模式的 UTF-8 合法性。
+<br>(String), 2019-05-24 00:19:31.084(Timestamp), 2019-05-24 00:19:31.084(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 102(Integer), 14(Integer), 正是想知道的(String), 2019-05-24 00:19:31.106(Timestamp), 2019-05-24 00:19:31.106(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 102(Integer), 18(Integer), 你好&amp;nbsp;&amp;nbsp;路过看看(String), 2019-05-24 00:19:31.12(Timestamp), 2019-05-24 00:19:31.12(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 4(Integer), 4(Integer), PHP中常量的定义(String), <p>PHP中常量的定义<br>在php中常量的定义是通过函数<strong><font color="#800000">define</font></strong>('[常量的名称]', '[常量的值]')，来定义的。<br>如：define('A',3.1415926),define('B',10)； <br>获取常量的方法： <br>1、直接用常量名获取，如：echo A; <br>2、通过函数constant('[常量的名称]')来获取，如：echo constant('A')； <br>3、通过函数get_defined_constants()获得定义过的全部常量，返回一个数组 ，如：<br>&nbsp;&nbsp; $arr=get_defined_constants();<br>&nbsp;&nbsp; echo $arr["A"],$arr["B"]; <br><br>判断常量是否存在 <br>在PHP中判断一个常量是否已经被定义用函数<strong><font color="#800000">defined</font></strong>('[常量的名称]')，返回值为bool型，如： <br>if(defined('A')){ <br>&nbsp;&nbsp;&nbsp; echo A; <br>}else{ <br>&nbsp;&nbsp;&nbsp; echo "常量A没有被定义"; <br>}</p>(String), 2019-05-24 00:19:31.257(Timestamp), 2019-05-24 00:19:31.257(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 103(Integer), 16(Integer), 你好&amp;nbsp;&amp;nbsp;路过看看(String), 2019-05-24 00:19:31.274(Timestamp), 2019-05-24 00:19:31.274(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 4(Integer), 17(Integer), PHP的左联运算符&amp;&amp;，应用实例!defined('CURSCRIPT') &amp;&amp; define('C(String), !defined('CURSCRIPT') &amp;&amp; define('CURSCRIPT', '');
+<br>等同于
+<br>if(!defined('CURSCRIPT'))
+<br>{
+<br>&nbsp;&nbsp;&nbsp; define('CURSCRIPT', '');
+<br>}
+<br>
+<br>&amp;&amp;是左联，如果第一条件为真，再判断第二个条件，如果第一条件为假则直接不用判断第二个，其它也基本上是这样判断and运算的.
+<br>所以!defined('CURSCRIPT') &amp;&amp; define('CURSCRIPT', '');可以理解为，如果未定当前脚本名，则定义为空，否则不处理。(String), 2019-05-24 00:19:31.416(Timestamp), 2019-05-24 00:19:31.416(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 104(Integer), 18(Integer), 你好&amp;nbsp;&amp;nbsp;路过看看(String), 2019-05-24 00:19:31.431(Timestamp), 2019-05-24 00:19:31.431(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==>  Preparing: insert into tb_blog (course_id,user_id,blog_title,blog_content,create_time,last_edit_time) values (?,?,?,?,?,?) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - ==> Parameters: 4(Integer), 1(Integer), 魔法引用函数magic_quotes_gpc和magic_quotes_runtime的区别和用法(String), PHP提供两个方便我们引用数据的魔法引用函数
+<font color="#800000"><strong>magic_quotes_gpc</strong></font>和
+<font color="#800000"><strong>magic_quotes_runtime</strong></font>，这两个函数如果在php.ini设置为ON的时候，就会为我们引用的数据碰到 
+<strong><font color="#800000">单引号' </font></strong>和 
+<strong><font color="#800000">双引号" </font></strong>以及 
+<font color="#800000"><strong>反斜线\</strong></font> 时自动加上反斜线，帮我们自动转译符号，确保数据操作的正确运行，可是我们在php不同的版本或者不同的服务器配置下，有的magic_quotes_gpc和magic_quotes_runtime设置为on，有的又是off，所以我们写的程序必须符合on和off两种情况。那么magic_quotes_gpc和magic_quotes_runtime两个函数有什么区别呢？看下面的说明：
+<br>
+<br>
+<strong><font color="#0000f0">magic_quotes_gpc</font></strong> 
+<br>作用范围是：ＷＥＢ客户服务端；
+<br>作用时间：请求开始是，例如当脚本运行时．
+<br>
+<br>
+<font color="#0000f0"><strong>magic_quotes_runtime<br></strong></font>作用范围：从文件中读取的数据或执行exec()的结果或是从ＳＱＬ查询中得到的；
+<br>作用时间：每次当脚本访问运行状态中产生的数据．
+<br>
+<br>所以
+<br>
+<br>
+<font color="#800000"><strong>magic_quotes_gpc的设定值将会影响通过Get/Post/Cookies获得的数据<br>magic_quotes_runtime的设定值将会影响从文件中读取的数据或从数据库查询得到的数据</strong></font>
+<br>
+<br>例子说明：
+<br>
+<br>$data1 = $_POST['aaa'];
+<br>$data2 = implode(file('1.txt'));
+<br>if(get_magic_quotes_gpc()){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<font color="#008000">//把数据$data1直接写入数据库 (自动转译)<br></font>}else{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $data1 = addslashes($data1);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<font color="#008000">//把数据$data1写入数据库，用函数(addslashes()转译)<br></font>}
+<br>
+<br>if(get_magic_quotes_runtime()){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<font color="#008000">//把数据$data2直接写入数据库(自动转译)<br></font>
+<br>
+<font color="#008000">//从数据库读出的数据要经过一次stripslashes()之后输出stripslashes()的作用是去掉:\ ，和addslashes()作用相反</font>
+<br>}else{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $data2 = addslashes($data2);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<font color="#008000">//把数据$data2写入数据库<br></font>
+<br>
+<font color="#008000">//从数据库读出的数据直接输出<br></font>}
+<br>
+<br>最关键的区别是就是上面提到的2点:他们针对的处理对象不同
+<br>
+<font color="#800000"><strong>magic_quotes_gpc的设定值将会影响通过Get/Post/Cookies获得的数据<br>magic_quotes_runtime的设定值将会影响从文件中读取的数据或从数据库查询得到的数据</strong><br></font>
+<br>在这里顺便在提几个想关联的函数：
+<br>
+<br>
+<font color="#800000"><strong>set_magic_quotes_runtime():<br></strong></font>设置magic_quotes_runtime值. 0=关闭.1=打开.默认状态是关闭的.可以通过 echo phpinfo(); 查看magic_quotes_runtime
+<br>
+<br>
+<strong><font color="#800000">get_magic_quotes_gpc():<br></font></strong>查看magic_quotes_gpc值.0=关闭.1=打开.
+<br>
+<br>
+<strong><font color="#800000">get_magic_quotes_runtime():<br></font></strong>查看magic_quotes_runtime值。0=关闭.1=打开.
+<br>
+<br>注意的是没有 set_magic_quotes_gpc()这个函数,就是不能在程序里面设置magic_quotes_gpc的值。(String), 2019-05-24 00:19:31.565(Timestamp), 2019-05-24 00:19:31.565(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogDao.insert - <==    Updates: 1
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==>  Preparing: insert into tb_blog_evaluate ( blog_id, user_id, evaluate_content, create_time, last_edit_time ) values ( ?, ?, ?, ?, ? ) 
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - ==> Parameters: 105(Integer), 15(Integer), 你好&amp;nbsp;&amp;nbsp;路过看看(String), 2019-05-24 00:19:31.573(Timestamp), 2019-05-24 00:19:31.573(Timestamp)
+2019-05-144 00:19:31:031 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.insertSelective - <==    Updates: 1
