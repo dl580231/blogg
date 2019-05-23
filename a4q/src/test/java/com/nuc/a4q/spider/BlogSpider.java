@@ -44,7 +44,7 @@ public class BlogSpider extends BaseTest {
 			Document doc02 =Jsoup.connect(ele01.absUrl("href")).get();
 			Elements ele02 = doc02.select(".content");
 			/*----------对blog操作开始-----------*/
-			String blogContent = ele02.html().replaceAll("brush:a", "");
+			String blogContent = ele02.html().replaceAll("brush:", "");
 			blog.setBlogContent(blogContent);
 			blog.setBlogTitle(blogTitle);
 			blog.setCourseId(6);

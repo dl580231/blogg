@@ -5,8 +5,7 @@ $(function() {
 	if (isNaN(blogId)) {
 		 window.location.href = "/a4q/stage/headPage/headpage.html"; 
 	} else {//登录状态和版主判断
-//		loginState(aSuccess,aDefault);
-		initBlog();
+		loginState(aSuccess,aDefault);
 	}
 	
 	//	设置点击事件
@@ -72,7 +71,7 @@ $(function() {
 		$(".register").hide();
 		$("#editor").css("display","block");
 		$("#reply").css("display","inline");
-		moderatorJudge();判断是不是版主
+		moderatorJudge();/*判断是不是版主*/
 	}
 	
 	/*判断登录状态失败之后调用的函数*/
