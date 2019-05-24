@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+				<title>博客系统</title>
+				<link href="css/base.css" rel="stylesheet" type="text/css">
+				<link href="css/common_qa.css" rel="stylesheet" type="text/css">
+				<link href="css/common.css" rel="stylesheet" type="text/css">
+				<link href="css/qa.css?20170726" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="js/et.js"></script>
+				<!-- 切换的js文件 --><!-- 
+				<script type="text/javascript" src="js/other.js"></script> -->
+				
+				
+				<style type="text/css">
+				  	.redpoint{
+						 height:12px;
+				  		 width:12px;
+				  		 border-radius:6px;
+				  		 display:inline-block;
+					  	 background:red;
+					  	 position: relative;
+				  		 top: -6px;
+				  		 z-index:2;
+					}
+				 </style>
+				
+</head>
+
+<body>
+	<div id="head"></div>
+	<div id="container">
+		<div id="content" style="margin-top:0px;">
+			<div class="sidebar190 sbar_grade left" id="pLeft">
+				<h3 class="f14px fb sbar_til sbar_til190_blue qafilet">问题分类</h3>
+				<div class="sbar_gray">
+					<h4 class="sbar_grade_h4 mart20">
+						<span>选择学科</span>
+					</h4>
+					<div class="sbar_subject_list" id="courseInfo"></div>
+				</div>
+			</div>
+			<div style="width:800px;float:right">
+			<div class="main590 left">
+				<div class="main590_wrap">
+					<ul class="tab tabTag_qa clearfix">
+						<li onclick="setTab('qa',0);" class="curTag">已解决问题</li>
+						<li onclick="setTab('qa',1);">待解决问题</li>
+						<li id="recommend" style="display:none" onclick="setTab('qa',2);">文章推荐</li>
+					</ul>
+					<div class="tabCon_qa">
+						<div class="m_qalist latestQa">
+							<div class="mart10">
+									<table summary="所有已解决问题" id="resolved">
+										<tr class="tr_boeder">
+											<th class="textleft">问题</th>
+		   									<th width="12%">提问时间</th>
+		   									<th width="20%">提问者</th> 
+		   								</tr>
+									</table>
+								</div>
+						</div>
+						<div class="m_qalist latestQa hidden">
+							<div class="mart10">
+									<table summary="所有待解决问题" id="unResolved">
+										<tr class="tr_boeder">
+											<th class="textleft">问题</th>
+		   									<th width="12%">提问时间</th>
+		   									<th width="20%">提问者</th> 
+		   								</tr>
+									</table>
+							</div>
+						</div>
+						<div class="m_qalist latestQa hidden">
+							<div class="mart10">
+									<table summary="推荐部分" id="recommendContent">
+										<tr class="tr_boeder">
+												<th class="textleft">问题</th>
+			   									<th width="12%">提问时间</th>
+			   									<th width="20%">提问者</th> 
+			   							</tr>
+									</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="loading" style="visibility:hidden"></div>
+			</div>
+			<div class="sidebar190 right" id="pRight">
+
+
+				<div class="sbar_charts mart10" id="pRight01">
+					<h3 class="fb sbar_til sbar_til190 qafilet">
+						<span>排行榜</span>
+					</h3>
+					<ul class="tag2 tag2_red tabTag_rank clearfix">
+						<li onclick="setTab('rank',1);">博客</li> 
+						<li onclick="setTab('rank',2);" class="curTag">问题</li>
+					</ul>
+					<div class="sbar_gray tabCon_rank">
+						<!-- 排行榜展示 -->
+						<ul id="rank"></ul>
+					</div>
+					<span class="sFillet ht5 qafilet fillet190_b"></span>
+				</div>
+				
+				<!-- 热门文章展示开始 -->
+				<div class="sbar_charts mart10">
+					<h3 class="fb sbar_til sbar_til190 qafilet">
+						<span>热门</span>
+					</h3>
+					<ul class="tag2 tag2_red tabTag_rank clearfix">
+						<li onclick="setTab('rank',1);">博客</li> 
+						<li onclick="setTab('rank',2);" class="curTag">帖子</li>
+					</ul>
+					<div class="sbar_gray tabCon_rank">
+						<ul id="postRank"></ul>
+					</div>
+					<span class="sFillet ht5 qafilet fillet190_b"></span>
+				</div>
+				<!-- 热门文章展示结束 -->
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("#loading").load("loading.html");
+			$("#head").load("head.html");
+		});
+	</script>
+		<script type="text/javascript" charset="utf-8" src="../resources/js/jquery/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../resources/js/common/common.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/blogHeadPage.js"></script>
+</body>
+</html>

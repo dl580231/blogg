@@ -7,7 +7,7 @@ countR = 0;
 countUR =0
 courseId = null;
 position = -1;
-isLogin = false;
+isLogin = window.name;
 $(function(){
 	courseId = getQueryString("courseId");
 	position = getQueryString("position");
@@ -35,7 +35,7 @@ function initPage(){
 	initResolved(1);
 	initRank();
 	initPostRank();
-	loginState(aSuccess,aDefault);
+	loginHandle();
 }
 
 function initPostRank(){
@@ -207,19 +207,14 @@ function ask(){
 	}
 }
 
-/*判断登录状态成功之后调用的函数*/
-function aSuccess(data){
-	user = data.data;
-	isLogin = true;
-	if(user.notice == 1)
-		$("#login").html("个人中心<span class='redpoint'>");
-	else
-		$("#login").html("个人中心");
-	$("#login").attr("href","/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
-	$("#login").attr("target","_blank");
-	$("#register").hide();
-	$("#recommend").show();
-	initRecommedPost();
+/*依据登录状态做一些操作*/
+function loginHandle(){
+	if(isLogin){
+		$("#recommend").show();
+		initRecommedPost();
+	}else{
+		$("#recommend").hide();
+	}
 }
 
 /*推荐帖子*/
@@ -237,12 +232,6 @@ function initRecommedPost(){
 			}
 		}
 	});
-}
-
-/*判断登录状态失败之后调用的函数*/
-function aDefault(data){
-	isLogin = false;
-	$("#recommend").hide();
 }
 
 //遍历内容

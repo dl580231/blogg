@@ -93,7 +93,9 @@ public class FloorService {
 	} 
 
 	public List<FloorNotice> getNoticeFloor(PersonInfo user) {
-		List<FloorNotice> list = dao.getFloorList(user.getUserId());
+		Floor floor = new Floor();
+		floor.setUser(user);
+		List<FloorNotice> list = dao.getFloorList(floor);
 		Collections.sort(list, Comparator.comparing(FloorNotice::getCreateTime));
 		Collections.reverse(list);
 		return list;

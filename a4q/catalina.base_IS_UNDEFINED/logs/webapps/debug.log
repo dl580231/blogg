@@ -1,3 +1,3 @@
-2019-05-144 03:58:19:019 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.getDeployUser - ==>  Preparing: select b.user_id from tb_blog_evaluate e,tb_blog b where e.evaluate_id = ? and e.blog_id = b.blog_id 
-2019-05-144 03:58:19:019 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.getDeployUser - ==> Parameters: 2(Integer)
-2019-05-144 03:58:19:019 [main] DEBUG com.nuc.a4q.dao.BlogEvaluateDao.getDeployUser - <==      Total: 1
+2019-05-144 06:25:16:016 [main] DEBUG com.nuc.a4q.dao.FloorDao.getFloorList - ==>  Preparing: select f.floor_id,f.post_id,f.user_id,u.user_name,p.post_title,f.look_over,f.create_time from tb_post p,tb_floor f,tb_person_info u WHERE p.user_id = ? and p.post_id = f.post_id and f.user_id = u.user_id and f.look_over_delete = 0 and look_over = ? 
+2019-05-144 06:25:16:016 [main] DEBUG com.nuc.a4q.dao.FloorDao.getFloorList - ==> Parameters: 1(Integer), 0(Integer)
+2019-05-144 06:25:16:016 [main] DEBUG com.nuc.a4q.dao.FloorDao.getFloorList - <==      Total: 19

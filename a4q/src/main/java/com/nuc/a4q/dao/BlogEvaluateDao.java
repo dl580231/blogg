@@ -30,9 +30,11 @@ public interface BlogEvaluateDao {
      * @param userId
      * @return
      */
-	public List<BlogEvaluateDto> getEvaluateNotice(Integer userId); 
+	public List<BlogEvaluateDto> getEvaluateNotice(BlogEvaluate evaluate); 
 	
 	public Integer getDeployUser(Integer evaluateId);
 
 	public Integer lookOverDeleteAll(Integer userId);
+	
+	public List<BlogEvaluate> queryEvaluateList(BlogEvaluate evaluate);
 }

@@ -139,16 +139,19 @@
 		select
 		evaluate_id,e.user_id,user_name,evaluate_content,e.look_over,e.look_over_delete,e.create_time,e.last_edit_time
 		from tb_blog_evaluate e,tb_person_info p
-		where blog_id = #{blogId} and e.user_id = p.user_id
+		where blog_id = #{blogId}
+			  and e.user_id = p.user_id
 	</select>
   
-  	<select id="getEvaluateNotice" parameterType="int" resultMap="BlogEvaluateDtoMap">
+  	<select id="getEvaluateNotice" parameterType="BlogEvaluate" resultMap="BlogEvaluateDtoMap">
 		select e.evaluate_id,e.blog_id,e.user_id,u.user_name,b.blog_title,e.look_over,e.create_time
 		from tb_blog b,tb_blog_evaluate e,tb_person_info u
-		where b.user_id = #{userId}
-			  and b.blog_id = e.blog_id
-			  and e.user_id = u.user_id
-			  and e.look_over_delete = 0
+		<where> and b.user_id = #{userId}
+			    and b.blog_id = e.blog_id
+			    and e.user_id = u.user_id
+			    and e.look_over_delete = 0
+			    <if test="lookOver != null">and look_over = #{lookOver}</if>
+		</where>
 	</select>
 	
 	<select id="getDeployUser" parameterType="int" resultType="int">
@@ -164,5 +167,15 @@
 		where b.user_id = #{userId}
 			  and b.blog_id = e.blog_id
 			  and e.look_over_delete = 0
+	</select>
+	
+	<select id="queryEvaluateList" resultType="BlogEvaluate" parameterType="BlogEvaluate">
+		select evaluate_id
+		from tb_blog_evaluate
+		<where>
+			<if test="userId != null">and user_id = #{userId}</if>
+			<if test="lookOver != null">and look_over= #{lookOver}</if>
+			<if test="lookOverDelete != null">and look_over_delete= #{lookOverDelete}</if>
+		</where>
 	</select>
 </mapper>

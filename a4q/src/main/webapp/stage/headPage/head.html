@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,13 +7,26 @@
 				<link href="css/common_qa.css" rel="stylesheet" type="text/css">
 				<link href="css/common.css" rel="stylesheet" type="text/css">
 				<link href="css/qa.css?20170726" rel="stylesheet" type="text/css">
-				<script type="text/javascript" src="js/et.js"></script>
-				<!-- 切换的js文件 --><!-- 
-				<script type="text/javascript" src="js/other.js"></script> -->
+				<script type="text/javascript" src="js/et.js"></script><link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+  <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+				
+				<style type="text/css">
+				  	.redpoint{
+						 height:12px;
+				  		 width:12px;
+				  		 border-radius:6px;
+				  		 display:inline-block;
+					  	 background:red;
+					  	 position: relative;
+				  		 top: -6px;
+				  		 z-index:2;
+					}
+				 </style>
 </head>
 
 <body>
-	<div id="qaTop">
+	<div id="qaTop" style="position:static;margin-bottom:10px;">
 		<div class="qatop clearfix"><!-- 
 			<h1 class="left mt5">
 				<span>博客网站</span><a href="https://dayi.jd100.com/"></a>
@@ -28,14 +41,14 @@
 			</ul>
 		</div>
 	</div>
-	<div id="container" class="qaCon">
+	<div id="container">
 		<div class="search qafilet">
 			<div class="search_box">
 				<form id="submitForm">
 					<span class="search_input"><input type="text" id="key" name="searchWord" tabindex="1" maxlength="256" size="60"
 						placeholder="请输入搜索内容……" class="hidevalue"></span> 
-						<input type="button" tabindex="2" value="我要搜索" onclick="search()" class="sec_search search_btn qabg"> 
-						<!-- <input type="button" tabindex="3" value="我要提问" onclick="ask()" class="sec_ask search_btn qabg"> -->
+						 <a href="javascript:void(0);" class="sui-btn btn-xlarge btn-primary" onclick="search()">我要搜索</a>
+						 <a href="javascript:void(0);" class="sui-btn btn-xlarge btn-primary" onclick="ask()">我要发布</a>
 				</form>
 			</div>
 			<div class="search_key">
@@ -44,6 +57,8 @@
 		</div>
 	</div>
 	
+	<script type="text/javascript" src="../resources/js/jquery/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="../resources/js/common/common.js"></script>
+	<script type="text/javascript" src="js/head.js"></script>
 </body>
 </html>

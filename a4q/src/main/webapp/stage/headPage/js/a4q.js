@@ -1,4 +1,3 @@
-
 $(function() {
 	//实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
@@ -58,28 +57,5 @@ $(function() {
 				}
 			});
 		}
-	}
-
-	// 登录状态判断
-	function loginState() {
-		var loginStateUrl = "/a4q/personInfoAdmin/loginState";
-		$.ajax({
-			url : loginStateUrl,
-			type : "GET",
-			asyn : false,
-			success : function(data) {
-				if (data.state == 0) {
-					user = data.data;
-					isLogin = true;
-					$("#login").text("个人中心");
-					$("#login").attr("href",
-							"/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
-					$("#register").hide();
-				} else {
-					alert("提问之前需要登陆");
-					isLogin = false;
-				}
-			}
-		});
 	}
 });

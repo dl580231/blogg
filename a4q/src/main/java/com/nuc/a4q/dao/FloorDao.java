@@ -63,7 +63,7 @@ public interface FloorDao {
 	 * 獲取消息通知的樓信息
 	 * @return
 	 */
-	public List<FloorNotice> getFloorList(Integer userId);
+	public List<FloorNotice> getFloorList(Floor floor);
 	
 	/**
 	 * 获取楼回复的帖子

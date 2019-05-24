@@ -11,6 +11,8 @@
 			<if test="user !=null and user.userId != null">and f.user_id = #{user.userId}</if>
 			<if test="floorContent != null and floorContent != ''">and floor_content like CONCAT('%',#{floorContent},'%')
 			</if>
+			<if test="lookOver != null">and f.look_over= #{lookOver}</if>
+			<if test="lookOverDelete != null">and f.look_over_delete= #{lookOverDelete}</if>
 			<if test="createTime != null">and f.create_time= #{createTime}</if>
 			<if test="lastEditTime != null">and f.last_edit_time = #{lastEditTime}</if>
 			and f.user_id = p.user_id
@@ -70,13 +72,15 @@
 		where floor_id = #{floorId}
 	</update>
 	
-	<select id="getFloorList" parameterType="int" resultMap="FloorNoticeMap">
+	<select id="getFloorList" parameterType="Floor" resultMap="FloorNoticeMap">
 		select f.floor_id,f.post_id,f.user_id,u.user_name,p.post_title,f.look_over,f.create_time
 		from tb_post p,tb_floor f,tb_person_info u
-		where p.user_id = #{userId}
+		<where> and p.user_id = #{user.userId}
 			  and p.post_id = f.post_id
 			  and f.user_id = u.user_id
 			  and f.look_over_delete = 0
+			  <if test="lookOver != null">and look_over = #{lookOver}</if>
+		</where>
 	</select>
 	
 	<resultMap type="FloorNotice" id="FloorNoticeMap">

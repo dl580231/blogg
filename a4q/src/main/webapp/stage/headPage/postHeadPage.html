@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!doctype html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -10,6 +10,8 @@
 				<script type="text/javascript" src="js/et.js"></script>
 				<!-- 切换的js文件 --><!-- 
 				<script type="text/javascript" src="js/other.js"></script> -->
+				<!-- <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet"> -->
+  				
 				
 				
 				<style type="text/css">
@@ -23,12 +25,26 @@
 				  		 top: -6px;
 				  		 z-index:2;
 					}
+					
+					.button {
+						background-color : ;
+						border: none;
+						color: white;
+						padding: 10px 18px;
+						text-align: center;
+						text-decoration: none;
+						display: inline-block;
+						font-size: 12px;
+						margin: 4px 2px;
+						cursor: pointer;
+						
+						}
 				 </style>
 				
 </head>
 
 <body>
-	<div id="qaTop" style="position:static;margin-bottom:10px;">
+<div id="qaTop" style="position:static;margin-bottom:10px;">
 		<div class="qatop clearfix"><!-- 
 			<h1 class="left mt5">
 				<span>博客网站</span><a href="https://dayi.jd100.com/"></a>
@@ -36,10 +52,9 @@
 			<ul class="qatop_nav qatop_sub left">
 				<li class="nav_hover"><a href="/a4q/stage/headPage/headpage.html">博客</a></li>
 				<li class="nav_hover"><a href="/a4q/stage/headPage/headpage.html">论坛</a></li>
-				<!-- <li><a target="_blank">个人中心</a></li> -->
 			</ul>
 			<ul class="qatop_person qatop_sub right">
-				<li><a id="login" href="../login.html" title="师生答疑网登录">登录</span></a></li>
+				<li><a id="login" href="../login.html" title="师生答疑网登录">登录</a></li>
 				<li id="register"><a href="../register.html" title="师生答疑网注册">注册</a></li>
 			</ul>
 		</div>
@@ -50,19 +65,16 @@
 				<form id="submitForm">
 					<span class="search_input"><input type="text" id="key" name="searchWord" tabindex="1" maxlength="256" size="60"
 						placeholder="请输入搜索内容……" class="hidevalue"></span> 
-						<input type="button" tabindex="2" value="我要搜索" onclick="search()" class="sec_search search_btn qabg"> 
-						<input type="button" tabindex="3" value="我要提问" onclick="ask()" class="sec_ask search_btn qabg">
+						 <a class="button" href="javascript:void(0);" class="sui-btn btn-xlarge btn-primary" onclick="search()">我要搜索</a>
+						 <a class="button" href="javascript:void(0);" class="sui-btn btn-xlarge btn-primary" onclick="ask()">我要发布</a>
 				</form>
 			</div>
 			<div class="search_key">
 				热门搜索：<a href="/a4q/stage/postList.html?key=java" target="_blank">Java</a><a href="/a4q/stage/postList.html?key=网络" target="_blank">网络</a>
 			</div>
 		</div>
-
-
-
-
-		<div id="content">
+	<div id="container">
+		<div id="content" style="margin-top:0px;">
 			<div class="sidebar190 sbar_grade left" id="pLeft">
 				<h3 class="f14px fb sbar_til sbar_til190_blue qafilet">问题分类</h3>
 				<div class="sbar_gray">
@@ -158,10 +170,10 @@
 	
 	
 	<script type="text/javascript">
-		$("#loading").load("loading.html");
+			$("#loading").load("loading.html");
 	</script>
 		<script type="text/javascript" charset="utf-8" src="../resources/js/jquery/jquery-1.7.1.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../resources/js/common/common.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/headPage.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/postHeadPage.js"></script>
 </body>
 </html>

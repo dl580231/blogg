@@ -36,7 +36,9 @@ public class BlogEvaluateService {
 	}
 
 	public List<BlogEvaluateDto> getNoticeEvaluate(PersonInfo user) {
-		List<BlogEvaluateDto> list = dao.getEvaluateNotice(user.getUserId());
+		BlogEvaluate evaluate = new BlogEvaluate();
+		evaluate.setUserId(user.getUserId());
+		List<BlogEvaluateDto> list = dao.getEvaluateNotice(evaluate);
 		Collections.sort(list, Comparator.comparing(BlogEvaluateDto::getCreateTime));
 		Collections.reverse(list);
 		return list;

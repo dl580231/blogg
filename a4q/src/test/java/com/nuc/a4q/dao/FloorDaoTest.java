@@ -54,13 +54,19 @@ public class FloorDaoTest extends BaseTest {
 	}
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void getFloorList() {
-		List<FloorNotice> list = dao.getFloorList(1);
-		System.out.println(list);
+		Floor floor = new Floor();
+		PersonInfo user = new PersonInfo();
+		user.setUserId(1);
+		floor.setUser(user);
+		floor.setLookOver(0);
+		List<FloorNotice> list = dao.getFloorList(floor);
+		System.out.println(list.size());
 	}
 	
 	@Test
+	@Ignore
 	public void getDeployUser() {
 		Integer deployUser = dao.getDeployUser(8);
 		System.out.println(deployUser);

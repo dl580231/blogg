@@ -6,9 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nuc.a4q.dao.BlogEvaluateDao;
 import com.nuc.a4q.dao.FloorDao;
 import com.nuc.a4q.dao.PersonInfoDao;
+import com.nuc.a4q.dto.BlogEvaluateDto;
+import com.nuc.a4q.entity.BlogEvaluate;
 import com.nuc.a4q.entity.Floor;
+import com.nuc.a4q.entity.FloorNotice;
 import com.nuc.a4q.entity.PageDivide;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.enums.ResultEnum;
@@ -22,6 +26,8 @@ public class PersonInfoService {
 	private PersonInfoDao dao;
 	@Autowired
 	private FloorDao floorDao;
+	@Autowired
+	private BlogEvaluateDao evaluateDao;
 	/**
 	 * 用户信息注册
 	 * 
@@ -135,8 +141,16 @@ public class PersonInfoService {
 		Floor floor = new Floor();
 		floor.setUser(user);
 		floor.setLookOver(0);
-		List<Floor> list = floorDao.queryFloorList(floor);
-		if(list.size() > 0) {
+		floor.setLookOverDelete(0);
+		List<FloorNotice> floorList = floorDao.getFloorList(floor);
+		if(floorList.size() > 0) {
+			return 1;
+		}
+		BlogEvaluate evaluate = new BlogEvaluate();
+		evaluate.setUserId(user.getUserId());
+		evaluate.setLookOver(0);
+		List<BlogEvaluateDto> evaluateList = evaluateDao.getEvaluateNotice(evaluate);
+		if(evaluateList.size() > 0) {
 			return 1;
 		}
 		return 0;

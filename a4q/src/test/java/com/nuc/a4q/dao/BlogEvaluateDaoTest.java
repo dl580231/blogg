@@ -24,12 +24,27 @@ public class BlogEvaluateDaoTest extends BaseTest {
 	}
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void getEvaluateNotice() {
-		dao.getEvaluateNotice(1);
+		BlogEvaluate evaluate = new BlogEvaluate();
+		evaluate.setUserId(1);
+		evaluate.setLookOver(0);
+		dao.getEvaluateNotice(evaluate);
 	}
 	
 	@Test
+	@Ignore
+	public void queryEvaluateList() {
+		BlogEvaluate evaluate = new BlogEvaluate();
+		evaluate.setUserId(1);
+		evaluate.setLookOver(0);
+		evaluate.setLookOverDelete(0);
+		List<BlogEvaluate> list = dao.queryEvaluateList(evaluate);
+		System.out.println(list.size());
+	}
+	
+	@Test
+	@Ignore
 	public void getDeployUser() {
 		Integer deployUser = dao.getDeployUser(2);
 		System.out.println(deployUser);
