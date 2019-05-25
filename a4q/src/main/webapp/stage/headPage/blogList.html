@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>课程帖子列表</title>
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-<link rel="stylesheet"
-	href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
-<link rel="stylesheet"
-	href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>课程帖子列表</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<link rel="stylesheet"
+		href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+	<link rel="stylesheet"
+		href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
 
 </head>
-<body>
+<body style="width:990px;margin:0 auto;padding:0;">
 	<div class="page-group">
 		<div class="page page-current">
-			<header class="bar bar-nav">
-				<h1 class='title'>
-					<font size="+3" id="courseName">courseName</font>
-				</h1>
-			</header>
 			<div class="content">
 				<div class="buttons-tab">
 					<a href="#tab2" class="tab-link active button">已解决问题</a> 
 					<a href="#tab3" class="tab-link button">未解决问题</a>
 				</div>
-				<div class="content-block">
+				<div class="">
 					<div class="tabs">
 						<div id="tab2" class="tab active">
 							<div class="content-block">
@@ -55,13 +50,18 @@
 
 	<script type='text/javascript'
 		src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#head").load("head.html");
+		});
+	</script>
 	<script type='text/javascript'
 		src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
 	<script type='text/javascript'
 		src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
 	<script type='text/javascript'
-		src="resources/js/common/common.js" charset='utf-8'></script>
+		src="../resources/js/common/common.js" charset='utf-8'></script>
 	<script type='text/javascript'
-		src="resources/js/post/postList.js" charset='utf-8'></script>
+		src="js/postList.js" charset='utf-8'></script>
 </body>
 </html>

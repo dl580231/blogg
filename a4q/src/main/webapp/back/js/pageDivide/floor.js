@@ -25,7 +25,8 @@ function initFloor() {
 							+ '<td><a onclick=removeFloor(' + value.floorId
 							+ ')>删除</a>' + '</td></tr>';
 				});
-				$("table").html(tempHtml);
+				alert(tempHtml);
+				$(".table").html(tempHtml);
 			}else{
 				alert(data.stateInfo);
 			}

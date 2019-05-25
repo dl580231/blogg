@@ -48,7 +48,7 @@ public class Post {
 	/**
 	 * 0:可见，1：不可见
 	 */
-	private Integer enableView = 0;
+	private Integer enableView = 1;
 	private Integer readCount;
 	private Date createTime;
 	private Date lastEditTime;

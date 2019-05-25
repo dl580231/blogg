@@ -1,9 +1,11 @@
 package com.nuc.a4q.web.Blog;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.mahout.cf.taste.common.TasteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +18,7 @@ import com.nuc.a4q.dto.BlogDto;
 import com.nuc.a4q.entity.Blog;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Result;
+import com.nuc.a4q.entity.UserRank;
 import com.nuc.a4q.exception.LogicException;
 import com.nuc.a4q.group.Insert;
 import com.nuc.a4q.service.BlogService;
@@ -60,5 +63,36 @@ public class BlogManagement {
 		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
 		service.logicRm(blogId,user);
 		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getUserRank", method = RequestMethod.GET)
+	public Result getUserRank() {
+		List<UserRank> userList = service.getUserRank();
+		return ResultUtil.success(userList);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getPostRankByReadCount", method = RequestMethod.GET)
+	public Result getPostRankByReadCount() {
+		List<Blog> list = service.getBlogRankByReadCount();
+		return ResultUtil.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getBlogLoad", method = RequestMethod.GET)
+	public Result getResolvedPost(Integer rowStart, Integer rowSize, Integer courseId) {
+		HashMap<Object, Object> map = service.getBlogOrderByPriority(rowStart, rowSize, courseId);
+		return ResultUtil.success(map);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getRecommendBlog", method = RequestMethod.GET)
+	public Result getRecommendBlog(HttpServletRequest request) throws TasteException {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		List<BlogDto> list = service.getRecommendBlog(user.getUserId());
+		HashMap<Object, Object> map = new HashMap<Object,Object>();
+		map.put("list", list);
+		return ResultUtil.success(map);
 	}
 }

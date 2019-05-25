@@ -2,9 +2,6 @@ $(function() {
 	//实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor', {autoHeightEnabled: false});
-	var isLogin = false;
-	var user = null;
-	loginState();
 	initCourseInfo();
 	$("#deploy").click(function() {
 		submitForm();
@@ -12,8 +9,8 @@ $(function() {
 
 	// 初始化课程信息
 	function initCourseInfo() {
-		var initCourseInfoUrl = "/a4q/course/getCourseListName";
-		$.getJSON(initCourseInfoUrl, function(data) {
+		var url = "/a4q/course/getCourseListName";
+		$.getJSON(url, function(data) {
 			if (data.state == 0) {
 				var tempHtml = '<option value="">选择分类</option>';
 				$.map(data.data, function(value, index) {
@@ -44,7 +41,7 @@ $(function() {
 				success : function(data) {
 					if (data.state == 0) {
 						alert("博客发表成功");
-//						window.location.href=("../postShow.html?postId="+data.data);
+						window.location.href=("../blogShow.html?blogId="+data.data);
 					} else {
 						alert(data.stateInfo);
 					}

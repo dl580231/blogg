@@ -84,7 +84,7 @@ function logoutHandle(){
 		else{
 			if(data.state == 0){
 				alert("注销成功");
-				window.open("/a4q/stage/headPage/headpage.html","_parent");
+				window.open("/a4q/stage/headPage/blogHeadPage.html","_parent");
 			}else{
 				alert(data.stateInfo);
 			}

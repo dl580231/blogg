@@ -1,0 +1,38 @@
+				   .redpoint{
+						 height:12px;
+				  		 width:12px;
+				  		 border-radius:6px;
+				  		 display:inline-block;
+					  	 background:red;
+					  	 position: relative;
+				  		 top: -6px;
+				  		 z-index:2;
+					}
+					
+					.button { /* 按钮美化 */
+							display:inline-block;
+							padding:5px;
+							border-width: 0px; /* 边框宽度 */
+							border-radius: 3px; /* 边框半径 */
+							background: #1E90FF; /* 背景颜色 */
+							cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+							outline: none; /* 不显示轮廓线 */
+							font-family: Microsoft YaHei; /* 设置字体 */
+							color: white; /* 字体颜色 */
+							font-size: 17px; /* 字体大小 */
+						}
+						.button:hover { /* 鼠标移入按钮范围时改变颜色 */
+							background: #5599FF;
+						}
+						.tagTalk{
+							display: inline-block;
+						    height: 20px;
+						    line-height: 18px;
+						    padding: 0 5px;
+						    color: #4d4d4d;
+						    font-size: 12px;
+						    text-align: center;
+						    background-color: #fff;
+						    border: 1px solid #e0e0e0;
+						    vertical-align: top;
+						}

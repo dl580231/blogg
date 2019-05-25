@@ -28,9 +28,9 @@ public class ItemCF {
 	 * @return
 	 * @throws TasteException
 	 */
-	public List<Integer> getRecommengBasedItemCF(Integer userId) throws TasteException
+	public List<Integer> getRecommengBasedItemCF(Integer userId,String table,String key) throws TasteException
 	{	
-		MySQLJDBCDataModel model = new MySQLJDBCDataModel(dataSource,"tb_post_history","user_id","post_id","preference", null);
+		MySQLJDBCDataModel model = new MySQLJDBCDataModel(dataSource,table,"user_id",key,"preference", null);
         ItemSimilarity item = new EuclideanDistanceSimilarity(model);//基于欧几里得距离算法计算相似度
         Recommender r = new GenericItemBasedRecommender(model,item);
         List<RecommendedItem> list = r.recommend(userId,RECOMMENDER_NUM);//获取推荐结果

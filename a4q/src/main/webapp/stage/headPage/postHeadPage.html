@@ -7,51 +7,16 @@
 				<link href="css/common_qa.css" rel="stylesheet" type="text/css">
 				<link href="css/common.css" rel="stylesheet" type="text/css">
 				<link href="css/qa.css?20170726" rel="stylesheet" type="text/css">
+				<link href="css/headPage.css" rel="stylesheet" type="text/css">
 				<script type="text/javascript" src="js/et.js"></script>
-				<!-- 切换的js文件 --><!-- 
-				<script type="text/javascript" src="js/other.js"></script> -->
-				<!-- <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet"> -->
-  				
-				
-				
-				<style type="text/css">
-				  	.redpoint{
-						 height:12px;
-				  		 width:12px;
-				  		 border-radius:6px;
-				  		 display:inline-block;
-					  	 background:red;
-					  	 position: relative;
-				  		 top: -6px;
-				  		 z-index:2;
-					}
-					
-					.button {
-						background-color : ;
-						border: none;
-						color: white;
-						padding: 10px 18px;
-						text-align: center;
-						text-decoration: none;
-						display: inline-block;
-						font-size: 12px;
-						margin: 4px 2px;
-						cursor: pointer;
-						
-						}
-				 </style>
-				
 </head>
 
 <body>
 <div id="qaTop" style="position:static;margin-bottom:10px;">
-		<div class="qatop clearfix"><!-- 
-			<h1 class="left mt5">
-				<span>博客网站</span><a href="https://dayi.jd100.com/"></a>
-			</h1> -->
+		<div class="qatop clearfix">
 			<ul class="qatop_nav qatop_sub left">
-				<li class="nav_hover"><a href="/a4q/stage/headPage/headpage.html">博客</a></li>
-				<li class="nav_hover"><a href="/a4q/stage/headPage/headpage.html">论坛</a></li>
+				<li class="nav_hover"><a target="_self" href="/a4q/stage/headPage/blogHeadPage.html">博客</a></li>
+				<li class="nav_hover"><a target="_self" href="/a4q/stage/headPage/postHeadPage.html">论坛</a></li>
 			</ul>
 			<ul class="qatop_person qatop_sub right">
 				<li><a id="login" href="../login.html" title="师生答疑网登录">登录</a></li>
@@ -65,8 +30,8 @@
 				<form id="submitForm">
 					<span class="search_input"><input type="text" id="key" name="searchWord" tabindex="1" maxlength="256" size="60"
 						placeholder="请输入搜索内容……" class="hidevalue"></span> 
-						 <a class="button" href="javascript:void(0);" class="sui-btn btn-xlarge btn-primary" onclick="search()">我要搜索</a>
-						 <a class="button" href="javascript:void(0);" class="sui-btn btn-xlarge btn-primary" onclick="ask()">我要发布</a>
+						 <a class="button" style="position:relative;top:3px" onclick="query()">我要搜索</a>
+						 <a class="button" style="position:relative;top:3px" onclick="ask()">我要提问</a>
 				</form>
 			</div>
 			<div class="search_key">
@@ -167,6 +132,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 	
 	
 	<script type="text/javascript">

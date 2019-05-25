@@ -55,6 +55,29 @@ public class PostManagementController {
 		List<Post> list = service.queryPostList(post);
 		return ResultUtil.success(list);
 	}
+	
+	/**
+	 * 查询帖子信息
+	 * 
+	 * @param post
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/getPostListBack")
+	public Result getPostListBack(Post post, Integer courseId, Integer userId) {
+		if (courseId != null) {
+			Course course = new Course();
+			course.setCourseId(courseId);
+			post.setCourse(course);
+		}
+		if (userId != null) {
+			PersonInfo personInfo = new PersonInfo();
+			personInfo.setUserId(userId);
+			post.setDeployUser(personInfo);
+		}
+		List<Post> list = service.queryPostListBack(post);
+		return ResultUtil.success(list);
+	}
 
 	/**
 	 * 删除post信息
@@ -262,8 +285,8 @@ public class PostManagementController {
 	
 	@ResponseBody
 	@RequestMapping(value = "getRecommendPost", method = RequestMethod.GET)
-	public Result getRecommendPost(HttpServletRequest request,Integer userId) throws TasteException {
-		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+	public Result getRecommendPost(HttpServletRequest request) throws TasteException {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
 		List<Post> list = service.getRecommendPost(user.getUserId());
 		HashMap<Object, Object> map = new HashMap<Object,Object>();
 		map.put("list", list);

@@ -82,7 +82,7 @@ function clearNoticeAll(){
 //切换导航栏方法
 function setTabM(sort){
 	if(sort == 0){
-		$("#nav_0").css("background-color","red");
+		$("#nav_0").css("background-color","#14a7ed");
 		$("#nav_1").css("background-color","");
 		$("#topPost").hide();
 		$("#postMessageContent").hide();
@@ -90,7 +90,7 @@ function setTabM(sort){
 		$("#blogMessageContent").show();
 		initBlogMessage();
 	}else if(sort == 1){
-		$("#nav_1").css("background-color","red");
+		$("#nav_1").css("background-color","#14a7ed");
 		$("#nav_0").css("background-color","");
 		$("#topBlog").hide();
 		$("#blogMessageContent").hide();

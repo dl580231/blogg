@@ -62,4 +62,11 @@ public class BlogHistory {
     public void setLastEditTime(Date lastEditTime) {
         this.lastEditTime = lastEditTime;
     }
+
+	@Override
+	public String toString() {
+		return "BlogHistory [historyId=" + historyId + ", blogId=" + blogId + ", userId=" + userId + ", preference="
+				+ preference + ", createTime=" + createTime + ", lastEditTime=" + lastEditTime + "]";
+	}
+    
 }

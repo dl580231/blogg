@@ -15,6 +15,19 @@
     <result column="last_edit_time" property="lastEditTime" jdbcType="TIMESTAMP" />
   </resultMap>
   
+  <resultMap id="BlogDtoMap" type="com.nuc.a4q.dto.BlogDto" >
+  	<association property="blog" javaType="Blog">
+  		<id column="blog_id" property="blogId" jdbcType="INTEGER" />
+    	<result column="user_id" property="userId" />
+    	<result column="blog_title" property="blogTitle" jdbcType="VARCHAR" />
+    	<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </association>
+    <association property="user" javaType="PersonInfo">
+    	<id column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+    </association>
+  </resultMap>
+  
   <sql id="Base_Column_List" >
     blog_id, course_id, user_id, blog_title, blog_content, priority, enable_view, read_count, 
     create_time, last_edit_time
@@ -169,4 +182,36 @@
   			and enable_view = 1;
   		</where>
   </select>
+  
+  <select id="getUserRank" resultType="UserRank">
+		select count(b.user_id) num,b.user_id,u.user_name
+		from tb_blog b,tb_person_info u
+		where b.user_id = u.user_id
+		GROUP BY user_id
+		limit 0,7
+	</select>
+	
+	<select id="getBlogRankByReadCount" resultType="Blog">
+		select blog_id,blog_title,read_count
+		from tb_blog
+		order by read_count DESC
+		LIMIT 0,10
+	</select>
+	
+	<select id="queryBlogCount" resultType="int">
+		select count(user_id)
+		from tb_blog
+		where enable_view = 1
+	</select>
+
+	<select id="getBlogOrderByPriority" resultMap="BlogDtoMap">
+		select blog_id,blog_title,b.create_time,priority,user_name,b.user_id
+		from tb_blog b,tb_person_info u
+		<where> and enable_view = 1
+			  and b.user_id = u.user_id
+			  <if test="courseId != null">and course_id = #{courseId}</if>
+		</where>
+			  order by priority asc
+			  limit #{rowStart},#{rowSize}
+	</select>
 </mapper>

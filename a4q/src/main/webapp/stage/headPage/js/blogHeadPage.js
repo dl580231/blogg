@@ -1,13 +1,11 @@
 currentTab = 0;
 rowSize = 20;
-rowStartR = 0;
-rowStartUR = 0;
+rowStart = 0;
 load = false;
-countR = 0;
-countUR =0
+count = 0;
 courseId = null;
 position = -1;
-isLogin = window.name;
+isLogin = false;
 $(function(){
 	courseId = getQueryString("courseId");
 	position = getQueryString("position");
@@ -23,7 +21,7 @@ function focus(){
 		var course = $("#courseInfo").children();
 		course.each(function(index){
 			if(index == position){
-				$(this).find("a").css("color","red");
+				$(this).find("a").css("color","#14a7ed");
 			}
 		});
 	}
@@ -31,20 +29,19 @@ function focus(){
 
 function initPage(){
 	initCourse();
-	initResolved(0);
-	initResolved(1);
+	initBlogContent();
 	initRank();
 	initPostRank();
-	loginHandle();
+	loginState(aSuccess,aDefault);
 }
 
 function initPostRank(){
-	var url = "/a4q/post/getPostRankByReadCount";
+	var url = "/a4q/blog/getPostRankByReadCount";
 	$.getJSON(url,function(data){
 		tempHtml = '';
 		$.map(data.data,function(value,index){
 			tempHtml += '<li class="s_c_list l_1">'+
-			   		   '<span margin="left"><a target="_blank" href="../postShow.html?postId='+value.postId+'">'+value.postTitle+'</a></span></li>';					
+			   		   '<span margin="left"><a target="_blank" href="../blogShow.html?blogId='+value.blogId+'">'+value.blogTitle+'</a></span></li>';					
 		});
 		$("#postRank").html(tempHtml);
 	});
@@ -62,7 +59,7 @@ function initCourse(){
 				var tempHtml = "";
 				$.map(data.data,function(value,index){
 						tempHtml +='<dl><dt>'+
-						'<a href="/a4q/stage/headPage/headpage.html?courseId='+value.courseId+'&position='+index+'">'+value.courseName+'</a>'+
+						'<a href="/a4q/stage/headPage/blogHeadPage.html?courseId='+value.courseId+'&position='+index+'">'+value.courseName+'</a>'+
 						'</dt></dl>'
 				});
 				$("#courseInfo").html(tempHtml);
@@ -75,16 +72,8 @@ function initCourse(){
 }
 
 //初始化已解决问题列表
-function initResolved(handle){
-	var initUrl = "";
-	var ele = '';
-	if(handle==0){
-		initUrl = "/a4q/post/getResolvedPost?rowStart="+rowStartR+"&rowSize="+rowSize+"&courseId="+courseId;
-		ele = "#resolved"
-	}else if(handle==1){
-		initUrl = "/a4q/post/getUnResolvedPost?rowStart="+rowStartUR+"&rowSize="+rowSize+"&courseId="+courseId;
-		ele = "#unResolved"
-	}
+function initBlogContent(){
+	var initUrl = "/a4q/blog/getBlogLoad?rowStart="+rowStart+"&rowSize="+rowSize+"&courseId="+courseId;
 	$.ajax({
 		url : initUrl,
 		type : "GET",
@@ -92,15 +81,9 @@ function initResolved(handle){
 		success : function(data){
 			if(data.state == 0){
 				temp = iterator(data);
-				$(ele).append(temp);
-				if(handle==0){
-					countR = data.data.count;
-					rowStartR += rowSize;
-				}
-				else if(handle==1){
-					countUR = data.data.count;
-					rowStartUR += rowSize;
-				}
+				$("#blogContent").append(temp);
+				count = data.data.count;
+				rowStart += rowSize;
 				$("#loading").css("visibility","hidden");
 				load = false;
 			}else{
@@ -149,30 +132,26 @@ function loadJudge(){
 	temp = 0;
 	judge = true;
 	if(currentTab==0){
-		if(rowStartR>countR||rowStartR==countR){
+		if(rowStart>count||rowStart==count){
 			judge = false;
 		}
 	}else if(currentTab==1){
-		if(rowStartUR>countUR||rowStartUR==countUR){
-			judge = false;
-		}
-	}else if(currentTab==2){
 		judge = false;
 	}
 	if(judge){	
     	load = true;//控制只执行一次函数	
 		$("#loading").css("visibility","visible");
 		setTimeout(function(){
-			initResolved(currentTab);
+			initBlogContent();
 		},1500);
 	}
 }
 
 //初始化排行榜
 function initRank(){
-	var initRankUrl = "/a4q/post/getUserRank";
+	var url = "/a4q/blog/getUserRank";
 	$.ajax({
-		url : initRankUrl,
+		url : url,
 		typr : "GET",
 		cache : false,
 		success : function(data){
@@ -192,7 +171,7 @@ function initRank(){
 }
 
 //搜索功能实现
-function search(){
+function query(){
 	var key = $("#key").val();
 	var url = "/a4q/stage/postList.html?key="+key;
 	window.open(url); 
@@ -201,35 +180,41 @@ function search(){
 //提出问题
 function ask(){
 	if(isLogin){
-		window.open("a4q.html");
+		window.open("blogDeploy.html");
 	}else{
-		alert("发布之前请登录");
+		alert("发布博客之前请登录");
 	}
 }
 
 /*依据登录状态做一些操作*/
-function loginHandle(){
-	if(isLogin){
-		$("#recommend").show();
-		initRecommedPost();
-	}else{
-		$("#recommend").hide();
-	}
+function aSuccess(data){
+	isLogin = true;
+	user = data.data;
+	if(user.notice == 1)
+		$("#login").html("个人中心<span class='redpoint'>");
+	else
+		$("#login").html("个人中心");
+	$("#login").attr("href","/a4q/stage/personInfo/personInfoHead.html?userId=" + user.userId);
+	$("#login").attr("target","_blank");
+	$("#register").hide();
+	$("#recommend").show();
+	initRecommedBlog()
+}
+
+function aDefault(data){
+	isLogin = false;
+	$("#recommend").hide();
 }
 
 /*推荐帖子*/
-function initRecommedPost(){
-	var url = "/a4q/post/getRecommendPost";
+function initRecommedBlog(){
+	var url = "/a4q/blog/getRecommendBlog";
 	$.getJSON(url,function(data){
-		if(data == 'unLogin'){
-			alert("未登录")
+		if(data.state == 0){
+			var temp = iterator(data);
+			$("#recommendContent").append(temp);
 		}else{
-			if(data.state == 0){
-				var temp = iterator(data);
-				$("#recommendContent").append(temp);
-			}else{
-				alert(data.stateInfo);
-			}
+			alert(data.stateInfo);
 		}
 	});
 }
@@ -238,9 +223,9 @@ function initRecommedPost(){
 function iterator(data){
 	var tempHtml = '';
 	$.map(data.data.list,function(value,index){
-	tempHtml += '<tr><td class="qaTitle"><span><a href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.postTitle+'</a></span></td>'+
-			'<td>'+formatD(value.createTime)+'</td>'+
-			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.deployUser.userId+'" target="_blank">'+value.deployUser.userName+'</a></td></tr>';
+	tempHtml += '<tr><td class="qaTitle"><span style="float:left" class="tagTalk">博客</span><span><a href="/a4q/stage/blogShow.html?blogId='+value.blog.blogId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.blog.blogTitle+'</a></span></td>'+
+			'<td>'+formatD(value.blog.createTime)+'</td>'+
+			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.user.userId+'" target="_blank">'+value.user.userName+'</a></td></tr>';
 	});
 	return tempHtml;
 }

@@ -3,7 +3,7 @@ $(function() {
 });
 
 function initPost() {
-	var postUrl = '/a4q/post/getPostList';
+	var postUrl = '/a4q/post/getPostListBack';
 	var data = $("#submitForm").serialize();
 	$.ajax({
 		url : postUrl,
@@ -13,7 +13,7 @@ function initPost() {
 			if (data.state == 0) {
 				var tempHtml = '<tr>' + '<th>帖子ID</th>' + '<th>课程名称</th>'
 						+ '<th>用户ID</th>' + '<th>用户名称</th>' + '<th>发帖标题</th>'
-						+ '<th>发帖内容</th>' + '<th>最佳答复楼ID</th>'
+						+ '<th>最佳答复楼ID</th>'
 						+ '<th>发帖时间</th>' + '<th>回复时间</th>'
 						+ '<th>操作</th></tr>';
 				$.map(data.data, function(value, index) {
@@ -22,9 +22,7 @@ function initPost() {
 							+ '<td>' + value.deployUser.userId + '</td>'
 							+ '<td>' + value.deployUser.userName + '</td>'
 							+ '<td>' + value.postTitle + '</td>'
-							+ '<td title="' + value.postContent + '">'
-							+ value.postContent + '</td>' + '<td>'
-							+ value.bestAnswerId + '</td>' + '<td>'
+							+ '<td>' + value.bestAnswerId + '</td>' + '<td>'
 							+ format(value.createTime) + '</td>' + '<td>'
 							+ format(value.lastEditTime) + '</td>'
 							+ '<td><a onClick="topPost('+ value.postId+')">置顶</a>' 
@@ -73,11 +71,11 @@ function removePost(postId) {
 // 帖子置顶操作
 function topPost(postId) {
 	var result = confirm("确认置顶该贴?");
-	var topPostUrl = "/a4q/post/topPost?postId=" + postId;
+	var url = "/a4q/post/topPost?postId=" + postId;
 	if (result) {
-		$.getJSON(topPostUrl, function(data) {
+		$.getJSON(url, function(data) {
 			if (data.state == 0) {
-				alert("置顶成功");
+				alert("置顶s成功");
 				initPost();
 			} else {
 				alert(data.stateInfo);

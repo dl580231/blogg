@@ -79,6 +79,7 @@
 		<where>
 			<if test="resolve == 0">best_answer_id is not null</if>
 			<if test="resolve == 1">best_answer_id is null</if>
+			and enable_view = 1
 		</where>
 	</select>
 

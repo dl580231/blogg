@@ -3,6 +3,7 @@ package com.nuc.a4q.dao;
 import java.util.List;
 
 import com.nuc.a4q.entity.BlogHistory;
+import com.nuc.a4q.entity.PersonInfo;
 
 public interface BlogHistoryDao {
     int deleteByPrimaryKey(Integer historyId);
@@ -18,4 +19,6 @@ public interface BlogHistoryDao {
     int updateByPrimaryKey(BlogHistory record);
     
     public List<BlogHistory> getBlogHistory(BlogHistory history);
+
+	List<Integer> getUserIdInHistory(PersonInfo requestUser);
 }

@@ -111,5 +111,15 @@
 		<if test="blogId != null">and blog_id = #{blogId}</if>
 		<if test="userId != null">and user_id = #{userId}</if>
 	</where>
-</select>
+  </select>
+  
+  <select id="getUserIdInHistory" parameterType="PersonInfo" resultType="int">
+		select user_id
+		from tb_person_info
+		where user_id in
+			  (select user_id
+			  from tb_blog_history)
+			  and user_type = #{userType}
+			  and gender = #{gender}
+  </select>
 </mapper>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!doctype html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,28 +7,37 @@
 				<link href="css/common_qa.css" rel="stylesheet" type="text/css">
 				<link href="css/common.css" rel="stylesheet" type="text/css">
 				<link href="css/qa.css?20170726" rel="stylesheet" type="text/css">
-				<script type="text/javascript" src="js/et.js"></script>
-				<!-- 切换的js文件 --><!-- 
-				<script type="text/javascript" src="js/other.js"></script> -->
-				
-				
-				<style type="text/css">
-				  	.redpoint{
-						 height:12px;
-				  		 width:12px;
-				  		 border-radius:6px;
-				  		 display:inline-block;
-					  	 background:red;
-					  	 position: relative;
-				  		 top: -6px;
-				  		 z-index:2;
-					}
-				 </style>
-				
+				<link href="css/headPage.css" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="js/et.js"></script>				
 </head>
 
 <body>
-	<div id="head"></div>
+<div id="qaTop" style="position:static;margin-bottom:10px;">
+		<div class="qatop clearfix">
+			<ul class="qatop_nav qatop_sub left">
+				<li class="nav_hover"><a target="_self" href="/a4q/stage/headPage/blogHeadPage.html">博客</a></li>
+				<li class="nav_hover"><a target="_self" href="/a4q/stage/headPage/postHeadPage.html">论坛</a></li>
+			</ul>
+			<ul class="qatop_person qatop_sub right">
+				<li><a id="login" href="../login.html" title="师生答疑网登录">登录</a></li>
+				<li id="register"><a href="../register.html" title="师生答疑网注册">注册</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="container">
+		<div class="search qafilet">
+			<div class="search_box">
+				<form id="submitForm">
+					<span class="search_input"><input type="text" id="key" name="searchWord" tabindex="1" maxlength="256" size="60"
+						placeholder="请输入搜索内容……" class="hidevalue"></span> 
+						 <a class="button" style="position:relative;top:3px" onclick="query()">我要搜索</a>
+						 <a class="button" style="position:relative;top:3px" onclick="ask()">我要发布</a>
+				</form>
+			</div>
+			<div class="search_key">
+				热门搜索：<a href="/a4q/stage/postList.html?key=java" target="_blank">Java</a><a href="/a4q/stage/postList.html?key=网络" target="_blank">网络</a>
+			</div>
+		</div>
 	<div id="container">
 		<div id="content" style="margin-top:0px;">
 			<div class="sidebar190 sbar_grade left" id="pLeft">
@@ -44,14 +53,13 @@
 			<div class="main590 left">
 				<div class="main590_wrap">
 					<ul class="tab tabTag_qa clearfix">
-						<li onclick="setTab('qa',0);" class="curTag">已解决问题</li>
-						<li onclick="setTab('qa',1);">待解决问题</li>
-						<li id="recommend" style="display:none" onclick="setTab('qa',2);">文章推荐</li>
+						<li onclick="setTab('qa',0);" class="curTag">博客展示</li>
+						<li id="recommend" style="display:none;" onclick="setTab('qa',1);">博客推荐</li>
 					</ul>
 					<div class="tabCon_qa">
 						<div class="m_qalist latestQa">
 							<div class="mart10">
-									<table summary="所有已解决问题" id="resolved">
+									<table summary="所有已解决问题" id="blogContent">
 										<tr class="tr_boeder">
 											<th class="textleft">问题</th>
 		   									<th width="12%">提问时间</th>
@@ -59,17 +67,6 @@
 		   								</tr>
 									</table>
 								</div>
-						</div>
-						<div class="m_qalist latestQa hidden">
-							<div class="mart10">
-									<table summary="所有待解决问题" id="unResolved">
-										<tr class="tr_boeder">
-											<th class="textleft">问题</th>
-		   									<th width="12%">提问时间</th>
-		   									<th width="20%">提问者</th> 
-		   								</tr>
-									</table>
-							</div>
 						</div>
 						<div class="m_qalist latestQa hidden">
 							<div class="mart10">
@@ -94,8 +91,7 @@
 						<span>排行榜</span>
 					</h3>
 					<ul class="tag2 tag2_red tabTag_rank clearfix">
-						<li onclick="setTab('rank',1);">博客</li> 
-						<li onclick="setTab('rank',2);" class="curTag">问题</li>
+						<li onclick="setTab('rank',1);">博客<b>(发布数量)</b></li> 
 					</ul>
 					<div class="sbar_gray tabCon_rank">
 						<!-- 排行榜展示 -->
@@ -111,7 +107,6 @@
 					</h3>
 					<ul class="tag2 tag2_red tabTag_rank clearfix">
 						<li onclick="setTab('rank',1);">博客</li> 
-						<li onclick="setTab('rank',2);" class="curTag">帖子</li>
 					</ul>
 					<div class="sbar_gray tabCon_rank">
 						<ul id="postRank"></ul>
@@ -126,10 +121,7 @@
 	
 	
 	<script type="text/javascript">
-		$(function(){
 			$("#loading").load("loading.html");
-			$("#head").load("head.html");
-		});
 	</script>
 		<script type="text/javascript" charset="utf-8" src="../resources/js/jquery/jquery-1.7.1.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../resources/js/common/common.js"></script>

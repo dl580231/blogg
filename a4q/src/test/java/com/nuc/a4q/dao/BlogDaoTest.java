@@ -8,7 +8,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nuc.a4q.BaseTest;
+import com.nuc.a4q.dto.BlogDto;
 import com.nuc.a4q.entity.Blog;
+import com.nuc.a4q.entity.UserRank;
 
 public class BlogDaoTest extends BaseTest {
 	@Autowired
@@ -28,10 +30,38 @@ public class BlogDaoTest extends BaseTest {
 	}
 	
 	@Test
+	@Ignore
 	public void getBlogList() {
 		Blog blog = new Blog();
 		blog.setUserId(1);
 		List<Blog> list = dao.getBlogList(blog);
 		System.out.println(list.size());
+	}
+	
+	@Test
+	@Ignore
+	public void getUserRank() {
+		List<UserRank> list = dao.getUserRank();
+		System.out.println(list);
+	}
+	
+	@Test
+	@Ignore
+	public void getPostRankByReadCount() {
+		List<Blog> list = dao.getBlogRankByReadCount();
+		System.out.println(list);
+	}
+	
+	@Test
+	@Ignore
+	public void queryBlogCount() {
+		Integer count = dao.queryBlogCount();
+		System.out.println(count);
+	}
+	
+	@Test
+	public void getBlogOrderByPriority() {
+		List<BlogDto> list = dao.getBlogOrderByPriority(0, 5, 3);
+		System.out.println(list);
 	}
 }

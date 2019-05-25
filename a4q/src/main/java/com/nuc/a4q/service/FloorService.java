@@ -62,13 +62,12 @@ public class FloorService {
 	 * @return
 	 */
 	public List<Floor> getFloorList(Floor floor, PersonInfo user) {
-		if (user.getUserId() != null) {
+		if (user != null && user.getUserId() != null) {
 			floor.setUser(user);
 		}
 		List<Floor> list = dao.queryFloorList(floor);
 		return list;
 	}
-
 
 	public void removeFloor(Floor floor) {
 		dao.deleteFloor(floor);

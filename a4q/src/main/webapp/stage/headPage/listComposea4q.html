@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>博客系统</title>			
+</head>
+
+<body style="width:990px;margin:0 auto;">
+	<div id="head">
+		
+	</div>
+	<div id="userContent">
+		<iframe name="myFrame" id="iframeShow" width="100%" height="500px"
+			scrolling="no" frameborder="0" src="postList.html"></iframe>
+	</div>
+	<script type="text/javascript" src="../resources/js/jquery/jquery-1.7.1.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#head").load("head.html?noCache="+Math.random());
+		});
+	</script>
+</body>
+</html>

@@ -9,7 +9,6 @@ courseId = null;
 position = -1;
 isLogin = false;
 $(function(){
-	isLogin = window.name;
 	courseId = getQueryString("courseId");
 	position = getQueryString("position");
 	initPage();
@@ -24,7 +23,7 @@ function focus(){
 		var course = $("#courseInfo").children();
 		course.each(function(index){
 			if(index == position){
-				$(this).find("a").css("color","red");
+				$(this).find("a").css("color","#14a7ed");
 			}
 		});
 	}
@@ -61,9 +60,9 @@ function initCourse(){
 		success : function(data) {
 			if (data.state == 0) {
 				var tempHtml = "";
-				$.map(data.data,function(value,index){
+				$.map(data.data,function(value,index){ 	
 						tempHtml +='<dl><dt>'+
-						'<a href="/a4q/stage/headPage/headpage.html?courseId='+value.courseId+'&position='+index+'">'+value.courseName+'</a>'+
+						'<a href="/a4q/stage/headPage/postHeadPage.html?courseId='+value.courseId+'&position='+index+'">'+value.courseName+'</a>'+
 						'</dt></dl>'
 				});
 				$("#courseInfo").html(tempHtml);
@@ -195,13 +194,13 @@ function initRank(){
 //搜索功能实现
 function query(){
 	var key = $("#key").val();
-	var url = "/a4q/stage/postList.html?key="+key;
+	var url = "/a4q/stage/headPage/listComposea4q.html?key="+key;
 	window.open(url); 
 }
 
 //提出问题
 function ask(){
-	if(isLogin == "true"){
+	if(isLogin){
 		window.open("a4q.html");
 	}else{
 		alert("发布帖子之前请登录");
@@ -249,7 +248,7 @@ function initRecommedPost(){
 function iterator(data){
 	var tempHtml = '';
 	$.map(data.data.list,function(value,index){
-	tempHtml += '<tr><td class="qaTitle"><span><a href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.postTitle+'</a></span></td>'+
+	tempHtml += '<tr><td class="qaTitle"><span style="float:left" class="tagTalk">论坛</span><span><a href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.postTitle+'</a></span></td>'+
 			'<td>'+formatD(value.createTime)+'</td>'+
 			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.deployUser.userId+'" target="_blank">'+value.deployUser.userName+'</a></td></tr>';
 	});

@@ -46,12 +46,17 @@ public class PostService {
 	}
 
 	/**
-	 * 查询帖子信息
+	 * 前台调用用查询帖子信息
 	 */
 	public List<Post> queryPostList(Post post) {
 		List<Post> list = dao.queryPostList(post);
 		Collections.sort(list, Comparator.comparing(Post::getCreateTime));
 		Collections.reverse(list);
+		return list;
+	}
+	
+	public List<Post> queryPostListBack(Post post) {
+		List<Post> list = dao.queryPostList(post);
 		return list;
 	}
 
@@ -272,7 +277,7 @@ public class PostService {
 			requestUser.setUserType(user.getUserType());
 			List<Integer> userIdlist = dao.getUserIdInHistory(requestUser);
 			for(Integer userIdP : userIdlist) {
-				postIdList = cf.getRecommengBasedItemCF(userIdP);
+				postIdList = cf.getRecommengBasedItemCF(userIdP,"tb_post_history","post_id");
 				if(postIdList.size()>0) {
 					break;
 				}
@@ -281,7 +286,7 @@ public class PostService {
 				return null;
 			/*------基于人口统计学的推荐算法解决冷启动问题结束-----*/
 		}else {
-			postIdList = cf.getRecommengBasedItemCF(userId);
+			postIdList = cf.getRecommengBasedItemCF(userId,"tb_post_history","post_id");
 		}
 		LinkedList<Post> postList = new LinkedList<Post>();
 		for(Integer postId : postIdList) {

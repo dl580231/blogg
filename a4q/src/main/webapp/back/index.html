@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿	<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -117,7 +117,7 @@
             data = [{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":3,"resourceName":"基础数据","resourceOrder":0,"resourceType":""},
             {"accessPath":"user.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":7,"resourceName":"用户","resourceOrder":0,"resourceType":""},
             {"accessPath":"course.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":32,"resourceName":"分类","resourceOrder":0,"resourceType":""},
-            {"accessPath":"post.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":8,"resourceName":"问题","resourceOrder":0,"resourceType":""},
+            {"accessPath":"post.html?noCache="+new Date(),"checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":8,"resourceName":"问题","resourceOrder":0,"resourceType":""},
             {"accessPath":"floor.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":14,"resourceName":"评论","resourceOrder":0,"resourceType":""}];
 			/* {"accessPath":"evaluate.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":9,"resourceName":"评价","resourceOrder":0,"resourceType":""}, */
             /* {"accessPath":"floorreply.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":27,"resourceName":"楼回复","resourceOrder":0,"resourceType":""} */
@@ -193,7 +193,8 @@
 						$(ele).css({background:'#044599'});
 					}
 				});
-				
+			});
+		});
 	</script>
 	<!-- side menu start，各个列表的数据展示位置  -->
 	<div id="top_nav">
