@@ -20,6 +20,7 @@
   		<id column="blog_id" property="blogId" jdbcType="INTEGER" />
     	<result column="user_id" property="userId" />
     	<result column="blog_title" property="blogTitle" jdbcType="VARCHAR" />
+    	<result column="read_count" property="readCount" jdbcType="INTEGER" />
     	<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     </association>
     <association property="user" javaType="PersonInfo">
@@ -205,13 +206,15 @@
 	</select>
 
 	<select id="getBlogOrderByPriority" resultMap="BlogDtoMap">
-		select blog_id,blog_title,b.create_time,priority,user_name,b.user_id
+		select blog_id,read_count,blog_title,b.create_time,priority,user_name,b.user_id
 		from tb_blog b,tb_person_info u
 		<where> and enable_view = 1
 			  and b.user_id = u.user_id
-			  <if test="courseId != null">and course_id = #{courseId}</if>
+			  <if test="blog.courseId != null">and course_id = #{courseId}</if>
+			  <if test="blog.blogTitle != null and blog.blogTitle != ''">and blog_title like CONCAT("%",#{blog.blogTitle},"%")</if>
+			  <if test="blog.blogContent != null and blog.blogContent != ''">or blog_content like CONCAT("%",#{blog.blogContent},"%")</if>
 		</where>
-			  order by priority asc
-			  limit #{rowStart},#{rowSize}
+		order by priority asc
+		<if test="rowStart !=null and rowSize != null">limit #{rowStart},#{rowSize}</if> 
 	</select>
 </mapper>

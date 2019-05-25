@@ -32,7 +32,9 @@ public interface BlogDao {
 	public Integer queryBlogCount();
 
 	public List<BlogDto> getBlogOrderByPriority(@Param("rowStart") Integer rowStart,
-			@Param("rowSize") Integer rowSize, @Param("courseId") Integer course);
+			@Param("rowSize") Integer rowSize, @Param("blog") Blog blog);
+
+	public List<BlogDto> getSerachBlog(String blogContent, String blogTitle);
 
 	
 

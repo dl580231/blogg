@@ -61,7 +61,9 @@ public class BlogDaoTest extends BaseTest {
 	
 	@Test
 	public void getBlogOrderByPriority() {
-		List<BlogDto> list = dao.getBlogOrderByPriority(0, 5, 3);
-		System.out.println(list);
+		Blog blog = new Blog();
+		blog.setBlogContent("java");
+		List<BlogDto> list = dao.getBlogOrderByPriority(null, null, blog);
+		System.out.println(list.size());
 	}
 }

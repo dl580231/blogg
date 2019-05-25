@@ -1,3 +1,3 @@
-2019-05-144 20:17:00:000 [main] DEBUG com.nuc.a4q.dao.BlogHistoryDao.getUserIdInHistory - ==>  Preparing: select user_id from tb_person_info where user_id in (select user_id from tb_blog_history) and user_type = ? and gender = ? 
-2019-05-144 20:17:00:000 [main] DEBUG com.nuc.a4q.dao.BlogHistoryDao.getUserIdInHistory - ==> Parameters: 老师(String), 女(String)
-2019-05-144 20:17:00:000 [main] DEBUG com.nuc.a4q.dao.BlogHistoryDao.getUserIdInHistory - <==      Total: 1
+2019-05-146 00:02:44:044 [main] DEBUG com.nuc.a4q.dao.BlogDao.getBlogOrderByPriority - ==>  Preparing: select blog_id,blog_title,b.create_time,priority,user_name,b.user_id from tb_blog b,tb_person_info u WHERE enable_view = 1 and b.user_id = u.user_id or blog_content like CONCAT("%",?,"%") order by priority asc 
+2019-05-146 00:02:44:044 [main] DEBUG com.nuc.a4q.dao.BlogDao.getBlogOrderByPriority - ==> Parameters: java(String)
+2019-05-146 00:02:44:044 [main] DEBUG com.nuc.a4q.dao.BlogDao.getBlogOrderByPriority - <==      Total: 165

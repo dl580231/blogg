@@ -173,7 +173,7 @@ function initRank(){
 //搜索功能实现
 function query(){
 	var key = $("#key").val();
-	var url = "/a4q/stage/postList.html?key="+key;
+	var url = "/a4q/stage/headPage/blogListCompose.html?key="+key;
 	window.open(url); 
 }
 

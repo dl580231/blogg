@@ -161,14 +161,13 @@
 
 	<select id="getResolvedByPriority" resultType="Post">
 		select
-		post_id,post_title,t.create_time,priority
+		post_id,post_title,t.create_time,priority,read_count
 		from
 		tb_post t
 		<where>
 			<if test="courseId != null">and course_id = #{courseId}</if>
-			<!-- <if test="postContent != null and postContent != ''">and post_content 
-				like CONCAT("%",#{postContent},"%")</if> -->
 			<if test="postTitle != null and postTitle != ''">and post_title like CONCAT("%",#{postTitle},"%")</if>
+			<if test="postContent != null and postContent != ''">or post_content like CONCAT("%",#{postContent},"%")</if>
 			and best_answer_id is not null
 		</where>
 		ORDER BY priority ASC
@@ -176,15 +175,14 @@
 
 	<select id="getUnResolvedByPriority" resultType="Post">
 		select
-		post_id,post_title,t.create_time,priority
+		post_id,post_title,t.create_time,priority,read_count
 		from
 		tb_post t
 		<where>
 			AND best_answer_id IS NULL
 			<if test="courseId != null">and course_id = #{courseId}</if>
-			<!-- <if test="postContent != null and postContent != ''">and post_content 
-				like CONCAT("%",#{postContent},"%")</if> -->
 			<if test="postTitle != null and postTitle != ''">and post_title like CONCAT("%",#{postTitle},"%")</if>
+			<if test="postContent != null and postContent != ''">and post_content  like CONCAT("%",#{postContent},"%")</if>
 		</where>
 		ORDER BY priority ASC
 	</select>

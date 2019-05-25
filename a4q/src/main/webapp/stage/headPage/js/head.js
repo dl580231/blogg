@@ -1,6 +1,5 @@
 var position = 5;
 $(function(){
-	var currentUrl = window.location.pathname		
 	loginState(aSuccess,aDefault);
 });
 
@@ -37,9 +36,11 @@ function query(){
 	if(position == 0){
 		var key = $("#key").val();
 		var url = "/a4q/stage/headPage/listComposea4q.html?key="+key;
-		window.open(url); 
+		window.open(url,"_self");
 	}else if(position == 1){
-		
+		var key = $("#key").val();
+		var url = "/a4q/stage/headPage/blogListCompose.html?key="+key;
+		window.open(url,"_self");
 	}
 }
 	
@@ -48,6 +49,7 @@ function ask(){
 		var url = "/a4q/stage/headPage/a4q.html";
 		window.open(url,"_self"); 
 	}else if(position == 1){
-		
+		var url = "/a4q/stage/headPage/blogDeploy.html";
+		window.open(url,"_self"); 
 	}
 }	

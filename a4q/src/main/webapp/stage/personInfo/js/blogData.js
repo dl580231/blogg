@@ -11,7 +11,7 @@ function initBlogMessage(){
 		if(data.state==0){
 			var temp = '';
 			$.map(data.data,function(value,index){
-				temp += '<tr><td width="50%"><div class="typographic">'+value.blogTitle+'</div>'
+				temp += '<tr><td width="50%"><div class="typographic"><span style="min-width:0" class="tagTalk">博客</span>'+value.blogTitle+'</div>'
 			      		+'</td><td width="30%" class="center"><ul class="unstyled"><li id="readCount">阅读量：'+value.readCount+'</li><li id="creatTime">发布时间：'+format(value.createTime)+'</li></ul>'
 			      		+'</td><td width="20%" class="center"><ul class="unstyled"><li><a target="_blank" href="/a4q/stage/blogShow.html?blogId='+value.blogId+'">查看</a></li><li><a href="#">编辑</a></li><li><a onclick="rmPost('+value.blogId+')">删除</a></li></ul></td></tr>';
 			});

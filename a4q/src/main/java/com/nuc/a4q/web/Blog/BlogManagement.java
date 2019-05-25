@@ -95,4 +95,17 @@ public class BlogManagement {
 		map.put("list", list);
 		return ResultUtil.success(map);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getSerachBlog", method = RequestMethod.GET)
+	public Result getSerachBlog(String key) {
+		String blogContent = "";
+		String blogTitle = "";
+		if (key != null && key.length() > 0) {
+			blogContent = key;
+			blogTitle = key;
+		}
+		List<BlogDto> list = service.getSerachBlog(blogContent, blogTitle);
+		return ResultUtil.success(list);
+	}
 }

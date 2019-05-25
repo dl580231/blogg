@@ -109,7 +109,7 @@ function initBlogMessage(){
 			$.map(data.data,function(value,index){
 				if(value.lookOver == 1){
 					temp += '<tr>'
-						+'<td width="50%"><div style="margin-bottom:5px;"></span><span class="tagTalk">论坛</span>用户：<a target="_blank" href="personInfoHead.html?userId='+value.user.userId+'">'+value.user.userName+'</a>回复了你的帖子</div><div class=""><a target="_blank" href="../blogShow.html?blogId='+value.blog.blogId+'">'+value.blog.blogTitle+'</a></div></td>'
+						+'<td width="50%"><div style="margin-bottom:5px;"></span><span class="tagTalk">博客</span>用户：<a target="_blank" href="personInfoHead.html?userId='+value.user.userId+'">'+value.user.userName+'</a>回复了你的帖子</div><div class=""><a target="_blank" href="../blogShow.html?blogId='+value.blog.blogId+'">'+value.blog.blogTitle+'</a></div></td>'
 						+'<td width="30%" class="center"><ul class="unstyled"><li id="creatTime">通知时间：'+format(value.createTime)+'</li></ul></td>'
 						+'<td width="20%" class="center"><ul class="unstyled"><li><a onclick="rmEvaluateNotice('+value.evaluateId+')">删除</a></li></ul></td>'
 						+'</tr>';
@@ -117,7 +117,7 @@ function initBlogMessage(){
 				else if(value.lookOver == 0){
 					notReadBlog += 1;
 					temp += '<tr>'
-						+'<td width="50%"><div style="margin-bottom:5px;"><span class="redpointM"></span><span class="tagTalk">论坛</span>用户：<a target="_blank" href="personInfoHead.html?userId='+value.user.userId+'">'+value.user.userName+'</a>回复了你的帖子</div><div class=""><a onclick="blogShowHandle('+value.blog.blogId+','+value.evaluateId+')">'+value.blog.blogTitle+'</a></div></td>'
+						+'<td width="50%"><div style="margin-bottom:5px;"><span class="redpointM"></span><span class="tagTalk">博客</span>用户：<a target="_blank" href="personInfoHead.html?userId='+value.user.userId+'">'+value.user.userName+'</a>回复了你的帖子</div><div class=""><a onclick="blogShowHandle('+value.blog.blogId+','+value.evaluateId+')">'+value.blog.blogTitle+'</a></div></td>'
 						+'<td width="30%" class="center"><ul class="unstyled"><li id="creatTime">通知时间：'+format(value.createTime)+'</li></ul></td>'
 						+'<td width="20%" class="center"><ul class="unstyled"><li><a onclick="rmEvaluateNotice('+value.evaluateId+')">删除</a></li></ul></td>'
 						+'</tr>';

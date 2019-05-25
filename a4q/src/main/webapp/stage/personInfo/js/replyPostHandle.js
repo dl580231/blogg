@@ -11,7 +11,7 @@ function initreplyPost(){
 		if(data.state==0){
 			var temp = '';
 			$.map(data.data,function(value,index){
-				temp += '<tr><td width="50%"><div class="typographic">'+value.postTitle+'</div>'
+				temp += '<tr><td width="50%"><div class="typographic"><span style="min-width:0" class="tagTalk">论坛</span>'+value.postTitle+'</div>'
 			      		+'</td><td width="30%" class="center"><ul class="unstyled"><li id="readCount">阅读量：'+value.readCount+'</li><li id="creatTime">评论时间：'+format(value.createTime)+'</li></ul>'
 			      		+'</td><td width="20%" class="center"><ul class="unstyled"><li><a target="_blank" href="/a4q/stage/postShow.html?postId='+value.postId+'">查看</a></li></ul></td></tr>';
 			});

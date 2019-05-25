@@ -116,7 +116,9 @@ public class BlogService {
 		if(rowStart==null || rowSize==null)
 			throw new LogicException("查询参数错误");
 		Integer count = blogDao.queryBlogCount();
-		List<BlogDto> list = blogDao.getBlogOrderByPriority(rowStart,rowSize,courseId);
+		Blog blog = new Blog();
+		blog.setCourseId(courseId);
+		List<BlogDto> list = blogDao.getBlogOrderByPriority(rowStart,rowSize,blog);
 		HashMap<Object, Object> map = new HashMap<Object,Object>();
 		map.put("list", list);
 		map.put("count", count);
@@ -154,5 +156,13 @@ public class BlogService {
 			blogList.add(getBlogById(blogId));
 		}
 		return blogList;
+	}
+
+	public List<BlogDto> getSerachBlog(String blogContent, String blogTitle) {
+		Blog blog = new Blog();
+		blog.setBlogContent(blogContent);
+		blog.setBlogTitle(blogTitle);
+		List<BlogDto> list = blogDao.getBlogOrderByPriority(null, null, blog);
+		return list;
 	}
 }
