@@ -123,7 +123,7 @@
 
 	<select id="getResolvedPostTestByPriority" resultMap="postMap">
 		select
-		post_id,post_title,t.create_time,priority,user_name,t.user_id
+		post_id,post_title,read_count,t.create_time,priority,user_name,t.user_id
 		from
 		tb_post t,tb_person_info u
 		<where>
@@ -137,7 +137,7 @@
 
 	<select id="getUnResolvedPostTestByPriority" resultMap="postMap">
 		select
-		post_id,post_title,t.create_time,priority,user_name,t.user_id
+		post_id,post_title,read_count,t.create_time,priority,user_name,t.user_id
 		from
 		tb_post t,tb_person_info u
 		<where>
@@ -189,7 +189,7 @@
 
 	<select id="getPostById" resultMap="postMap">
 		select
-		p.post_id,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time
+		p.post_id,read_count,c.course_id,c.course_name,per.user_id,per.user_name,best_answer_id,post_title,post_content,p.priority,p.create_time
 		from
 		tb_post p,tb_person_info per,tb_course c
 		where

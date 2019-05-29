@@ -41,7 +41,7 @@ function initPostRank(){
 		tempHtml = '';
 		$.map(data.data,function(value,index){
 			tempHtml += '<li class="s_c_list l_1">'+
-			   		   '<span margin="left"><a target="_blank" href="../blogShow.html?blogId='+value.blogId+'">'+value.blogTitle+'</a></span></li>';					
+			   		   '<span margin="left" style="float:none;"><a target="_blank" href="../blogShow.html?blogId='+value.blogId+'">'+value.blogTitle+'</a><span style="float:none;color:#14a7ed;">（阅读量：'+value.readCount+'）</span></span></li>';					
 		});
 		$("#postRank").html(tempHtml);
 	});
@@ -223,7 +223,7 @@ function initRecommedBlog(){
 function iterator(data){
 	var tempHtml = '';
 	$.map(data.data.list,function(value,index){
-	tempHtml += '<tr><td class="qaTitle"><span style="float:left" class="tagTalk">博客</span><span><a href="/a4q/stage/blogShow.html?blogId='+value.blog.blogId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.blog.blogTitle+'</a></span></td>'+
+	tempHtml += '<tr><td class="qaTitle"><span style="float:left" class="tagTalk">博客</span><span><a href="/a4q/stage/blogShow.html?blogId='+value.blog.blogId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.blog.blogTitle+'</a><span style="color:black;">（阅读量：'+value.blog.readCount+'）</span></span></td>'+
 			'<td>'+formatD(value.blog.createTime)+'</td>'+
 			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.user.userId+'" target="_blank">'+value.user.userName+'</a></td></tr>';
 	});

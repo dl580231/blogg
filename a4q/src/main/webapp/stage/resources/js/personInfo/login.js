@@ -1,5 +1,3 @@
-var postId = getQueryString("postId");
-var a4q = getQueryString("a4q");
 $(function() {
 	$("#login").click(function() {
 		login();
@@ -32,13 +30,11 @@ function login() {
 			success : function(data) {
 				if (data.state == 0) {
 					alert("登录成功");
-					/*if(postId != '')
-						window.open("/a4q/stage/postShow.html?postId="+postId,"_self");
-					else if(a4q != '')
-						window.open("/a4q/stage/a4q.html","_self");
+					var lastUrl = document.referrer;
+					if(document.referrer.indexOf("login")==-1)
+						self.location = document.referrer;
 					else
-						window.open("/a4q/stage/headPage/headpage.html","_self");*/
-					self.location=document.referrer;
+						self.location = "headPage/blogHeadPage.html";
 				} else {
 					alert(data.stateInfo);
 				}

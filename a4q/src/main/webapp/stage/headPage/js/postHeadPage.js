@@ -44,7 +44,7 @@ function initPostRank(){
 		tempHtml = '';
 		$.map(data.data,function(value,index){
 			tempHtml += '<li class="s_c_list l_1">'+
-			   		   '<span margin="left"><a target="_blank" href="../postShow.html?postId='+value.postId+'">'+value.postTitle+'</a></span></li>';					
+			   		   '<span style="float:none" margin="left"><a target="_blank" href="../postShow.html?postId='+value.postId+'">'+value.postTitle+'</a><span style="float:none;color:#14a7ed;">（阅读量：'+value.readCount+'）</span></span></li>';					
 		});
 		$("#postRank").html(tempHtml);
 	});
@@ -248,7 +248,7 @@ function initRecommedPost(){
 function iterator(data){
 	var tempHtml = '';
 	$.map(data.data.list,function(value,index){
-	tempHtml += '<tr><td class="qaTitle"><span style="float:left" class="tagTalk">论坛</span><span><a href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.postTitle+'</a></span></td>'+
+	tempHtml += '<tr><td class="qaTitle"><span style="float:left" class="tagTalk">论坛</span><span><a href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.postTitle+'</a><span style="color:black;">（阅读量：'+value.readCount+'）</span></span></td>'+
 			'<td>'+formatD(value.createTime)+'</td>'+
 			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.deployUser.userId+'" target="_blank">'+value.deployUser.userName+'</a></td></tr>';
 	});
