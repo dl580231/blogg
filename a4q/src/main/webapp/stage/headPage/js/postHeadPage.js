@@ -12,7 +12,7 @@ $(function(){
 	courseId = getQueryString("courseId");
 	position = getQueryString("position");
 	initPage();
-	bindScoll();
+//	bindScoll();
 });
 
 //改变选中科目背景
