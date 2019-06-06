@@ -5,23 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <title>新建待办事项</title>
-  <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
-  <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+  <style>
+  	.js-load-more{
+	    padding:0 15px;
+	    width:120px;
+	    height:30px;
+	    background-color:#D31733;
+	    color:#fff;
+	    line-height:30px;
+	    text-align:center;
+	    border-radius:5px;
+	    margin:20px auto;
+	    border:0 none;
+	    font-size:16px;
+	    display:none;/*默认不显示，ajax调用成功后才决定显示与否*/
+	}
+  </style>
 </head>
 
 <body>
-	<div class="sui-pagination pagination-large">
-	  <ul>
-	    <li class="prev disabled"><a href="#">«</a></li>
-	    <li class="active"><a href="#">1</a></li>
-	    <li><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	    <li><a href="#">4</a></li>
-	    <li><a href="#">5</a></li>
-	    <li class="next"><a href="#">»</a></li>
-	  </ul>
-	</div>
+    <div class="js-load-more">加载更多</div>
 </body>
 
 </html>

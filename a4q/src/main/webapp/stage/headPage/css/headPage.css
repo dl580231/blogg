@@ -9,19 +9,20 @@
 				  		 z-index:2;
 					}
 					
-					.button { /* °´Å¥ÃÀ»¯ */
+					.button { /* ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ */
 							display:inline-block;
 							padding:5px;
-							border-width: 0px; /* ±ß¿ò¿í¶È */
-							border-radius: 3px; /* ±ß¿ò°ë¾¶ */
-							background: #1E90FF; /* ±³¾°ÑÕÉ« */
-							cursor: pointer; /* Êó±êÒÆÈë°´Å¥·¶Î§Ê±³öÏÖÊÖÊÆ */
-							outline: none; /* ²»ÏÔÊ¾ÂÖÀªÏß */
-							font-family: Microsoft YaHei; /* ÉèÖÃ×ÖÌå */
-							color: white; /* ×ÖÌåÑÕÉ« */
-							font-size: 17px; /* ×ÖÌå´óÐ¡ */
+							border-width: 0px; /* ï¿½ß¿ï¿½ï¿½ï¿½ */
+							border-radius: 3px; /* ï¿½ß¿ï¿½ë¾¶ */
+							background: #1E90FF; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É« */
+							cursor: pointer; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë°´Å¥ï¿½ï¿½Î§Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+							outline: none; /* ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+							font-family: Microsoft YaHei; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+							color: white; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É« */
+							font-size: 12px; /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ */
+							margin-right:18px;
 						}
-						.button:hover { /* Êó±êÒÆÈë°´Å¥·¶Î§Ê±¸Ä±äÑÕÉ« */
+						.button:hover { /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë°´Å¥ï¿½ï¿½Î§Ê±ï¿½Ä±ï¿½ï¿½ï¿½É« */
 							background: #5599FF;
 						}
 						.tagTalk{
@@ -35,4 +36,15 @@
 						    background-color: #fff;
 						    border: 1px solid #e0e0e0;
 						    vertical-align: top;
+						}
+					
+						.addMore {
+						    text-align: right;
+						    cursor: pointer;
+						    font-size: 10px;
+						    color: #ccc;
+						}
+						
+						#submitForm {
+							text-align: center
 						}

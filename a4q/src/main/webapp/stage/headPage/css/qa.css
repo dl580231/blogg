@@ -80,11 +80,11 @@ pre{white-space:pre-wrap; word-wrap:break-word; zoom:1;}
 .tab{border-bottom:2px solid #4ca6ff; height:28px; padding-left:15px;}
 .tab li{float:left; display:inline; background-image:url(../images/qa/qabg.png); background-repeat:no-repeat; background-position:-108px -124px; height:30px; line-height:30px; width:106px; text-align:center; position:relative; margin-bottom:-2px; z-index:10; cursor:pointer;}
 .tab li.curTag{font-weight:bold; background-position:0 -124px;}
-.m_qalist{border:1px solid #d4d4d4; border-top:none; padding:10px; zoom:1;}
-.latestQa{padding-bottom:15px;}
+.m_qalist{border:1px solid #d4d4d4; border-top:none;  padding: 0 10px 5px 10px; zoom:1;}
+
 .m_qalist table{font-size:12px; width:100%; text-align:center;}
 .m_qalist th{font-weight:normal; padding:3px 0; border-bottom:1px dotted #d4d4d4;}
-.m_qalist td{border-bottom:1px dotted #d4d4d4; color:#999; padding:7px 0 5px 0;}
+.m_qalist td{border-bottom:1px dotted #d4d4d4; color:#999; padding:5px 0 5px 0;}
 .m_qalist .qaTitle{font-size:14px; text-align:left;}
 .qaTitle span{padding-right:10px;}
 .qaTitle_link{float:left; display:inline;}
@@ -113,13 +113,13 @@ pre{white-space:pre-wrap; word-wrap:break-word; zoom:1;}
 .sbar_msg230 ul{background:url(../images/qa/qa_note_230b.jpg) no-repeat left bottom;}
 .sbar_msg li,.sbar_msg230 li{padding-bottom:5px; white-space:pre-wrap; word-wrap:break-word; zoom:1;}
 /*最新活动通知栏*/
-.sbar_note .sbar_gray,.sbar_charts .sbar_gray{padding-top:5px; padding-bottom:5px;}
+.sbar_note .sbar_gray,.sbar_charts .sbar_gray{padding-top:7px; padding-bottom:7px;}
 /*社区回答排行榜*/
 .sbar_charts{position:relative; zoom:0;}
-.sbar_charts .tabTag_rank{position:absolute; top:5px; right:10px; z-index:2; width:100px;}
+.sbar_charts .tabTag_rank{position:absolute; top:3px; right:0; z-index:2; width:100px;}
 .sbar_charts .tag2{padding:0;}
 .sbar_charts .tag2 li{padding:0 8px;}
-.s_c_list{background-image:url(../images/qa/qaicon.png); background-repeat:no-repeat; clear:both; line-height:18px; margin-top:6px; padding:0 0 6px 23px; overflow:hidden;}
+.s_c_list{background-image:url(../images/qa/qaicon.png); background-repeat:no-repeat; clear:both; line-height:18px; margin-top:7.5px; padding:0 20px; overflow:hidden;}
 .l_1{background-position:0 -478px;}
 .l_2{background-position:0 -513px;}
 .l_3{background-position:0 -548px;}

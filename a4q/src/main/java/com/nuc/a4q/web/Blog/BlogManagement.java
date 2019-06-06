@@ -74,7 +74,7 @@ public class BlogManagement {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "getPostRankByReadCount", method = RequestMethod.GET)
+	@RequestMapping(value = "getBlogRankByReadCount", method = RequestMethod.GET)
 	public Result getPostRankByReadCount() {
 		List<Blog> list = service.getBlogRankByReadCount();
 		return ResultUtil.success(list);

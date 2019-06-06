@@ -186,13 +186,14 @@ a.icon_page:hover{color:#fff; background-position:-622px -21px;}
 .sec_search:hover{background-position:0 -52px;}
 .sec_ask:hover{background-position:-115px -52px;}
 .sec_answer:hover{background-position:-230px -52px;}
-.search_key{margin-top:5px;}
+.search_key{margin-top:5px;color: #bbb;padding-left:150px}
 .search_key a{margin-left:10px;}
+.search_key a:hover{color:#0783ff}
 .search_h2{white-space:pre-wrap; word-wrap:break-word; zoom:1;}
 
 /*------------------------ 主体内容 content -------------------------*/
-.sbar_til{height:30px; line-height:30px; padding-left:10px;}
-.sbar_gray{border-left:1px solid #d4d4d4; border-right:1px solid #d4d4d4; height:100%; padding:8px;}
+.sbar_til{height:32px; line-height:32px; padding-left:10px;}
+.sbar_gray{border-left:1px solid #d4d4d4; border-right:1px solid #d4d4d4; height:100%; padding:0 8px;}
 /*学科关键词*/
 .sbar_til190_blue{background-position:0 -145px; color:#fff;}
 .sbar_grade .sbar_gray{background-color:#f0f0f0;}
@@ -205,7 +206,7 @@ a.icon_page:hover{color:#fff; background-position:-622px -21px;}
 .sbar_grade_tag li.nav_hover a,.sbar_grade_tag li a:hover{background-color:#4ca6ff; color:#fff;}
 .sbar_grade_tag li.nav_hover a:link,.sbar_grade_tag li.nav_hover a:visited,.sbar_grade_tag li.nav_hover a:hover,.sbar_grade_tag li.nav_hover a:active{color:#fff;}
 .sbar_subject_list dt{font-size:14px; font-weight:bold;}
-.sbar_subject_list dl{border-bottom:1px dotted #d4d4d4; padding:12px 0;}
+.sbar_subject_list dl{border-bottom:1px dotted #d4d4d4; padding:14px 0 13px 0;}
 .sbar_subject_list dd a{float:left; display:inline; margin-right:10px; line-height:22px; white-space:nowrap;}
 .sbar_subject_list .nav_hover a:link,.sbar_subject_list .nav_hover a:visited,.sbar_subject_list .nav_hover a:hover,.sbar_subject_list .nav_hover a:active{background-color:#4ca6ff; color:#fff; padding:2px 5px; text-decoration:none;}
 .show_s{background-image:url(../images/qa/qaicon.png); background-repeat:no-repeat; padding-right:20px;}

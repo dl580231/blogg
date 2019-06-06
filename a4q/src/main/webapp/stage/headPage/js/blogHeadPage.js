@@ -31,12 +31,12 @@ function initPage(){
 	initCourse();
 	initBlogContent();
 	initRank();
-	initPostRank();
+	initblogRank();
 	loginState(aSuccess,aDefault);
 }
 
-function initPostRank(){
-	var url = "/a4q/blog/getPostRankByReadCount";
+function initblogRank(){
+	var url = "/a4q/blog/getBlogRankByReadCount";
 	$.getJSON(url,function(data){
 		tempHtml = '';
 		$.map(data.data,function(value,index){
@@ -223,7 +223,7 @@ function initRecommedBlog(){
 function iterator(data){
 	var tempHtml = '';
 	$.map(data.data.list,function(value,index){
-	tempHtml += '<tr><td class="qaTitle"><span style="float:left" class="tagTalk">博客</span><span><a href="/a4q/stage/blogShow.html?blogId='+value.blog.blogId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;">'+value.blog.blogTitle+'</a><span style="color:black;">（阅读量：'+value.blog.readCount+'）</span></span></td>'+
+	tempHtml += '<tr><td class="qaTitle"><span style="padding:0;"><a href="/a4q/stage/blogShow.html?blogId='+value.blog.blogId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;"><span style="margin-right:5px;" class="tagTalk">博客</span>'+value.blog.blogTitle+'<span style="color:black;">（阅读量：'+value.blog.readCount+'）</span></a></span></td>'+
 			'<td>'+formatD(value.blog.createTime)+'</td>'+
 			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.user.userId+'" target="_blank">'+value.user.userName+'</a></td></tr>';
 	});

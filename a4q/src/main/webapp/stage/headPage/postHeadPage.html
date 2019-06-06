@@ -71,29 +71,29 @@
 						</div>
 						<div class="m_qalist latestQa hidden">
 							<div class="mart10">
-									<table summary="所有待解决问题" id="unResolved">
-										<tr class="tr_boeder">
-											<th class="textleft">问题</th>
-		   									<th width="12%">提问时间</th>
-		   									<th width="20%">提问者</th> 
-		   								</tr>
-									</table>
+								<table summary="所有待解决问题" id="unResolved">
+									<tr class="tr_boeder">
+										<th class="textleft">问题</th>
+		   								<th width="12%">提问时间</th>
+		   								<th width="20%">提问者</th> 
+		   							</tr>
+								</table>
+							</div>
+							<div class="addMore" >
+								点击加载更多
 							</div>
 						</div>
 						<div class="m_qalist latestQa hidden">
 							<div class="mart10">
-									<table summary="推荐部分" id="recommendContent">
-										<tr class="tr_boeder">
-												<th class="textleft">问题</th>
-			   									<th width="12%">提问时间</th>
-			   									<th width="20%">提问者</th> 
-			   							</tr>
-									</table>
+								<table summary="推荐部分" id="recommendContent">
+									<tr class="tr_boeder">
+											<th class="textleft">问题</th>
+			   								<th width="12%">提问时间</th>
+			   								<th width="20%">提问者</th> 
+			   						</tr>
+								</table>
 							</div>
 						</div>
-					</div>
-					<div style="text-align:center;">
-						点击加载更多
 					</div>
 				</div>
 				<div id="loading" style="visibility:hidden"></div>
@@ -101,13 +101,12 @@
 			<div class="sidebar190 right" id="pRight">
 
 
-				<div class="sbar_charts mart10" id="pRight01">
+				<div class="sbar_charts mart10" style="margin-top:0" id="pRight01">
 					<h3 class="fb sbar_til sbar_til190 qafilet">
 						<span>排行榜</span>
 					</h3>
 					<ul class="tag2 tag2_red tabTag_rank clearfix">
-						<li onclick="setTab('rank',1);">博客</li> 
-						<li onclick="setTab('rank',2);" class="curTag">问题</li>
+						<li class="curTag">帖子(发布数量)</li>
 					</ul>
 					<div class="sbar_gray tabCon_rank">
 						<!-- 排行榜展示 -->
@@ -122,8 +121,7 @@
 						<span>热门</span>
 					</h3>
 					<ul class="tag2 tag2_red tabTag_rank clearfix">
-						<li onclick="setTab('rank',1);">博客</li> 
-						<li onclick="setTab('rank',2);" class="curTag">帖子</li>
+						<li class="curTag">帖子</li>
 					</ul>
 					<div class="sbar_gray tabCon_rank">
 						<ul id="postRank"></ul>
