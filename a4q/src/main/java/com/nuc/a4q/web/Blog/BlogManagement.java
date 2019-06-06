@@ -21,6 +21,7 @@ import com.nuc.a4q.entity.Result;
 import com.nuc.a4q.entity.UserRank;
 import com.nuc.a4q.exception.LogicException;
 import com.nuc.a4q.group.Insert;
+import com.nuc.a4q.group.Update;
 import com.nuc.a4q.service.BlogService;
 import com.nuc.a4q.utils.HttpServletRequestUtils;
 import com.nuc.a4q.utils.ResultUtil;
@@ -108,4 +109,31 @@ public class BlogManagement {
 		List<BlogDto> list = service.getSerachBlog(blogContent, blogTitle);
 		return ResultUtil.success(list);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="getBlogByIdE",method=RequestMethod.GET)
+	public Result getBlogByIdE(Integer blogId,HttpServletRequest request) {
+		BlogDto data = service.getBlogById(blogId);
+		return ResultUtil.success(data);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="editBlog",method=RequestMethod.POST)
+	public Result editBlog(@Validated(value=Update.class)Blog blog,HttpServletRequest request,BindingResult result) {
+		if (result.hasErrors()) {
+			throw new LogicException(result.getFieldError().getDefaultMessage());
+		}
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		service.editBlog(blog,user);
+		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="editJudge",method=RequestMethod.GET)
+	public Result editJudge(HttpServletRequest request,Blog blog) {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		boolean result = service.judgeBelong(blog,user);
+		return ResultUtil.success(result);
+	}
+	
 }

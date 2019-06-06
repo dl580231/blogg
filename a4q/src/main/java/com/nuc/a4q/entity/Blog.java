@@ -7,19 +7,21 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.nuc.a4q.group.Insert;
+import com.nuc.a4q.group.Update;
 
 public class Blog {
+	@NotNull(message="修改博客ID不能为空",groups= {Update.class})
     private Integer blogId;
 
-    @NotNull(message="发布博客分类不能为空",groups= {Insert.class})
+    @NotNull(message="发布博客分类不能为空",groups= {Insert.class,Update.class})
     private Integer courseId;
 
     private Integer userId;
 
-    @NotBlank(message="博客题目不能为空",groups= {Insert.class})
+    @NotBlank(message="博客题目不能为空",groups= {Insert.class,Update.class})
     private String blogTitle;
     
-    @NotBlank(message="博客内容不能为空",groups= {Insert.class})
+    @NotBlank(message="博客内容不能为空",groups= {Insert.class,Update.class})
     private String blogContent;
 
     private Integer priority;

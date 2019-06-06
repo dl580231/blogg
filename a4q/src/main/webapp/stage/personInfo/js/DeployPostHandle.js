@@ -13,7 +13,7 @@ function initDeployPost(){
 			$.map(data.data,function(value,index){
 				temp += '<tr><td width="50%"><div class="typographic"><span style="min-width:0" class="tagTalk">论坛</span>'+value.postTitle+'</div>'
 			      		+'</td><td width="30%" class="center"><ul class="unstyled"><li id="readCount">阅读量：'+value.readCount+'</li><li id="creatTime">发布时间：'+format(value.createTime)+'</li></ul>'
-			      		+'</td><td width="20%" class="center"><ul class="unstyled"><li><a target="_blank" href="/a4q/stage/postShow.html?postId='+value.postId+'">查看</a></li><li><a href="#">编辑</a></li><li><a onclick="rmPost('+value.postId+')">删除</a></li></ul></td></tr>';
+			      		+'</td><td width="20%" class="center"><ul class="unstyled"><li><a target="_blank" href="/a4q/stage/postShow.html?postId='+value.postId+'">查看</a></li><li><a href="#" onclick="edit('+value.postId+')">编辑</a></li><li><a onclick="rmPost('+value.postId+')">删除</a></li></ul></td></tr>';
 			});
 			$("#deployPostContent").html(temp);
 		}
@@ -33,4 +33,19 @@ function rmPost(postId){
 				}
 		});
 	}
+}
+
+function edit(postId){
+	var url = "/a4q/post/editJudge?postId="+postId;
+	$.getJSON(url,function(data){
+		if(data.state == 0){
+			if(data.data){
+				window.open("../headPage/edita4q.html?postId="+postId);
+			}else{
+				alert("无权操作");
+			}
+		}else{
+			alert(data.stateInfo);
+		}
+	});
 }

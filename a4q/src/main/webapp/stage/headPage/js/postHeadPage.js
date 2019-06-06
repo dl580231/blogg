@@ -12,7 +12,7 @@ $(function(){
 	courseId = getQueryString("courseId");
 	position = getQueryString("position");
 	initPage();
-//	bindScoll();
+	bindScoll();
 });
 
 //改变选中科目背景
@@ -118,7 +118,7 @@ function bindScoll(){
 		b = $(document).scrollTop();
 		c = $(document).height();
 	    if(((a+b+10)>c)&&!load){
-	    	loadJudge();//滚动完之后的下拉加载，判断对某块进行刷新
+//	    	loadJudge();//滚动完之后的下拉加载，判断对某块进行刷新
 	    }
 	});
 }

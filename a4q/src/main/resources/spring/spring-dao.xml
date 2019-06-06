@@ -26,7 +26,7 @@
 	</bean>
 	
 	<!-- 3.配置管理数据库连接池的SqlSessionFactory对象 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
 		<!-- 注入数据库连接池 -->
 		<property name="dataSource" ref="dataSource"/>
 		<!-- 注入本地mybatis配置文件 -->

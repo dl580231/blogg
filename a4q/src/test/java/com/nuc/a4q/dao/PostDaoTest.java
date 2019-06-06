@@ -9,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nuc.a4q.BaseTest;
 import com.nuc.a4q.entity.Course;
 import com.nuc.a4q.entity.PersonInfo;
@@ -20,7 +21,7 @@ public class PostDaoTest extends BaseTest {
 	private PostDao postdao;
 
 	@Test
-//	@Ignore
+	@Ignore
 	public void insertPostTest() {
 		Post post = new Post();
 		Course course = new Course();;
@@ -178,5 +179,13 @@ public class PostDaoTest extends BaseTest {
 		user.setGender("女");
 		List<Integer> list = postdao.getUserIdInHistory(user);
 		System.out.println(list);
+	}
+	
+	@Test
+	public void selectPageVoTest() {
+		Page<Post> page = new Page<>();
+		page.setCurrent(20);
+		page.setAsc("priority");
+	
 	}
 }

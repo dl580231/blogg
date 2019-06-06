@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nuc.a4q.dao.PersonInfoDao;
 import com.nuc.a4q.dao.PostDao;
 import com.nuc.a4q.dao.PostHistoryDao;
@@ -76,6 +78,9 @@ public class PostService {
 	 */
 	@Transactional
 	public void topPost(Post post) {
+		if(post.getPostId() == null) {
+			throw new LogicException("帖子为空");
+		}
 		Integer minPriority = dao.queryMinPriority();
 		post.setPriority(minPriority - 1);
 		dao.updatePost(post);
@@ -88,6 +93,9 @@ public class PostService {
 	 */
 	@Transactional // 这里加上事务，解决不可重复读问题
 	public void bottomPost(Post post) {
+		if(post.getPostId() == null) {
+			throw new LogicException("帖子为空");
+		}
 		Integer maxPriority = dao.queryMaxPriority();
 		post.setPriority(maxPriority + 1);
 		dao.updatePost(post);
@@ -293,5 +301,27 @@ public class PostService {
 			postList.add(dao.getPostById(postId));
 		}
 		return postList;
+	}
+
+	public IPage<Post> getPostPage(Page<Post> page) {
+		IPage<Post> list = dao.selectPage(page);
+		return list;
+	}
+
+	public void editPost(Post post,PersonInfo user,Course course) {
+		if(course.getCourseId() == null)
+			throw new LogicException("帖子分类为空");
+		if(judgeBelong(post, user)) {
+			dao.updatePost(post);
+		}else {
+			throw new LogicException("无权操作");
+		}
+	}
+	
+	public boolean judgeBelong(Post post,PersonInfo user) {
+		Post postJ = dao.getPostById(post.getPostId());
+		if(postJ.getDeployUser().getUserId().equals(user.getUserId()))
+			return true;
+		return false;
 	}
 }

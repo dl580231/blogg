@@ -25,7 +25,7 @@ $(function() {
 				$("#blogTitle").html('<h style="font-size: 22px; font-weight: bold; border-bottom: 2px solid rgb(100, 100, 100); ">​'+blog.blog.blogTitle+'</h1>');
 				$("#blogContent").html(blog.blog.blogContent);
 				$("#userName").text(blog.user.userName);
-				$("#userName").attr("href","personInfoShow.html?userId="+blog.user.userId);
+				$("#userName").attr("href","personInfo/personInfoHead.html?userId="+blog.user.userId);
 				$("#createTime").text(format(blog.blog.createTime));
 				$("#readCount").text(blog.blog.readCount);
 				initBlogEvaluate();

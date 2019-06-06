@@ -1,3 +1,15 @@
-2019-05-146 00:02:44:044 [main] DEBUG com.nuc.a4q.dao.BlogDao.getBlogOrderByPriority - ==>  Preparing: select blog_id,blog_title,b.create_time,priority,user_name,b.user_id from tb_blog b,tb_person_info u WHERE enable_view = 1 and b.user_id = u.user_id or blog_content like CONCAT("%",?,"%") order by priority asc 
-2019-05-146 00:02:44:044 [main] DEBUG com.nuc.a4q.dao.BlogDao.getBlogOrderByPriority - ==> Parameters: java(String)
-2019-05-146 00:02:44:044 [main] DEBUG com.nuc.a4q.dao.BlogDao.getBlogOrderByPriority - <==      Total: 165
+2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT COUNT(1) FROM tb_post 
+2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 
+2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT * FROM tb_post ORDER BY priority ASC LIMIT ?,? 
+2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 20(Long), 10(Long)
+2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - <==      Total: 10
+2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT COUNT(1) FROM tb_post 
+2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 
+2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT * FROM tb_post ORDER BY priority ASC LIMIT ?,? 
+2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 20(Long), 10(Long)
+2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - <==      Total: 10
+2019-06-156 17:13:49:049 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT COUNT(1) FROM tb_post 
+2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 
+2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT * FROM tb_post ORDER BY priority ASC LIMIT ?,? 
+2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 190(Long), 10(Long)
+2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - <==      Total: 0

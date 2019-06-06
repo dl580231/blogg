@@ -239,4 +239,8 @@
 			  and user_type = #{userType}
 			  and gender = #{gender}
 	</select>
+	
+	<select id="selectPage" resultMap="postMap">
+	    SELECT * FROM tb_post
+	</select>
 </mapper>

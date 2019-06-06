@@ -21,7 +21,7 @@ body {
 	text-align: left;
 	border: 1px solid #333;
 	background: #e1edfb;
-	height: 800px;
+	height: 600px;
 }
 </style>
 <body>
@@ -47,7 +47,7 @@ body {
 
 				<tr>
 					<td valign="top">内容：</td>
-					<td><script style="width:900px;height:500px;display:block;" id="editor" type="text/plain" ></script></td>
+					<td><script style="width:900px;height:400px;display:block;" id="editor" type="text/plain" ></script></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -59,10 +59,12 @@ body {
 		</form>
 
 	</div>
+	<div id="copyRight"></div>
 	
 	<script type="text/javascript">
 		$(function(){
 			$("#head").load("head.html");
+			$("#copyRight").load("../footer.html");
 		});
 	</script>	
 	<script type="text/javascript" charset="utf-8"

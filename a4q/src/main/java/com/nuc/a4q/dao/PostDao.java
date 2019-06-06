@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Post;
 import com.nuc.a4q.entity.UserRank;
@@ -149,4 +151,6 @@ public interface PostDao {
 	 * @return
 	 */
 	public List<Integer> getUserIdInHistory(PersonInfo user);
+	
+	public IPage<Post> selectPage(Page<Post> page);
 }

@@ -165,4 +165,19 @@ public class BlogService {
 		List<BlogDto> list = blogDao.getBlogOrderByPriority(null, null, blog);
 		return list;
 	}
+
+	public void editBlog(Blog blog,PersonInfo user) {
+		if(judgeBelong(blog, user)) {
+			blogDao.updateByPrimaryKeySelective(blog);
+		}else {
+			throw new LogicException("无权操作");
+		}
+	}
+	
+	public boolean judgeBelong(Blog blog,PersonInfo user) {
+		Blog blogJ = blogDao.selectByPrimaryKey(blog.getBlogId());
+		if(blogJ.getUserId().equals(user.getUserId()))
+			return true;
+		return false;
+	}
 }

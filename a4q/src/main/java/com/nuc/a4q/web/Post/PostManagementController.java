@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nuc.a4q.entity.Course;
 import com.nuc.a4q.entity.PersonInfo;
 import com.nuc.a4q.entity.Post;
@@ -104,10 +106,7 @@ public class PostManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/topPost", method = RequestMethod.GET)
-	public Result topPost(@Validated(value = Update.class) Post post, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			throw new LogicException(bindingResult.getFieldError().getDefaultMessage());
-		}
+	public Result topPost(Post post) {
 		service.topPost(post);
 		return ResultUtil.success();
 	}
@@ -120,10 +119,7 @@ public class PostManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/bottomPost", method = RequestMethod.GET)
-	public Result bottomPost(@Validated(value = Update.class) Post post, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			throw new LogicException(bindingResult.getFieldError().getDefaultMessage());
-		}
+	public Result bottomPost(Post post) {
 		service.bottomPost(post);
 		return ResultUtil.success();
 	}
@@ -225,6 +221,13 @@ public class PostManagementController {
 		request.getSession().setAttribute("currentPost", post);
 		return ResultUtil.success(post);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getPostByIdE", method = RequestMethod.GET)
+	public Result getPostByIdE(Integer postId) {
+		Post post = service.getPostById(postId);
+		return ResultUtil.success(post);
+	}
 
 	/**
 	 * 指定帖子最佳答案
@@ -291,5 +294,32 @@ public class PostManagementController {
 		HashMap<Object, Object> map = new HashMap<Object,Object>();
 		map.put("list", list);
 		return ResultUtil.success(map);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getPostPage", method = RequestMethod.GET)
+	public Result getPostPage(Page<Post> page){
+		IPage<Post> list = service.getPostPage(page);
+		return ResultUtil.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="editPost",method=RequestMethod.POST)
+	public Result editPost(@Validated(value=Update.class)Post post,Course course,
+			HttpServletRequest request,BindingResult result) {
+		if (result.hasErrors()) {
+			throw new LogicException(result.getFieldError().getDefaultMessage());
+		}
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		service.editPost(post,user,course);
+		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="editJudge",method=RequestMethod.GET)
+	public Result editJudge(HttpServletRequest request,Post post) {
+		PersonInfo user = (PersonInfo) HttpServletRequestUtils.getSessionAttr(request, "user");
+		boolean result = service.judgeBelong(post,user);
+		return ResultUtil.success(result);
 	}
 }

@@ -30,19 +30,21 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.nuc.a4q.group.Delete;
 import com.nuc.a4q.group.Insert;
 import com.nuc.a4q.group.Update;
 
+@TableName("tb_post")
 public class Post {
-	@NotNull(message = "帖子ID", groups = { Delete.class, Update.class })
+	@NotNull(message = "帖子ID不能为空", groups = { Delete.class, Update.class })
 	private Integer postId;
 	private Course course;
 	private PersonInfo deployUser;
 	private Integer bestAnswerId;
-	@NotBlank(message="发帖标题不能为空",groups= {Insert.class})
+	@NotBlank(message="发帖标题不能为空",groups= {Insert.class,Update.class})
 	private String postTitle;
-	@NotBlank(message="发帖内容不能为空",groups= {Insert.class})
+	@NotBlank(message="发帖内容不能为空",groups= {Insert.class,Update.class})
 	private String postContent;
 	private Integer priority = 0;
 	/**
