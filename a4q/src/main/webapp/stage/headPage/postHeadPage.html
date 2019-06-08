@@ -68,6 +68,9 @@
 		   								</tr>
 									</table>
 								</div>
+								<div class="addMore" id="rAdd" onclick="initPost(0)">
+									点击加载更多
+								</div>
 						</div>
 						<div class="m_qalist latestQa hidden">
 							<div class="mart10">
@@ -79,7 +82,7 @@
 		   							</tr>
 								</table>
 							</div>
-							<div class="addMore" >
+							<div class="addMore" id="unAdd" onclick="initPost(1)">
 								点击加载更多
 							</div>
 						</div>
@@ -96,7 +99,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="loading" style="visibility:hidden"></div>
+				<!-- <div id="loading" style="visibility:hidden"></div> -->
 			</div>
 			<div class="sidebar190 right" id="pRight">
 
@@ -138,7 +141,7 @@
 	
 	
 	<script type="text/javascript">
-			$("#loading").load("loading.html");
+			/* $("#loading").load("loading.html"); */
 			$("#copyRight").load("../footer.html");
 	</script>
 		<script type="text/javascript" charset="utf-8" src="../resources/js/jquery/jquery-1.7.1.js"></script>

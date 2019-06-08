@@ -10,7 +10,7 @@ $(function(){
 	courseId = getQueryString("courseId");
 	position = getQueryString("position");
 	initPage();
-//	bindScoll();
+	bindScoll();
 });
 
 //改变选中科目背景
@@ -84,8 +84,6 @@ function initBlogContent(){
 				$("#blogContent").append(temp);
 				count = data.data.count;
 				rowStart += rowSize;
-				$("#loading").css("visibility","hidden");
-				load = false;
 			}else{
 				alert(data.stateInfo);
 			}
@@ -97,12 +95,12 @@ function initBlogContent(){
 function bindScoll(){
 	$(window).bind("scroll",function () {
 		positionHandle();
-		a = $(window).height();
+		/*a = $(window).height();
 		b = $(document).scrollTop();
 		c = $(document).height();
 	    if(((a+b+10)>c)&&!load){
 	    	loadJudge();//滚动完之后的下拉加载，判断对某块进行刷新
-	    }
+	    }*/
 	});
 }
 
@@ -223,7 +221,7 @@ function initRecommedBlog(){
 function iterator(data){
 	var tempHtml = '';
 	$.map(data.data.list,function(value,index){
-	tempHtml += '<tr><td class="qaTitle"><span style="padding:0;"><a href="/a4q/stage/blogShow.html?blogId='+value.blog.blogId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;"><span style="margin-right:5px;" class="tagTalk">博客</span>'+value.blog.blogTitle+'<span style="color:black;">（阅读量：'+value.blog.readCount+'）</span></a></span></td>'+
+	tempHtml += '<tr><td class="qaTitle"><span style="padding:0;"><a style="text-decoration:none" href="/a4q/stage/blogShow.html?blogId='+value.blog.blogId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;"><span style="margin-right:5px;" class="tagTalk">博客</span><div class="contentA" title="'+value.blog.blogTitle+'">'+value.blog.blogTitle+'</div><span style="color:black;margin-top:4px;margin-left:40px">（阅读量：'+value.blog.readCount+'）</span></a></span></td>'+
 			'<td>'+formatD(value.blog.createTime)+'</td>'+
 			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.user.userId+'" target="_blank">'+value.user.userName+'</a></td></tr>';
 	});
@@ -243,3 +241,10 @@ function setTab(name, sort){
 	});
 }
 
+function addMoreJudge(temp){
+	if(rowStart>count||rowStart==count){
+		$(".addMore").css("display","none");
+	}else{
+		$(".addMore").css("display","block");
+	}
+}

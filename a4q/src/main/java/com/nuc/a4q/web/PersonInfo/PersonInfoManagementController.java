@@ -190,4 +190,16 @@ public class PersonInfoManagementController {
 		HttpServletRequestUtils.rmSessionAttr(request, "user");
 		return ResultUtil.success();
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "adminAuth", method = RequestMethod.POST)
+	public Result adminAuth(HttpServletRequest request,String account,String password) {
+		if(account.equals("admin")){
+			if(password.equals("580231")) {
+				request.getSession().setAttribute("admin", "yes");
+				return ResultUtil.success();
+			}
+		}
+		return ResultUtil.error("用户名或密码错误");
+	}
 }

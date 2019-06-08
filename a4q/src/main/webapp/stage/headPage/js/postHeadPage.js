@@ -4,7 +4,7 @@ rowStartR = 0;
 rowStartUR = 0;
 load = false;
 countR = 0;
-countUR =0
+countUR =0;
 courseId = null;
 position = -1;
 isLogin = false;
@@ -31,8 +31,8 @@ function focus(){
 
 function initPage(){
 	initCourse();
-	initResolved(0);
-	initResolved(1);
+	initPost(0);
+	initPost(1);
 	initRank();
 	initPostRank();
 	loginState(aSuccess,aDefault);
@@ -75,7 +75,7 @@ function initCourse(){
 }
 
 //初始化已解决问题列表
-function initResolved(handle){
+function initPost(handle){
 	var initUrl = "";
 	var ele = '';
 	if(handle==0){
@@ -96,13 +96,13 @@ function initResolved(handle){
 				if(handle==0){
 					countR = data.data.count;
 					rowStartR += rowSize;
+					addMoreJudge(0);
 				}
 				else if(handle==1){
 					countUR = data.data.count;
 					rowStartUR += rowSize;
+					addMoreJudge(1);
 				}
-				$("#loading").css("display","none");
-				load = false;
 			}else{
 				alert(data.stateInfo);
 			}
@@ -114,12 +114,12 @@ function initResolved(handle){
 function bindScoll(){
 	$(window).bind("scroll",function () {
 		positionHandle();
-		a = $(window).height();
+		/*a = $(window).height();
 		b = $(document).scrollTop();
 		c = $(document).height();
 	    if(((a+b+10)>c)&&!load){
-//	    	loadJudge();//滚动完之后的下拉加载，判断对某块进行刷新
-	    }
+	    	loadJudge();//滚动完之后的下拉加载，判断对某块进行刷新
+	    }*/
 	});
 }
 
@@ -141,30 +141,6 @@ function positionHandle(){
 	}else{
 		$("#pRight").attr("style","");
 		$("#pRight01").show();
-	}
-}
-
-//判断导航栏进行加载
-function loadJudge(){
-	temp = 0;
-	judge = true;
-	if(currentTab==0){
-		if(rowStartR>countR||rowStartR==countR){
-			judge = false;
-		}
-	}else if(currentTab==1){
-		if(rowStartUR>countUR||rowStartUR==countUR){
-			judge = false;
-		}
-	}else if(currentTab==2){
-		judge = false;
-	}
-	if(judge){	
-    	load = true;//控制只执行一次函数	
-		$("#loading").css("display","block");
-		setTimeout(function(){
-			initResolved(currentTab);
-		},1500);
 	}
 }
 
@@ -248,7 +224,7 @@ function initRecommedPost(){
 function iterator(data){
 	var tempHtml = '';
 	$.map(data.data.list,function(value,index){
-	tempHtml += '<tr><td class="qaTitle"><span style="padding:0;over"><a href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;"><span style="margin-right:5px;" class="tagTalk">论坛</span><div style="display:inline-block;height:100%;width:330px;overflow:hidden;text-overflow:ellipsis;white-space:noWrap">'+value.postTitle+'</div><span style="color:black;margin-top:4px;margin-left:40px">（阅读量：'+value.readCount+'）</span></a></span></td>'+
+	tempHtml += '<tr><td class="qaTitle"><span style="padding:0;"><a style="text-decoration:none" href="/a4q/stage/postShow.html?postId='+value.postId+'" target="_blank" class="qaTitle_link" style="cursor: pointer; display: block;"><span style="margin-right:5px;" class="tagTalk">论坛</span><div class="contentA" title="'+value.postTitle+'">'+value.postTitle+'</div><span style="color:black;margin-top:4px;margin-left:40px">（阅读量：'+value.readCount+'）</span></a></span></td>'+
 			'<td>'+formatD(value.createTime)+'</td>'+
 			'<td class="qa_askname"><a href="../personInfo/personInfoHead.html?userId='+value.deployUser.userId+'" target="_blank">'+value.deployUser.userName+'</a></td></tr>';
 	});
@@ -264,7 +240,47 @@ function setTab(name, sort){
 			currentTab = i;
 			tagItem.eq(i).addClass("curTag").siblings().removeClass("curTag");
 			conItem.eq(i).show().siblings().hide();
+			addMoreJudge();
 		}
 	});
 }
 
+function addMoreJudge(temp){
+	if(temp == 0){
+		if(rowStartR>countR||rowStartR==countR){
+			$("#rAdd").css("display","none");
+		}else{
+			$("#rAdd").css("display","block");
+		}
+	}else if(temp == 1){
+		if(rowStartUR>countUR||rowStartUR==countUR){
+			$("#unAdd").css("display","none");
+		}else{
+			$("#unAdd").css("display","block");
+		}
+	}
+}
+
+//判断导航栏进行加载
+function loadJudge(){
+	temp = 0;
+	judge = true;
+	if(currentTab==0){
+		if(rowStartR>countR||rowStartR==countR){
+			judge = false;
+		}
+	}else if(currentTab==1){
+		if(rowStartUR>countUR||rowStartUR==countUR){
+			judge = false;
+		}
+	}else if(currentTab==2){
+		judge = false;
+	}
+	if(judge){	
+    	load = true;//控制只执行一次函数	
+		$("#loading").css("display","block");
+		setTimeout(function(){
+			initPost(currentTab);
+		},1500);
+	}
+}
