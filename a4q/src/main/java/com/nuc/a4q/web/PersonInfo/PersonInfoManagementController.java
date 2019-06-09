@@ -38,6 +38,8 @@ public class PersonInfoManagementController {
 	 * @return
 	 */
 	@ResponseBody
+	
+	
 	@RequestMapping(value = "userRegister", method = RequestMethod.POST)
 	public Result userRegister(@Validated(Insert.class) PersonInfo personInfo, BindingResult bindingResult,
 			HttpServletRequest request) {
