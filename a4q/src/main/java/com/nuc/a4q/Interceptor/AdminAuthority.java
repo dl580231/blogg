@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nuc.a4q.utils.HttpServletRequestUtils;
-
 public class AdminAuthority implements HandlerInterceptor{
 	@Override
 	public String toString() {
@@ -17,22 +15,11 @@ public class AdminAuthority implements HandlerInterceptor{
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		String url = request.getHeader("Referer");
-		if(url==null) {}
-		else if(url.contains("back")) {
-			if(url.contains("login")) {
-				
-			}
-			else {
-				HttpServletRequestUtils.getSessionAttr(request, "admin");
-			    String admin = (String) request.getSession().getAttribute("admin");
-			    if(admin.length()!=0)
-			    	return true;
-			    else
-			    	return false;
-			}
-		}
-		return true;
+		String admin = (String) request.getSession().getAttribute("admin");
+		if(admin!=null && admin.length()!=0)
+			return true;
+		else
+			return false;
 	}
 
 	@Override
