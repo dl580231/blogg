@@ -19,6 +19,8 @@ import com.nuc.a4q.enums.ResultEnum;
 import com.nuc.a4q.exception.LogicException;
 import com.nuc.a4q.utils.PageUtil;
 
+import cn.hutool.crypto.digest.DigestUtil;
+
 @Service
 /* @Transactional */
 public class PersonInfoService {
@@ -35,7 +37,8 @@ public class PersonInfoService {
 	 * @throws Exception
 	 */
 	public void addPersoninfo(PersonInfo personInfo) {
-		// 1.判断参数是否为空
+		// 1.给密码加密
+		personInfo.setPassword(DigestUtil.md5Hex(personInfo.getPassword()));
 		// 2.补充一些信息
 		personInfo.setCreateTime(new Date());
 		personInfo.setLastEditTime(new Date());
@@ -59,7 +62,7 @@ public class PersonInfoService {
 		if (info == null) {
 			throw new LogicException("用户名不存在");
 		} else {
-			if (personInfo.getPassword().equals(info.getPassword())) {
+			if (info.getPassword().equals(DigestUtil.md5Hex(personInfo.getPassword()))) {
 				info.setPassword(null);
 				return info;
 			} else {
@@ -134,6 +137,7 @@ public class PersonInfoService {
 
 	public void updateUser(PersonInfo personInfo) {
 		personInfo.setLastEditTime(new Date());
+		personInfo.setPassword(DigestUtil.md5Hex(personInfo.getPassword()));
 		dao.updateUser(personInfo);
 	}
 	

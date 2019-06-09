@@ -232,6 +232,12 @@
 	    	<version>3.2</version>
 		</dependency>
 		<!-- mahout结束 -->
+		<!-- hutool工具包 -->
+		<dependency>
+		    <groupId>cn.hutool</groupId>
+		    <artifactId>hutool-all</artifactId>
+		    <version>4.5.11</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>o2o</finalName>

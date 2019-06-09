@@ -12,6 +12,8 @@ import com.nuc.a4q.dto.BlogDto;
 import com.nuc.a4q.entity.Blog;
 import com.nuc.a4q.entity.UserRank;
 
+import cn.hutool.crypto.digest.DigestUtil;
+
 public class BlogDaoTest extends BaseTest {
 	@Autowired
 	BlogDao dao;
@@ -60,10 +62,17 @@ public class BlogDaoTest extends BaseTest {
 	}
 	
 	@Test
+	@Ignore
 	public void getBlogOrderByPriority() {
 		Blog blog = new Blog();
 		blog.setBlogContent("java");
 		List<BlogDto> list = dao.getBlogOrderByPriority(null, null, blog);
 		System.out.println(list.size());
+	}
+	
+	@Test
+	public void test() {
+		String md5Hex1 = DigestUtil.md5Hex("580231");
+		System.out.println(md5Hex1);
 	}
 }
