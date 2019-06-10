@@ -29,7 +29,7 @@ public interface BlogDao {
 
 	public List<Blog> getBlogRankByReadCount();
 
-	public Integer queryBlogCount();
+	public Integer queryBlogCount(@Param("courseId")Integer courseId);
 
 	public List<BlogDto> getBlogOrderByPriority(@Param("rowStart") Integer rowStart,
 			@Param("rowSize") Integer rowSize, @Param("blog") Blog blog);

@@ -55,9 +55,9 @@ public class BlogDaoTest extends BaseTest {
 	}
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void queryBlogCount() {
-		Integer count = dao.queryBlogCount();
+		Integer count = dao.queryBlogCount(19);
 		System.out.println(count);
 	}
 	
@@ -71,6 +71,7 @@ public class BlogDaoTest extends BaseTest {
 	}
 	
 	@Test
+	@Ignore
 	public void test() {
 		String md5Hex1 = DigestUtil.md5Hex("580231");
 		System.out.println(md5Hex1);

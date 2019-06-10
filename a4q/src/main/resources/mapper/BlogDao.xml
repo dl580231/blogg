@@ -199,10 +199,13 @@
 		LIMIT 0,10
 	</select>
 	
-	<select id="queryBlogCount" resultType="int">
+	<select id="queryBlogCount" parameterType="int" resultType="int">
 		select count(user_id)
 		from tb_blog
-		where enable_view = 1
+		<where>
+			and enable_view = 1
+			<if test="courseId != null">and course_id = #{courseId}</if>
+		</where>
 	</select>
 
 	<select id="getBlogOrderByPriority" resultMap="BlogDtoMap">
@@ -210,7 +213,7 @@
 		from tb_blog b,tb_person_info u
 		<where> and enable_view = 1
 			  and b.user_id = u.user_id
-			  <if test="blog.courseId != null">and course_id = #{courseId}</if>
+			  <if test="blog.courseId != null">and course_id = #{blog.courseId}</if>
 			  <if test="blog.blogTitle != null and blog.blogTitle != ''">and blog_title like CONCAT("%",#{blog.blogTitle},"%")</if>
 			  <if test="blog.blogContent != null and blog.blogContent != ''">or blog_content like CONCAT("%",#{blog.blogContent},"%")</if>
 		</where>

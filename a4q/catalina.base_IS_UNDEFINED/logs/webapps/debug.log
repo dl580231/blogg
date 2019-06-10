@@ -1,15 +1,6 @@
-2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT COUNT(1) FROM tb_post 
-2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 
-2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT * FROM tb_post ORDER BY priority ASC LIMIT ?,? 
-2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 20(Long), 10(Long)
-2019-06-156 17:13:08:008 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - <==      Total: 10
-2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT COUNT(1) FROM tb_post 
-2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 
-2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT * FROM tb_post ORDER BY priority ASC LIMIT ?,? 
-2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 20(Long), 10(Long)
-2019-06-156 17:13:22:022 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - <==      Total: 10
-2019-06-156 17:13:49:049 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT COUNT(1) FROM tb_post 
-2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 
-2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==>  Preparing: SELECT * FROM tb_post ORDER BY priority ASC LIMIT ?,? 
-2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - ==> Parameters: 190(Long), 10(Long)
-2019-06-156 17:13:50:050 [main] DEBUG com.nuc.a4q.dao.PostDao.selectPageVo - <==      Total: 0
+2019-06-161 22:05:27:027 [main] DEBUG com.nuc.a4q.dao.BlogDao.queryBlogCount - ==>  Preparing: select count(user_id) from tb_blog WHERE enable_view = 1 and course_id = ? 
+2019-06-161 22:05:27:027 [main] DEBUG com.nuc.a4q.dao.BlogDao.queryBlogCount - ==> Parameters: 14(Integer)
+2019-06-161 22:05:27:027 [main] DEBUG com.nuc.a4q.dao.BlogDao.queryBlogCount - <==      Total: 1
+2019-06-161 22:05:40:040 [main] DEBUG com.nuc.a4q.dao.BlogDao.queryBlogCount - ==>  Preparing: select count(user_id) from tb_blog WHERE enable_view = 1 and course_id = ? 
+2019-06-161 22:05:40:040 [main] DEBUG com.nuc.a4q.dao.BlogDao.queryBlogCount - ==> Parameters: 19(Integer)
+2019-06-161 22:05:40:040 [main] DEBUG com.nuc.a4q.dao.BlogDao.queryBlogCount - <==      Total: 1

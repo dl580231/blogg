@@ -115,7 +115,7 @@ public class BlogService {
 	public HashMap<Object, Object> getBlogOrderByPriority(Integer rowStart,Integer rowSize,Integer courseId) {
 		if(rowStart==null || rowSize==null)
 			throw new LogicException("查询参数错误");
-		Integer count = blogDao.queryBlogCount();
+		Integer count = blogDao.queryBlogCount(courseId);//这里应该设置上参数
 		Blog blog = new Blog();
 		blog.setCourseId(courseId);
 		List<BlogDto> list = blogDao.getBlogOrderByPriority(rowStart,rowSize,blog);
