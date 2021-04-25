@@ -1,2 +1,2 @@
 dl change;
-i am lzx;
+isdf:wq am lzx;
